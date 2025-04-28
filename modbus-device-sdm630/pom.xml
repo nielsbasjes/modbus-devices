@@ -110,8 +110,8 @@
   </developers>
 
   <scm>
-    <url>https://github.com/nielsbasjes/modbus-schema</url>
-    <connection>scm:git:https://github.com/nielsbasjes/modbus-schema.git</connection>
+    <url>https://github.com/nielsbasjes/modbus-devices</url>
+    <connection>scm:git:https://github.com/nielsbasjes/modbus-devices.git</connection>
     <developerConnection>scm:git:file:///${project.basedir}</developerConnection>
     <tag>HEAD</tag>
   </scm>
