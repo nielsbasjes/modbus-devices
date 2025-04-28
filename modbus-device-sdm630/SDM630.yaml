@@ -1,0 +1,584 @@
+# $schema: https://modbus.basjes.nl/v1/ModbusSchema.json
+#
+# Modbus Schema Toolkit
+# Copyright (C) 2019-2025 Niels Basjes
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an AS IS BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+description: 'Eastron SDM-630 Modbus V2'
+schemaFeatureLevel: 1
+# Based upon https://www.eastroneurope.com/images/uploads/products/protocol/SDM630_MODBUS_Protocol.pdf
+
+# The SDM630Modbus can transfer a maximum of 40 values in a single transaction; therefore
+# the maximum number of registers per request is 80.
+maxRegistersPerModbusRequest: 80
+blocks:
+  - id: 'Main'
+    description: 'The only block of registers'
+    fields:
+      - id: 'Phase1LineToNeutralVolts'
+        description: 'Phase 1 line to neutral volts'
+        expression: 'ieee754_32(ir:00000 # 2)'
+        unit: 'Volts'
+
+      - id: 'Phase2LineToNeutralVolts'
+        description: 'Phase 2 line to neutral volts'
+        expression: 'ieee754_32(ir:00002 # 2)'
+        unit: 'Volts'
+
+      - id: 'Phase3LineToNeutralVolts'
+        description: 'Phase 3 line to neutral volts'
+        expression: 'ieee754_32(ir:00004 # 2)'
+        unit: 'Volts'
+
+      - id: 'Phase1Current'
+        description: 'Phase 1 current'
+        expression: 'ieee754_32(ir:00006 # 2)'
+        unit: 'Amps'
+
+      - id: 'Phase2Current'
+        description: 'Phase 2 current'
+        expression: 'ieee754_32(ir:00008 # 2)'
+        unit: 'Amps'
+
+      - id: 'Phase3Current'
+        description: 'Phase 3 current'
+        expression: 'ieee754_32(ir:00010 # 2)'
+        unit: 'Amps'
+
+      - id: 'Phase1Power'
+        description: 'Phase 1 power'
+        expression: 'ieee754_32(ir:00012 # 2)'
+        unit: 'Watts'
+
+      - id: 'Phase2Power'
+        description: 'Phase 2 power'
+        expression: 'ieee754_32(ir:00014 # 2)'
+        unit: 'Watts'
+
+      - id: 'Phase3Power'
+        description: 'Phase 3 power'
+        expression: 'ieee754_32(ir:00016 # 2)'
+        unit: 'Watts'
+
+      - id: 'Phase1VoltAmps'
+        description: 'Phase 1 volt amps'
+        expression: 'ieee754_32(ir:00018 # 2)'
+        unit: 'VA'
+
+      - id: 'Phase2VoltAmps'
+        description: 'Phase 2 volt amps'
+        expression: 'ieee754_32(ir:00020 # 2)'
+        unit: 'VA'
+
+      - id: 'Phase3VoltAmps'
+        description: 'Phase 3 volt amps'
+        expression: 'ieee754_32(ir:00022 # 2)'
+        unit: 'VA'
+
+      - id: 'Phase1ReactivePower'
+        description: 'Phase 1 reactive power'
+        expression: 'ieee754_32(ir:00024 # 2)'
+        unit: 'VAr'
+
+      - id: 'Phase2ReactivePower'
+        description: 'Phase 2 reactive power'
+        expression: 'ieee754_32(ir:00026 # 2)'
+        unit: 'VAr'
+
+      - id: 'Phase3ReactivePower'
+        description: 'Phase 3 reactive power'
+        expression: 'ieee754_32(ir:00028 # 2)'
+        unit: 'VAr'
+
+      - id: 'Phase1PowerFactor'
+        description: 'Phase 1 power factor. The power factor has its sign adjusted to indicate the direction of the current. Positive refers to forward current, negative refers to reverse current'
+        expression: 'ieee754_32(ir:00030 # 2)'
+
+      - id: 'Phase2PowerFactor'
+        description: 'Phase 2 power factor. The power factor has its sign adjusted to indicate the direction of the current. Positive refers to forward current, negative refers to reverse current'
+        expression: 'ieee754_32(ir:00032 # 2)'
+
+      - id: 'Phase3PowerFactor'
+        description: 'Phase 3 power factor. The power factor has its sign adjusted to indicate the direction of the current. Positive refers to forward current, negative refers to reverse current'
+        expression: 'ieee754_32(ir:00034 # 2)'
+
+      - id: 'Phase1PhaseAngle'
+        description: 'Phase 1 phase angle'
+        expression: 'ieee754_32(ir:00036 # 2)'
+        unit: 'Degrees'
+
+      - id: 'Phase2PhaseAngle'
+        description: 'Phase 2 phase angle'
+        expression: 'ieee754_32(ir:00038 # 2)'
+        unit: 'Degrees'
+
+      - id: 'Phase3PhaseAngle'
+        description: 'Phase 3 phase angle'
+        expression: 'ieee754_32(ir:00040 # 2)'
+        unit: 'Degrees'
+
+      - id: 'AverageLineToNeutralVolts'
+        description: 'Average line to neutral volts'
+        expression: 'ieee754_32(ir:00042 # 2)'
+        unit: 'Volts'
+
+      - id: 'AverageLineCurrent'
+        description: 'Average line current'
+        expression: 'ieee754_32(ir:00046 # 2)'
+        unit: 'Amps'
+
+      - id: 'SumOfLineCurrents'
+        description: 'Sum of line currents'
+        expression: 'ieee754_32(ir:00048 # 2)'
+        unit: 'Amps'
+
+      - id: 'TotalSystemPower'
+        description: 'Total system power'
+        expression: 'ieee754_32(ir:00052 # 2)'
+        unit: 'Watts'
+
+      - id: 'TotalSystemVoltAmps'
+        description: 'Total system volt amps'
+        expression: 'ieee754_32(ir:00056 # 2)'
+        unit: 'VA'
+
+      - id: 'TotalSystemVAr'
+        description: 'Total system VAr'
+        expression: 'ieee754_32(ir:00060 # 2)'
+        unit: 'VAr'
+
+      - id: 'TotalSystemPowerFactor'
+        description: 'Total system power factor. The power factor has its sign adjusted to indicate the direction of the current. Positive refers to forward current, negative refers to reverse current'
+        expression: 'ieee754_32(ir:00062 # 2)'
+
+      - id: 'TotalSystemPhaseAngle'
+        description: 'Total system phase angle'
+        expression: 'ieee754_32(ir:00066 # 2)'
+        unit: 'Degrees'
+
+      - id: 'FrequencyOfSupplyVoltages'
+        description: 'Frequency of supply voltages'
+        expression: 'ieee754_32(ir:00070 # 2)'
+        unit: 'Hz'
+
+      - id: 'TotalImportKWh'
+        description: 'Total Import kWh'
+        expression: 'ieee754_32(ir:00072 # 2)'
+        unit: 'kWh'
+
+      - id: 'TotalExportKWh'
+        description: 'Total Export kWh'
+        expression: 'ieee754_32(ir:00074 # 2)'
+        unit: 'kWh'
+
+      - id: 'TotalImportkVArh'
+        description: 'Total Import kVArh'
+        expression: 'ieee754_32(ir:00076 # 2)'
+        unit: 'kVArh'
+
+      - id: 'TotalExportkVArh'
+        description: 'Total Export kVArh'
+        expression: 'ieee754_32(ir:00078 # 2)'
+        unit: 'kVArh'
+
+      - id: 'TotalVAh'
+        description: 'Total kVAh'
+        expression: 'ieee754_32(ir:00080 # 2)'
+        unit: 'kVAh'
+
+      - id: 'Ah'
+        description: 'Ah'
+        expression: 'ieee754_32(ir:00082 # 2)'
+        unit: 'Ah'
+
+      - id: 'TotalSystemPowerDemand'
+        description: 'Total system power demand. The power sum demand calculation is for import – export'
+        expression: 'ieee754_32(ir:00084 # 2)'
+        unit: 'W'
+
+      - id: 'MaximumTotalSystemPowerDemand'
+        description: 'Maximum total system power demand. The power sum demand calculation is for import – export'
+        expression: 'ieee754_32(ir:00086 # 2)'
+        unit: 'VA'
+
+      - id: 'TotalSystemVADemand'
+        description: 'Total system VA demand'
+        expression: 'ieee754_32(ir:00100 # 2)'
+        unit: 'VA'
+
+      - id: 'MaximumTotalSystemVADemand'
+        description: 'Maximum total system VA demand'
+        expression: 'ieee754_32(ir:00102 # 2)'
+        unit: 'VA'
+
+      - id: 'NeutralCurrentDemand'
+        description: 'Neutral current demand'
+        expression: 'ieee754_32(ir:00104 # 2)'
+        unit: 'Amps'
+
+      - id: 'MaximumNeutralCurrentDemand'
+        description: 'Maximum neutral current demand'
+        expression: 'ieee754_32(ir:00106 # 2)'
+        unit: 'Amps'
+
+      - id: 'Line1ToLine2Volts'
+        description: 'Line 1 to Line 2 volts'
+        expression: 'ieee754_32(ir:00200 # 2)'
+        unit: 'Volts'
+
+      - id: 'Line2ToLine3Volts'
+        description: 'Line 2 to Line 3 volts'
+        expression: 'ieee754_32(ir:00202 # 2)'
+        unit: 'Volts'
+
+      - id: 'Line3ToLine1Volts'
+        description: 'Line 3 to Line 1 volts'
+        expression: 'ieee754_32(ir:00204 # 2)'
+        unit: 'Volts'
+
+      - id: 'AverageLineToLineVolts'
+        description: 'Average line to line volts'
+        expression: 'ieee754_32(ir:00206 # 2)'
+        unit: 'Volts'
+
+      - id: 'NeutralCurrent'
+        description: 'Neutral current'
+        expression: 'ieee754_32(ir:00224 # 2)'
+        unit: 'Amps'
+
+      - id: 'Phase1LNVoltsTHD'
+        description: 'Phase 1 L/N volts THD'
+        expression: 'ieee754_32(ir:00234 # 2)'
+        unit: '%'
+
+      - id: 'Phase2LNVoltsTHD'
+        description: 'Phase 2 L/N volts THD'
+        expression: 'ieee754_32(ir:00236 # 2)'
+        unit: '%'
+
+      - id: 'Phase3LNVoltsTHD'
+        description: 'Phase 3 L/N volts THD'
+        expression: 'ieee754_32(ir:00238 # 2)'
+        unit: '%'
+
+      - id: 'Phase1CurrentTHD'
+        description: 'Phase 1 Current THD'
+        expression: 'ieee754_32(ir:00240 # 2)'
+        unit: '%'
+
+      - id: 'Phase2CurrentTHD'
+        description: 'Phase 2 Current THD'
+        expression: 'ieee754_32(ir:00242 # 2)'
+        unit: '%'
+
+      - id: 'Phase3CurrentTHD'
+        description: 'Phase 3 Current THD'
+        expression: 'ieee754_32(ir:00244 # 2)'
+        unit: '%'
+
+      - id: 'AverageLineToNeutralVoltsTHD'
+        description: 'Average line to neutral volts THD'
+        expression: 'ieee754_32(ir:00248 # 2)'
+        unit: '%'
+
+      - id: 'AverageLineCurrentTHD'
+        description: 'Average line current THD'
+        expression: 'ieee754_32(ir:00250 # 2)'
+        unit: '%'
+
+      - id: 'Phase1CurrentDemand'
+        description: 'Phase 1 current demand'
+        expression: 'ieee754_32(ir:00258 # 2)'
+        unit: 'Amps'
+
+      - id: 'Phase2CurrentDemand'
+        description: 'Phase 2 current demand'
+        expression: 'ieee754_32(ir:00260 # 2)'
+        unit: 'Amps'
+
+      - id: 'Phase3CurrentDemand'
+        description: 'Phase 3 current demand'
+        expression: 'ieee754_32(ir:00262 # 2)'
+        unit: 'Amps'
+
+      - id: 'MaximumPhase1CurrentDemand'
+        description: 'Maximum phase 1 current demand'
+        expression: 'ieee754_32(ir:00264 # 2)'
+        unit: 'Amps'
+
+      - id: 'MaximumPhase2CurrentDemand'
+        description: 'Maximum phase 2 current demand'
+        expression: 'ieee754_32(ir:00266 # 2)'
+        unit: 'Amps'
+
+      - id: 'MaximumPhase3CurrentDemand'
+        description: 'Maximum phase 3 current demand'
+        expression: 'ieee754_32(ir:00268 # 2)'
+        unit: 'Amps'
+
+      - id: 'Line1ToLine2VoltsTHD'
+        description: 'Line 1 to line 2 volts THD'
+        expression: 'ieee754_32(ir:00334 # 2)'
+        unit: '%'
+
+      - id: 'Line2ToLine3VoltsTHD'
+        description: 'Line 2 to line 3 volts THD'
+        expression: 'ieee754_32(ir:00336 # 2)'
+        unit: '%'
+
+      - id: 'Line3ToLine1VoltsTHD'
+        description: 'Line 3 to line 1 volts THD'
+        expression: 'ieee754_32(ir:00338 # 2)'
+        unit: '%'
+
+      - id: 'AverageLineToLineVoltsTHD'
+        description: 'Average line to line volts THD'
+        expression: 'ieee754_32(ir:00340 # 2)'
+        unit: '%'
+
+      - id: 'TotalKWh'
+        description: 'Total kWh (=Import + Export)'
+        expression: 'ieee754_32(ir:00342 # 2)'
+        unit: 'kWh'
+
+      - id: 'TotalkVArh'
+        description: 'Total kVArh (=Import + Export)'
+        expression: 'ieee754_32(ir:00344 # 2)'
+        unit: 'kVArh'
+
+      - id: 'L1ImportKWh'
+        description: 'L1 import kWh'
+        expression: 'ieee754_32(ir:00346 # 2)'
+        unit: 'kWh'
+
+      - id: 'L2ImportKWh'
+        description: 'L2 import kWh'
+        expression: 'ieee754_32(ir:00348 # 2)'
+        unit: 'kWh'
+
+      - id: 'L3ImportKWh'
+        description: 'L3 import kWh'
+        expression: 'ieee754_32(ir:00350 # 2)'
+        unit: 'kWh'
+
+      - id: 'L1ExportKWh'
+        description: 'L1 export kWh'
+        expression: 'ieee754_32(ir:00352 # 2)'
+        unit: 'kWh'
+
+      - id: 'L2ExportKWh'
+        description: 'L2 export kWh'
+        expression: 'ieee754_32(ir:00354 # 2)'
+        unit: 'kWh'
+
+      - id: 'L3ExportKWh'
+        description: 'L3 export kWh'
+        expression: 'ieee754_32(ir:00356 # 2)'
+        unit: 'kWh'
+
+      - id: 'L1TotalKWh'
+        description: 'L1 total kWh (=Import + Export)'
+        expression: 'ieee754_32(ir:00358 # 2)'
+        unit: 'kWh'
+
+      - id: 'L2TotalKWh'
+        description: 'L2 total kWh (=Import + Export)'
+        expression: 'ieee754_32(ir:00360 # 2)'
+        unit: 'kWh'
+
+      - id: 'L3TotalKWh'
+        description: 'L3 total kWh (=Import + Export)'
+        expression: 'ieee754_32(ir:00362 # 2)'
+        unit: 'kWh'
+
+      - id: 'L1ImportkVArh'
+        description: 'L1 import kVArh'
+        expression: 'ieee754_32(ir:00364 # 2)'
+        unit: 'kVArh'
+
+      - id: 'L2ImportkVArh'
+        description: 'L2 import kVArh'
+        expression: 'ieee754_32(ir:00366 # 2)'
+        unit: 'kVArh'
+
+      - id: 'L3ImportkVArh'
+        description: 'L3 import kVArh'
+        expression: 'ieee754_32(ir:00368 # 2)'
+        unit: 'kVArh'
+
+      - id: 'L1ExportkVArh'
+        description: 'L1 export kVArh'
+        expression: 'ieee754_32(ir:00370 # 2)'
+        unit: 'kVArh'
+
+      - id: 'L2ExportkVArh'
+        description: 'L2 export kVArh'
+        expression: 'ieee754_32(ir:00372 # 2)'
+        unit: 'kVArh'
+
+      - id: 'L3ExportkVArh'
+        description: 'L3 export kVArh'
+        expression: 'ieee754_32(ir:00374 # 2)'
+        unit: 'kVArh'
+
+      - id: 'L1TotalkVArh'
+        description: 'L1 total kVArh (=Import + Export)'
+        expression: 'ieee754_32(ir:00376 # 2)'
+        unit: 'kVArh'
+
+      - id: 'L2TotalkVArh'
+        description: 'L2 total kVArh (=Import + Export)'
+        expression: 'ieee754_32(ir:00378 # 2)'
+        unit: 'kVArh'
+
+      - id: 'L3TotalkVArh'
+        description: 'L3 total kVArh (=Import + Export)'
+        expression: 'ieee754_32(ir:00380 # 2)'
+        unit: 'kVArh'
+
+tests:
+  - id: 'The Niels Basjes device'
+    description: 'Test generated from my own device'
+    input:
+      - firstRegisterAddress: 'ir:00000'
+        registers: |-
+          436A A2CB 436A 5E5E 436B CFF8 4060 354B 4048 A3A4
+          4081 3697 4405 C7E8 4409 8DA7 4437 E384 444C A922
+          4437 4283 446D 7231 441A E1FC 43F2 2F0C 4416 37EA
+          3F27 5706 3F40 26C9 3F46 41FA 4244 BD0D 4225 720D
+          421C FE2D 436A F060 0000 0000 4063 C209 412A D187
+          0000 0000 44E3 9C8A 0000 0000 451B E5F6 0000 0000
+          44D5 18B6 3F3A E146 0000 0000 422C 7797 0000 0000
+          4247 99A6 4109 BA5E 0000 0000 40B1 BA5E 0000 0000
+          436A C53C 436A 4E48 436B C34D 4060 2B9E 4048 84E0
+          4080 E0A6 4405 E94C 4409 35FA 4437 CBD4 444C A332
+          4436 F77D 446C 8C89 441A BD45 43F2 1314 4414 E91E
+          3F27 85A6 3F3F FAE8 3F46 E8D2 4244 85DE 4225 AD78
+          421C 1179 436A F245 0000 0000 4063 7B43 412A 9C72
+          0000 0000 44E3 758D 0000 0000 451B 95E8 0000 0000
+          44D4 57F7 3F3B 215B 0000 0000 422C 2394 0000 0000
+          4247 A361 4109 BA5E 0000 0000 40B1 BA5E 0000 0000
+          436A B051 436A 5088 436B C3AF 405F DEF1 4048 C338
+          4081 432D 4405 642A 4409 A2FB 4437 E52E 444C 807F
+          4437 6AC9 446D 7F18 441B 0254 43F3 743A 4415 6A7E
+          3F27 1BF0 3F3F FD92 3F46 5EE7 4245 02EA 4225 A9DD
+          421C D539 436A EF0B 0000 0000 4063 E5FD 412A EC7E
+          0000 0000 44E3 73B7 0000 0000 451B DD57 0000 0000
+          44D5 2B11 3F3A CA16 0000 0000 422C 95F5 0000 0000
+          4247 95AA 4109 BA5E 0000 0000 40B1 BA5E 0000 0000
+          436A BF3A 436A 688C 436B D689 4060 036E 4048 58C6
+          4080 E487 4405 BEBA 4409 3C5B 4437 D47B 444C 742C
+          4436 E11B 446C A5F8 441A A3EC 43F1 C0E8 4415 06D7
+          3F27 76E0 3F40 1B54 3F46 DCCD 4244 975B 4225 2E7B
+          421C BD08 436A EFE4 0000 0000 4063 7E99 412A 9EF3
+          0000 0000 44E3 7123 0000 0000 451B C624 0000 0000
+          44D4 E9F2 3F3A E3C9 0000 0000 422C 744D 0000 0000
+          4247 A43C 4109 BA5E 0000 0000 40B1 BA5E 0000 0000
+          436A 9FBD 436A 6D8D 436B CF97 405F C35E 4049 18B6
+          4081 26C7 4405 600F 4409 FA7B 4437 7267 444C 13E1
+          4437 9568 446D 12E2 441A 7677 43F2 328C 4416 2BAD
+          3F27 4F24 3F40 67C7 3F46 1789 4244 C660 4225 19E9
+          421D 3A33 436A F44B 0000 0000 4063 D610 412A E08C
+          0000 0000 44E3 D8A2 0000 0000 451B D0A3 0000 0000
+          44D4 99F6 3F3B 2C36 0000 0000 422C 1556 0000 0000
+          4247 C61B 4109 BA5E 0000 0000 40B1 BA5E 0000 0000
+    blocks:
+      - id: 'Main'
+        expected:
+          'Phase1LineToNeutralVolts':       [  234.636 ]
+          'Phase2LineToNeutralVolts':       [  234.369 ]
+          'Phase3LineToNeutralVolts':       [  235.812 ]
+          'Phase1Current':                  [    3.503 ]
+          'Phase2Current':                  [    3.135 ]
+          'Phase3Current':                  [    4.038 ]
+          'Phase1Power':                    [  535.124 ]
+          'Phase2Power':                    [  550.213 ]
+          'Phase3Power':                    [  735.555 ]
+          'Phase1VoltAmps':                 [  818.643 ]
+          'Phase2VoltAmps':                 [  733.039 ]
+          'Phase3VoltAmps':                 [  949.784 ]
+          'Phase1ReactivePower':            [  619.531 ]
+          'Phase2ReactivePower':            [  484.368 ]
+          'Phase3ReactivePower':            [  600.874 ]
+          'Phase1PowerFactor':              [    0.654 ]
+          'Phase2PowerFactor':              [    0.751 ]
+          'Phase3PowerFactor':              [    0.774 ]
+          'Phase1PhaseAngle':               [   49.185 ]
+          'Phase2PhaseAngle':               [   41.361 ]
+          'Phase3PhaseAngle':               [   39.248 ]
+          'AverageLineToNeutralVolts':      [  234.939 ]
+          'AverageLineCurrent':             [    3.559 ]
+          'SumOfLineCurrents':              [   10.676 ]
+          'TotalSystemPower':               [ 1820.892 ]
+          'TotalSystemVoltAmps':            [ 2494.373 ]
+          'TotalSystemVAr':                 [ 1704.772 ]
+          'TotalSystemPowerFactor':         [    0.730 ]
+          'TotalSystemPhaseAngle':          [   43.117 ]
+          'FrequencyOfSupplyVoltages':      [   49.900 ]
+          'TotalImportKWh':                 [    8.608 ]
+          'TotalExportKWh':                 [    0.000 ]
+          'TotalImportkVArh':               [    5.554 ]
+          'TotalExportkVArh':               [    0.000 ]
+          'TotalVAh':                       [  234.770 ]
+          'Ah':                             [  234.306 ]
+          'TotalSystemPowerDemand':         [  235.763 ]
+          'MaximumTotalSystemPowerDemand':  [    3.503 ]
+          'TotalSystemVADemand':            [  731.867 ]
+          'MaximumTotalSystemVADemand':     [  946.196 ]
+          'NeutralCurrentDemand':           [  618.957 ]
+          'MaximumNeutralCurrentDemand':    [  484.149 ]
+          'Line1ToLine2Volts':              [   39.208 ]
+          'Line2ToLine3Volts':              [  234.934 ]
+          'Line3ToLine1Volts':              [    0.000 ]
+          'AverageLineToLineVolts':         [    3.561 ]
+          'NeutralCurrent':                 [    0.000 ]
+          'Phase1LNVoltsTHD':               [    0.000 ]
+          'Phase2LNVoltsTHD':               [    5.554 ]
+          'Phase3LNVoltsTHD':               [    0.000 ]
+          'Phase1CurrentTHD':               [  234.747 ]
+          'Phase2CurrentTHD':               [  234.408 ]
+          'Phase3CurrentTHD':               [  235.838 ]
+          'AverageLineToNeutralVoltsTHD':   [    3.130 ]
+          'AverageLineCurrentTHD':          [    4.028 ]
+          'Phase1CurrentDemand':            [  817.815 ]
+          'Phase2CurrentDemand':            [  731.517 ]
+          'Phase3CurrentDemand':            [  946.593 ]
+          'MaximumPhase1CurrentDemand':     [  618.561 ]
+          'MaximumPhase2CurrentDemand':     [  483.507 ]
+          'MaximumPhase3CurrentDemand':     [  596.107 ]
+          'Line1ToLine2VoltsTHD':           [  551.914 ]
+          'Line2ToLine3VoltsTHD':           [  733.788 ]
+          'Line3ToLine1VoltsTHD':           [  816.311 ]
+          'AverageLineToLineVoltsTHD':      [  734.334 ]
+          'TotalKWh':                       [  948.295 ]
+          'TotalkVArh':                     [  617.851 ]
+          'L1ImportKWh':                    [  484.395 ]
+          'L2ImportKWh':                    [  600.682 ]
+          'L3ImportKWh':                    [    0.654 ]
+          'L1ExportKWh':                    [    0.752 ]
+          'L2ExportKWh':                    [    0.774 ]
+          'L3ExportKWh':                    [   49.194 ]
+          'L1TotalKWh':                     [   41.275 ]
+          'L2TotalKWh':                     [   39.307 ]
+          'L3TotalKWh':                     [  234.954 ]
+          'L1ImportkVArh':                  [    0.000 ]
+          'L2ImportkVArh':                  [    3.560 ]
+          'L3ImportkVArh':                  [   10.680 ]
+          'L1ExportkVArh':                  [    0.000 ]
+          'L2ExportkVArh':                  [ 1822.770 ]
+          'L3ExportkVArh':                  [    0.000 ]
+          'L1TotalkVArh':                   [ 2493.040 ]
+          'L2TotalkVArh':                   [    0.000 ]
+          'L3TotalkVArh':                   [ 1700.811 ]

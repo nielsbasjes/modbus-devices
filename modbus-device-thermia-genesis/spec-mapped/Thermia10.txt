@@ -1,0 +1,477 @@
+Coils COIL STATUS Function 1, 5 (5=write)
+
+Address
+3       |  Reset all alarms
+4       |  Enable internal additional heater
+5       |  Enable external additional heater
+6       |  Enable HGW
+7       |  Enable flow switch/pressure switch
+8       |  Enable tap water
+9       |  Enable heat
+10      |  Enable active cooling
+11      |  Enable mix valve 1
+12      |  Enable TWC
+13      |  Enable WCS
+14      |  Enable hot gas pump
+16      |  Enable mix valve 2 (EM)
+17      |  Enable mix valve 3 (EM)
+18      |  Enable mix valve 4 (EM)
+19      |  Enable mix valve 5 (EM)
+20      |  Enable brine out monitoring
+21      |  Enable brine pump continuous operation
+22      |  Enable system circulation pump
+23      |  Enable dew point calculation
+24      |  Enable anti legionella
+25      |  Enable additional heater only (No compressor). Requires Operation mode: Standby
+26      |  Enable current limitation
+28      |  Enable pool (EM)
+29      |  Enable surplus heat, chiller (no borehole)
+30      |  Enable surplus heat, borehole (no chiller)
+31      |  Enable external additional heater for pool (EM)
+32      |  Enable internal additional heater for pool (EM)
+33      |  Enable passive cooling (EM)
+34      |  Enable variable speed mode for condenser pump
+35      |  Enable variable speed mode for brine pump
+36      |  Enable cooling mode for mixing valve 1
+37      |  Enable outdoor temp dependent for cooling with mixing valve 1
+38      |  Enable internal brine pump to start when cooling is active for mixing valve 1
+39      |  Enable outdoor temp dependent for external heater
+40      |  Enable brine in monitoring
+41      |  Enable fixed system supply set point, allows defacto address 40117
+42      |  Enable evaporator freeze protection
+43      |  Enable outdoor temp dependent for cooling with mixing valve 2 (EM3 only)*5
+44      |  Enable dew point calculation on mixing valve 2, requires room sensor for mixing valve 2 (EM3 only)
+45      |  Enable outdoor temp dependent for heating with mixing valve 2 (EM3 only)*5
+46      |  Enable outdoor temp dependent for cooling with mixing valve 3 (EM3 only)*5
+47      |  Enable dew point calculation on mixing valve 3, requires room sensor for mixing valve 3 (EM3 only)
+48      |  Enable outdoor temp dependent for heating with mixing valve 3 (EM3 only)*5
+49      |  Enable outdoor temp dependent for cooling with mixing valve 4 (EM3 only)*5
+50      |  Enable dew point calculation on mixing valve 4, requires room sensor for mixing valve 4 (EM3 only)
+51      |  Enable outdoor temp dependent for heating with mixing valve 4 (EM3 only)*5
+52      |  Enable outdoor temp dependent for cooling with mixing valve 5 (EM3 only)*5
+53      |  Enable dew point calculation on mixing valve 5, requires room sensor for mixing valve 5 (EM3 only)
+54      |  Enable outdoor temp dependent for heating with mixing valve 5 (EM3 only)*5
+55      |  Enable internal brine pump to start when cooling is active for mixing valve 2 (EM3 only)
+56      |  Enable internal brine pump to start when cooling is active for mixing valve 3 (EM3 only)
+57      |  Enable internal brine pump to start when cooling is active for mixing valve 4 (EM3 only)
+58      |  Enable internal brine pump to start when cooling is active for mixing valve 5 (EM3 only)
+
+INPUT STATUS Function 2
+
+0      |  Alarm active, Class: A
+1      |  Alarm active, Class: B
+2      |  Alarm active, Class: C
+3      |  Alarm active, Class: D - Genesis secondary
+4      |  Alarm active, Class: E - Legacy secondary
+
+9      |  High pressure switch alarm
+10     |  Low pressure level alarm
+11     |  High discharge pipe temperature alarm
+12     |  Operating pressure limit indication
+13     |  Discharge pipe sensor alarm
+14     |  Liquid line sensor alarm
+15     |  Suction gas sensor alarm
+16     |  Flow/pressure switch alarm
+
+22     |  Power input phase detection alarm
+23     |  Inverter unit alarm
+24     |  System supply low temperature alarm
+25     |  Compressor low speed alarm
+26     |  Low super heat alarm
+27     |  Pressure ratio out of range alarm
+28     |  Compressor pressure outside envelope alarm
+29     |  Brine temperature out of range alarm
+30     |  Brine in sensor alarm
+31     |  Brine out sensor alarm
+32     |  Condenser in sensor alarm
+33     |  Condenser out sensor alarm
+34     |  Outdoor sensor alarm
+35     |  System supply line sensor alarm
+36     |  Mix valve 1 supply line sensor alarm
+37     |  Mix valve 2 supply line sensor alarm (EM)
+38     |  Mix valve 3 supply line sensor alarm (EM)
+39     |  Mix valve 4 supply line sensor alarm (EM)
+40     |  Mix valve 5 supply line sensor alarm (EM)
+44     |  WCS return line sensor alarm (EM)
+45     |  TWC supply line sensor alarm (EM)
+46     |  Cooling tank sensor alarm (EM)
+47     |  Cooling supply line sensor alarm (EM)
+48     |  Cooling circuit return line sensor alarm (EM)
+49     |  Brine delta out of range alarm
+50     |  Tap water mid sensor alarm
+51     |  TWC circulation return sensor alarm (EM)
+52     |  HGW sensor alarm
+53     |  Internal additional heater alarm
+55     |  Brine in high temperature alarm
+56     |  Brine in low temperature alarm
+57     |  Brine out low temperature alarm
+58     |  TWC circulation return low temperature alarm (EM)
+59     |  TWC supply low temperature alarm (EM)
+60     |  Mix valve 1 supply temperature deviation alarm
+61     |  Mix valve 2 supply temperature deviation alarm (EM)
+62     |  Mix valve 3 supply temperature deviation alarm (EM)
+63     |  Mix valve 4 supply temperature deviation alarm (EM)
+64     |  Mix valve 5 supply temperature deviation alarm (EM)
+65     |  WCS return line temperature deviation alarm (EM)
+66     |  Sum alarm
+67     |  Cooling circuit supply line temperature deviation alarm (EM)
+68     |  Cooling tank temperature deviation alarm (EM)
+69     |  Surplus heat temperature deviation alarm (EM)
+70     |  Humidity room sensor alarm
+71     |  Surplus heat supply line sensor alarm (EM)
+72     |  Surplus heat return line sensor alarm (EM)
+73     |  Cooling tank return line sensor alarm (EM)
+74     |  Temperature room sensor alarm
+75     |  Inverter unit communication alarm
+76     |  Pool return line sensor alarm
+77     |  External stop for pool, read only
+78     |  External start brine pump, read only
+79     |  External relay for brine/ground water pump.
+81     |  Tap water end tank sensor alarm
+82     |  Maximum time for anti-legionella exceeded alarm
+83     |  Genesis secondary unit alarm - this specific secondary unit can't communicate with its primary unit
+84     |  Primary unit alarm - the primary has detected other primary units on the same network with a network mask that is allowing conflict. Change network settings in order to avoid problem. For instance change port number on the primary and its secondary unit.
+85     |  Primary unit alarm - the primary has not detected all secondary units. Make sure that the primary/secondary settings are correct and the network mask and port and number of Genesis secondaries settings are correct.
+86     |  Oil boost in progress
+
+199    |  Compressor control signal
+201    |  Smart Grid 1, EVU input
+202    |  External alarm input
+204    |  Smart Grid 2
+206    |  External additional heater control signal
+209    |  Mix valve 1 circulation pump control signal
+210    |  Condenser pump On/off control
+211    |  System circulation pump control signal
+213    |  Hot gas circulation pump control signal
+218    |  Brine pump On/off control
+219    |  External heater circulation pump control signal
+220    |  Heating season (winter) active
+221    |  External additional heater active
+222    |  Internal additional heater active
+223    |  HGW regulation control signal
+224    |  Heat pump stopping
+225    |  Heat pump OK to start
+230    |  TWC supply line circulation pump control signal (EM)
+232    |  WCS regulation control signal (EM)
+233    |  WCS circulation pump control signal (EM)
+234    |  TWC end tank heater control signal (EM)
+235    |  Pool directional valve position (EM)
+236    |  Cooling circuit circulation pump control signal (EM)
+237    |  Pool circulation pump control signal (EM)
+238    |  Surplus heat directional valve position (EM)
+239    |  Surplus heat circulation pump control signal (EM)
+240    |  Cooling circuit regulation control signal (EM)
+241    |  Surplus heat regulation control signal (EM)
+242    |  Active cooling directional valve position (Borehole disconnected) (EM)
+243    |  Passive/Active cooling directional valve position (Cooling tank connected) (EM)
+244    |  Pool regulation control signal (EM)
+245    |  Indication when mixing valve 1 is producing passive cooling
+246    |  Compressor is unable to speed up
+
+INPUT REGISTERS - Function codes: 4=read input registers
+
+1     |     1      |  Currently running: First prioritised demand *1
+4     |     100    |  Compressor available gears *3
+5     |     1      |  Compressor speed RPM
+6     |     100    |  External additional heater: Current demand (%)
+7     |     100    |  Discharge pipe temperature
+8     |     100    |  Condenser in temperature
+9     |     100    |  Condenser out temperature
+10    |     100    |  Brine in temperature
+11    |     100    |  Brine out temperature
+12    |     100    |  System supply line temperature
+13    |     100    |  Outdoor temperature
+15    |     100    |  Tap water top temperature
+16    |     100    |  Tap water lower temperature
+17    |     100    |  Tap water weighted temperature
+18    |     100    |  System supply line calculated set point
+19    |     100    |  Selected heat curve, (system) supply line
+20    |     100    |  Heat curve, X-coordinate 1 (highest outdoor temperature)
+21    |     100    |  Heat curve, X-coordinate 2
+22    |     100    |  Heat curve, X-coordinate 3
+23    |     100    |  Heat curve, X-coordinate 4
+24    |     100    |  Heat curve, X-coordinate 5
+25    |     100    |  Heat curve, X-coordinate 6
+26    |     100    |  Heat curve, X-coordinate 7 (lowest outdoor temperature)
+36    |     1      |  Cooling season integral value
+39    |     100    |  Condenser circulation pump speed (%)
+40    |     100    |  Mix valve 1 supply line temperature
+41    |     100    |  Buffer tank temperature
+43    |     100    |  Mix valve 1 position
+44    |     100    |  Brine circulation pump speed (%)
+45    |     100    |  HGW supply line temperature
+47    |     1      |  Hot water directional valve position (%)
+48    |      1     |  Compressor operating hours (MSB)
+49    |      1     |  Compressor operating hours (LSB)
+50    |      1     |  Tap water operating hours (MSB)
+51    |      1     |  Tap water operating hours (LSB)
+52    |      1     |  External additional heater operating hours (MSB)
+53    |      1     |  External additional heater operating hours (LSB)
+54    |      100   |  Compressor speed percent
+55    |      1     |  Currently running: Second prioritised demand *1
+56    |      1     |  Currently running: Third prioritised demand *1
+57    |      1     |  Software version: Major
+58    |      1     |  Software version: Minor
+59    |      1     |  Software version: Micro
+60    |      1     |  Compressor temporarily blocked, (start restriction timer)
+61    |      100   |  Compressor current gear
+62    |      1     |  Queued demand, first priority *1
+63    |      1     |  Queued demand, second priority *1
+64    |      1     |  Queued demand, third priority *1
+65    |      1     |  Queued demand, fourth priority *1
+66    |      1     |  Queued demand, fifth priority *1
+67    |      1     |  Internal additional heater current step
+68    |      100   |  Buffer tank charge set point
+69    |      100   |  Electric meter L1 current (A)
+70    |      100   |  Electric meter L2 current (A)
+71    |      100   |  Electric meter L3 current (A)
+72    |      100   |  Electric meter L1-0 voltage (V)
+73    |      100   |  Electric meter L2-0 voltage (V)
+74    |      100   |  Electric meter L3-0 voltage (V)
+75    |      10    |  Electric meter L1-L2 voltage (V)
+76    |      10    |  Electric meter L2-L3 voltage (V)
+77    |      10    |  Electric meter L3-L1 voltage (V)
+78    |      1     |  Electric meter L1 power (W)
+79    |      1     |  Electric meter L2 power (W)
+80    |      1     |  Electric meter L3 power (W)
+81    |      1     |  Electric meter - meter value (kWh)
+82    |      1     |  Comfort mode *4
+83    |      10    |  Electric meter kWh total (LSB)
+84    |      10    |  Electric meter kWh total (MSB)
+85    |      100   |  WCS valve position (EM)
+86    |      100   |  TWC valve position (EM)
+87    |      100   |  Mix valve 2 position (EM)
+88    |      100   |  Mix valve 3 position (EM)
+89    |      100   |  Mix valve 4 position (EM)
+90    |      100   |  Mix valve 5 position (EM)
+91    |      100   |  Dew point room (EM)
+92    |      100   |  Cooling supply line mix valve position (EM)
+93    |      100   |  Surplus heat fan speed (EM)
+94    |      100   |  Pool supply line mix valve position (EM)
+95    |     100    |  TWC supply line temperature (EM)
+96    |     100    |  TWC return temperature (EM)
+97    |     100    |  WCS return line temperature (EM)
+98    |     100    |  TWC end tank temperature (EM)
+99    |     100    |  Mix valve 2 supply line temperature (EM)
+100   |     100    |  Mix valve 3 supply line temperature (EM)
+101   |     100    |  Mix valve 4 supply line temperature (EM)
+103   |     100    |  Cooling circuit return line temperature (EM)
+104   |     100    |  Cooling tank temperature (EM)
+105   |     100    |  Cooling tank return line temperature (EM)
+106   |     100    |  Cooling circuit supply line temperature (EM)
+107   |     100    |  Mix valve 5 supply line temperature (EM)
+109   |     100    |  Mix valve 2 return line temperature (EM)
+111   |     100    |  Mix valve 3 return line temperature (EM)
+113   |     100    |  Mix valve 4 return line temperature (EM)
+115   |     100    |  Mix valve 5 return line temperature (EM)
+117   |     100    |  Surplus heat return line temperature (EM)
+118   |     100    |  Surplus heat supply line temperature (EM)
+119   |     100    |  Pool supply line temperature (EM)
+120   |     100    |  Pool return line temperature (EM)
+121   |     10     |  Room temperature sensor
+122   |     100    |  Bubble point, high pressure temperature
+123   |     100    |  Dew point, high pressure temperature
+124   |     100    |  Dew point, low pressure temperature
+125   |     100    |  Superheat temperature
+126   |     100    |  Sub cooling temperature
+127   |     100    |  Low pressure side, pressure (bar(g))
+128   |     100    |  High pressure side, pressure (bar(g))
+129   |     100    |  Liquid line temperature
+130   |     100    |  Suction gas temperature
+131   |     1      |  Heating season integral value
+132   |     100    |  P - value for gear shifting and demand calculation
+133   |     100    |  I - value for gear shifting and demand calculation
+134   |     100    |  D - value for gear shifting and demand calculation
+135   |     100    |  I - value for compressor ON/OFF (Buffer tank)
+136   |     100    |  P - value for compressor ON/OFF (Buffer tank)
+137   |     1      |  Mix valve cooling opening degree (EM2/3)
+139   |     1      |  Desired gear for tap water
+140   |     1      |  Desired gear for heating
+141   |     1      |  Desired gear for cooling
+142   |     1      |  Desired gear for pool
+143   |     1      |  Number of available secondaries Genesis
+144   |     1      |  Number of available secondaries Legacy
+145   |     1      |  Total distributed gears to all units
+146   |     1      |  Maximum gear out of all the currently requested gears
+147   |     100    |  Desired temperature distribution circuit Mix valve 1
+148   |     100    |  Desired temperature distribution circuit Mix valve 2
+149   |   100   | Desired temperature distribution circuit Mix valve 3
+150   |   100   | Desired temperature distribution circuit Mix valve 4
+151   |   100   | Desired temperature distribution circuit Mix valve 5
+152   |   1     | Disconnect hot gas end tank, 0 = connected, 1 = disconnected
+153   |   1     | Legacy heat pump compressor running (bit field)
+154   |   1     | Legacy heat pump reporting alarm (bit field)
+155   |   1     | Legacy heat pump start signal (bit field)
+156   |   1     | Legacy heat pump tap water signal (bit field)
+160   |   1     | Primary unit alarm - the combined output of all Class D alarms. This signal is a bit field, one bit for each secondary heat pump unit.
+161   |   1     | Primary unit alarm - the primary unit has lost communication with one or more Genesis secondaries. This signal is a bit field, one bit for each heat pump.
+162   |   1     | Primary unit alarm - Class A alarm detected on the Genesis secondary heat pump unit. This signal is a bit field, one bit for each secondary heat pump unit.
+163   |   1     | Primary unit alarm - Class B alarm detected on the Genesis secondary heat pump unit. This signal is a bit field, one bit for each secondary heat pump unit.
+170   |   1     | Primary unit alarm - the combined output of all Class E alarms. This signal is a bit field, one bit for each legacy secondary heat pump unit.
+171   |   1     | Primary unit alarm - general legacy heat pump alarm. This signal is a bit field, one bit for each legacy secondary heat pump unit. Detects if the sum alarm of the secondary unit is active.
+173   |   1     | Primary unit alarm - the primary unit can not communicate with the corresponding expansion card for the legacy heat pump. This signal is a bit field, one bit for each legacy secondary heat pump unit.
+
+
+
+HOLDING REGISTERS - Function codes: 3=read holding registers, 6=write single register, 16=write multiple registers
+
+0      |      1     |  Operational mode *2
+3      |      100   |  Max limitation, set point curve radiator
+4      |      100   |  Min limitation, set point curve radiator
+5      |      100   |  Comfort wheel setting
+6      |      100   |  Set point heat curve, Y-coordinate 1 (highest outdoor temperature)
+7      |      100   |  Set point heat curve, Y-coordinate 2
+8      |      100   |  Set point heat curve, Y-coordinate 3
+9      |      100   |  Set point heat curve, Y-coordinate 4
+10     |      100   |  Set point heat curve, Y-coordinate 5
+11     |      100   |  Set point heat curve, Y-coordinate 6
+12     |      100   |  Set point heat curve, Y-coordinate 7 (lowest outdoor temperature)
+16     |      100   |  Heating season stop temperature
+22     |      100   |  Start temperature tap water
+23     |      100   |  Stop temperature tap water
+26     |      1     |  Minimum allowed gear in heating *3
+27     |      1     |  Maximum allowed gear in heating *3
+28     |      1     |  Maximum allowed gear in tap water *3
+29     |      1     |  Minimum allowed gear in tap water *3
+30     |      100   |  Cooling mix valve set point (EM)
+31     |      100   |  TWC mix valve set point (EM)
+32     |      100   |  WCS return line set point (EM)
+33     |      100   |  TWC mix valve lowest allowed opening degree (EM)
+34     |      100   |  TWC mix valve highest allowed opening degree (EM)
+35     |      100   |  TWC start temperature immersion heater (EM)
+36     |      100   |  TWC start delay immersion heater, seconds (EM)
+37     |      100   |  TWC stop temperature immersion heater (EM)
+38     |      100   |  WCS mix valve lowest allowed opening degree (EM)
+39     |      100   |  WCS mix valve highest allowed opening degree (EM)
+40     |      100   |  Mix valve 2 lowest allowed opening degree (EM)
+41     |      100   |  Mix valve 2 highest allowed opening degree (EM)
+42     |      100   |  Mix valve 3 lowest allowed opening degree (EM)
+43     |      100   |  Mix valve 3 highest allowed opening degree (EM)
+44     |      100   |  Mix valve 4 lowest allowed opening degree (EM)
+45     |      100   |  Mix valve 4 highest allowed opening degree (EM)
+46     |      100   |  Mix valve 5 lowest allowed opening degree (EM)
+47     |      100   |  Mix valve 5 highest allowed opening degree (EM)
+48     |      100   |  Surplus heat chiller set point (EM)
+49     |      100   |  Cooling supply line mix valve: Lowest allowed opening degree (EM)
+50     |      100   |  Cooling supply line mix valve: Highest allowed opening degree (EM)
+51     |      100   |  Surplus heat opening degree for starting fan 1 (EM)
+52     |      100   |  Surplus heat opening degree for starting fan 2 (EM)
+53     |      100   |  Surplus heat opening degree for stopping fan 1 (EM)
+54     |      100   |  Surplus heat opening degree for stopping fan 2 (EM)
+55     |      100   |  Surplus heat lowest allowed opening degree (EM)
+56     |      100   |  Surplus heat highest allowed opening degree (EM)
+58     |      100   |  Pool charge set point (EM)
+59     |      100   |  Pool mix valve lowest allowed opening degree (EM)
+60     |      100   |  Pool mix valve highest allowed opening degree (EM)
+61     |      1     |  Gear shift delay heating
+62     |      1     |  Gear shift delay pool
+63     |      1     |  Gear shift delay cooling
+67     |      100   |  Brine in high alarm limit
+68     |      100   |  Brine in low alarm limit
+69     |      100   |  Brine out low alarm limit
+70     |      100   |  Brine max delta limit
+71     |      100   |  Hot gas pump start temperature discharge pipe
+72     |      100   |  Hot gas pump lower stop limit temperature discharge pipe
+73     |      100   |  Hot gas pump upper stop limit temperature discharge pipe
+75     |      1     |  External additional heater start (PID sum)
+76     |      100   |  Condenser pump lowest allowed speed (%)
+77     |      100   |  Brine pump lowest allowed speed (%)
+78     |      100   |  External additional heater stop (PID sum)
+79     |      100   |  Condenser pump highest allowed speed (%)
+80     |      100   |  Brine pump highest allowed speed (%)
+81     |      100   |  Condenser pump standby speed (%)
+82     |      100   |  Brine pump standby speed (%)
+85     |      1     |  Minimum allowed gear in pool *3
+86     |      1     |  Maximum allowed gear in pool *3
+87     |      1     |  Minimum allowed gear in cooling *3
+88     |      1     |  Maximum allowed gear in cooling *3
+105    |      100   |  Start temp for cooling (EM)
+106    |      100   |  Stop temp for cooling (EM)
+107    |      100   |  Min limitation Set point curve radiator Mix valve 1
+108    |      100   |  Max limitation Set point curve radiator Mix valve 1
+109    |      100   |  Set point curve, Y-coordinate 1 Mix valve 1 (highest outdoor temperature)
+110    |      100   |  Set point curve, Y-coordinate 2 Mix valve 1
+111    |      100   |  Set point curve, Y-coordinate 3 Mix valve 1
+112    |      100   |  Set point curve, Y-coordinate 4 Mix valve 1
+113    |      100   |  Set point curve, Y-coordinate 5 Mix valve 1
+114    |      100   |  Set point curve, Y-coordinate 6 Mix valve 1
+115    |      100   |  Set point curve, Y-coordinate 7 Mix valve 1 (lowest outdoor temperature)
+116    |      100   |  Fixed system supply set point, requires defacto address 42 to be enabled
+199    |      100   |  Min limitation Set point curve radiator Mix valve 2
+200    |      100   |  Max limitation Set point curve radiator Mix valve 2
+201    |      100   |  Set point curve, Y-coordinate 1 Mix valve 2 (highest outdoor temperature)
+202    |      100   |  Set point curve, Y-coordinate 2 Mix valve 2
+203    |      100   |  Set point curve, Y-coordinate 3 Mix valve 2
+204    |      100   |  Set point curve, Y-coordinate 4 Mix valve 2
+205    |      100   |  Set point curve, Y-coordinate 5 Mix valve 2
+206    |      100   |  Set point curve, Y-coordinate 6 Mix valve 2
+207    |      100   |  Set point curve, Y-coordinate 7 Mix valve 2 (lowest outdoor temperature)
+208    |      100   |  Min limitation Set point curve radiator Mix valve 3
+209    |      100   |  Max limitation Set point curve radiator Mix valve 3
+210    |      100   |  Set point curve, Y-coordinate 1 Mix valve 3 (highest outdoor temperature)
+211    |      100   |  Set point curve, Y-coordinate 2 Mix valve 3
+212    |      100   |  Set point curve, Y-coordinate 3 Mix valve 3
+213    |      100   |  Set point curve, Y-coordinate 4 Mix valve 3
+214    |      100   |  Set point curve, Y-coordinate 5 Mix valve 3
+215    |      100   |  Set point curve, Y-coordinate 6 Mix valve 3
+216    |      100   |  Set point curve, Y-coordinate 7 Mix valve 3 (lowest outdoor temperature)
+239    |      100   |  Min limitation Set point curve radiator Mix valve 4
+240    |      100   |  Max limitation Set point curve radiator Mix valve 4
+241    |      100   |  Set point curve, Y-coordinate 1 Mix valve 4 (highest outdoor temperature)
+242    |      100   |  Set point curve, Y-coordinate 2 Mix valve 4
+243    |      100   |  Set point curve, Y-coordinate 3 Mix valve 4
+244    |      100   |  Set point curve, Y-coordinate 4 Mix valve 4
+245    |      100   |  Set point curve, Y-coordinate 5 Mix valve 4
+246    |      100   |  Set point curve, Y-coordinate 6 Mix valve 4
+247    |      100   |  Set point curve, Y-coordinate 7 Mix valve 4 (lowest outdoor temperature)
+248    |      100   |  Min limitation Set point curve radiator Mix valve 5
+249    |      100   |  Max limitation Set point curve radiator Mix valve 5
+250    |      100   |  Set point curve, Y-coordinate 1 Mix valve 5 (highest outdoor temperature)
+251    |      100   |  Set point curve, Y-coordinate 2 Mix valve 5
+252    |      100   |  Set point curve, Y-coordinate 3 Mix valve 5
+253    |      100   |  Set point curve, Y-coordinate 4 Mix valve 5
+254    |      100   |  Set point curve, Y-coordinate 5 Mix valve 5
+255    |      100   |  Set point curve, Y-coordinate 6 Mix valve 5
+256    |      100   |  Set point curve, Y-coordinate 7 Mix valve 5 (lowest outdoor temperature)
+299    |      10    |  Set point return temp from pool to heat exchanger (EM)
+300    |      10    |  Set point pool hysteresis (EM)
+302    |      100   |  Set point for supply line temp passive cooling with mixing valve 1
+303    |      100   |  Set point minimum outdoor temp when cooling is permitted
+304    |      100   |  External heater outdoor temp limit
+305    |      1     |  Selected mode for mixing valve 2, 0:Heat, 1:Cool, 2:Auto (EM3 only)
+306    |      100   |  Desired cooling temperature setpoint mixing valve 2 (EM3 only)
+307    |      100   |  Seasonal cooling temperature (outdoor temp.), mixing valve 2 (EM3 only)
+308    |      100   |  Seasonal heating temperature (outdoor temp.), mixing valve 2 (EM3 only)
+309    |      1     |  Selected mode for mixing valve 3, 0:Heat, 1:Cool, 2:Auto (EM3 only)
+310    |      100   |  Desired cooling temperature setpoint mixing valve 3 (EM3 only)
+311    |      100   |  Seasonal cooling temperature (outdoor temp.), mixing valve 3 (EM3 only)
+312    |      100   |  Seasonal heating temperature (outdoor temp.), mixing valve 3 (EM3 only)
+313    |      1     |  Selected mode for mixing valve 4, 0:Heat, 1:Cool, 2:Auto (EM3 only)
+314    |      100   |  Desired cooling temperature setpoint mixing valve 4 (EM3 only)
+315    |      100   |  Seasonal cooling temperature (outdoor temp.), mixing valve 4 (EM3 only)
+316    |      100   |  Seasonal heating temperature (outdoor temp.), mixing valve 4 (EM3 only)
+317    |      1     |  Selected mode for mixing valve 5, 0:Heat, 1:Cool, 2:Auto (EM3 only)
+318    |      100   |  Desired cooling temperature setpoint mixing valve 5 (EM3 only)
+319    |      100   |  Seasonal cooling temperature (outdoor temp.), mixing valve 5 (EM3 only)
+320    |      100   |  Seasonal heating temperature (outdoor temp.), mixing valve 5 (EM3 only)
+
+
+
+
+Footnotes:
+*1) 1: Manual operation, 2: Defrost, 3: Hot water, 4: Heat, 5: Cool, 6: Pool, 7: Anti legionella, 98: Standby 99: No demand 100: OFF
+*2) 1: OFF, 2: Standby, 3: ON/Auto
+*3) Different heat pumps have different number of available gears. For instance: Commercial can have 10, while domestic can have 9 gears.
+*4) These applies to Smart grid function. 1: EVU, 4: Normal, 5: Comfort, 6: Boost
+*5) Should always be set to 1 i auto mode
+
+
+
+
+
+
+
+
+
+
+
