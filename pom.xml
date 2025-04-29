@@ -45,6 +45,7 @@
     <kotlin.compiler.jvmTarget>${java.version}</kotlin.compiler.jvmTarget>
 
     <junit5.version>5.12.2</junit5.version>
+    <log4j.version>2.24.3</log4j.version>
 
     <modbus-schema.version>0.0.1-SNAPSHOT</modbus-schema.version>
   </properties>
@@ -113,7 +114,7 @@
       <dependency>
         <groupId>org.apache.logging.log4j</groupId>
         <artifactId>log4j-bom</artifactId>
-        <version>2.24.3</version>
+        <version>${log4j.version}</version>
         <scope>import</scope>
         <type>pom</type>
       </dependency>
