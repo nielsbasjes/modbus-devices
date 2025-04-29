@@ -20,13 +20,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>nl.basjes.modbus</groupId>
+    <groupId>nl.basjes.modbus.devices</groupId>
     <artifactId>modbus-device-schemas-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>modbus-device-thermia-genesis</artifactId>
 
-  <name>Modbus Schema : Devices : Thermia Genesis</name>
+  <name>Modbus Devices : Thermia Genesis</name>
 
   <dependencies>
 
@@ -68,7 +68,7 @@
         <version>${project.version}</version>
         <configuration>
           <modbusSchemaFile>ThermiaGenesis101213.yaml</modbusSchemaFile>
-          <packageName>nl.basjes.modbus.thermia.genesis</packageName>
+          <packageName>nl.basjes.modbus.device.thermia.genesis</packageName>
           <className>ThermiaGenesis</className>
           <language>java</language>
         </configuration>

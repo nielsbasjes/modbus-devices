@@ -20,13 +20,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>nl.basjes.modbus</groupId>
+    <groupId>nl.basjes.modbus.devices</groupId>
     <artifactId>modbus-device-schemas-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>modbus-device-sdm630</artifactId>
 
-  <name>Modbus Schema : Devices : SDM630</name>
+  <name>Modbus Devices : SDM630</name>
 
   <dependencies>
 
@@ -60,7 +60,7 @@
 
         <configuration>
           <modbusSchemaFile>SDM630.yaml</modbusSchemaFile>
-          <packageName>nl.basjes.modbus.eastron</packageName>
+          <packageName>nl.basjes.modbus.device.eastron</packageName>
           <className>SDM630</className>
           <language>java</language>
         </configuration>

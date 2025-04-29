@@ -21,7 +21,7 @@ import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster
 import nl.basjes.modbus.device.api.ModbusDevice
 import nl.basjes.modbus.device.exception.ModbusException
 import nl.basjes.modbus.device.j2mod.ModbusDeviceJ2Mod
-import nl.basjes.modbus.thermia.genesis.ThermiaGenesis
+import nl.basjes.modbus.device.thermia.genesis.ThermiaGenesis
 
 fun main() {
     val master: AbstractModbusMaster = ModbusTCPMaster("localhost", 1502    )
