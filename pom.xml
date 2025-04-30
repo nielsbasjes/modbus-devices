@@ -102,9 +102,9 @@
         <scope>import</scope>
         <type>pom</type>
       </dependency>
+
     </dependencies>
   </dependencyManagement>
-
 
   <profiles>
 
@@ -362,6 +362,7 @@
     </plugins>
     <pluginManagement>
       <plugins>
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
@@ -386,6 +387,12 @@
               <skipModule>nl.basjes.modbus.devices/devtools</skipModule>
             </skipModules>
           </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>nl.basjes.modbus</groupId>
+          <artifactId>modbus-schema-maven-plugin</artifactId>
+          <version>${modbus-schema.version}</version>
         </plugin>
 
       </plugins>
