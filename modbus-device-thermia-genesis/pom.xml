@@ -60,7 +60,6 @@
     <dependency>
       <groupId>nl.basjes.modbus</groupId>
       <artifactId>modbus-api-j2mod</artifactId>
-      <version>${project.version}</version>
       <scope>test</scope>
     </dependency>
 
@@ -74,7 +73,6 @@
       <plugin>
         <groupId>nl.basjes.modbus</groupId>
         <artifactId>modbus-schema-maven-plugin</artifactId>
-        <version>${project.version}</version>
         <configuration>
           <modbusSchemaFile>ThermiaGenesis101213.yaml</modbusSchemaFile>
           <packageName>nl.basjes.modbus.device.thermia.genesis</packageName>

@@ -36,7 +36,6 @@
     <dependency>
       <groupId>nl.basjes.modbus</groupId>
       <artifactId>modbus-schema-device</artifactId>
-      <version>${project.version}</version>
     </dependency>
 
     <dependency>
@@ -59,7 +58,6 @@
       <plugin>
         <groupId>nl.basjes.modbus</groupId>
         <artifactId>modbus-schema-maven-plugin</artifactId>
-        <version>${project.version}</version>
 
         <configuration>
           <modbusSchemaFile>SDM630.yaml</modbusSchemaFile>
