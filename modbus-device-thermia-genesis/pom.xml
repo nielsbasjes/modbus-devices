@@ -36,7 +36,6 @@
     <dependency>
       <groupId>nl.basjes.modbus</groupId>
       <artifactId>modbus-schema-device</artifactId>
-      <version>${project.version}</version>
     </dependency>
 
     <dependency>
