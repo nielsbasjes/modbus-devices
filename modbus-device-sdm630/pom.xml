@@ -24,9 +24,12 @@
     <artifactId>modbus-device-schemas-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>modbus-device-sdm630</artifactId>
 
+  <artifactId>modbus-device-sdm630</artifactId>
   <name>Modbus Devices : SDM630</name>
+
+  <description>The Modbus Schema Toolkit makes retrieving data from Modbus based devices a lot easier.</description>
+  <url>https://modbus.basjes.nl</url>
 
   <dependencies>
 
