@@ -20,7 +20,7 @@
 
   <groupId>nl.basjes.modbus.devices</groupId>
   <version>0.1.1-SNAPSHOT</version>
-  <artifactId>modbus-device-schemas-parent</artifactId>
+  <artifactId>modbus-devices-parent</artifactId>
 
   <packaging>pom</packaging>
   <name>Modbus Devices :</name>

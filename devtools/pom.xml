@@ -22,7 +22,7 @@
   <parent>
     <groupId>nl.basjes.modbus.devices</groupId>
     <version>0.0.1-SNAPSHOT</version>
-    <artifactId>modbus-device-schemas-parent</artifactId>
+    <artifactId>modbus-devices-parent</artifactId>
   </parent>
 
   <packaging>pom</packaging>
