@@ -267,7 +267,7 @@ blocks:
 
       - id: 'Buffer Tank Charge Set Point'
         description: 'Buffer tank charge set point'
-        expression: 'int16(ir:00068; 0x4E20)/100'
+        expression: 'int16(ir:00068 ; 0x4E20)/100'
         unit: '°C'
 
       - id: 'Electric Meter L1 Current'
@@ -723,7 +723,8 @@ blocks:
 
       - id: 'Comfort Wheel Setting'
         description: 'Comfort wheel setting'
-        expression: 'int16(hr:00005)/100'
+        expression: 'int16(hr:00005; 0x4E20)/100'
+        unit: '°C'
 
       - id: 'Set Point Heat Curve Y1'
         description: 'Set point heat curve, Y-coordinate 1 (highest outdoor temperature)'
