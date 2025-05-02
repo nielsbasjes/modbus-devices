@@ -23,7 +23,7 @@ blocks:
     description: 'IR block'
     fields:
 
-      - id: 'Currently Running First Demand'
+      - id: 'Currently Running 1st Demand'
         description: 'Currently running: First prioritised demand'
         expression: 'enum(ir:00001 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
 
@@ -1489,7 +1489,7 @@ tests:
 
       - id: 'Input Registers'
         expected:
-          'Currently Running First Demand':                               [ 'No demand' ]
+          'Currently Running 1st Demand':                                 [ 'No demand' ]
           'Currently Running Demands':                                    [ 'No demand' ]
           'Compressor Available Gears':                                   [ '9.000' ]
           'Compressor Speed':                                             [ '0' ]
@@ -1858,7 +1858,7 @@ tests:
     blocks:
       - id: 'Input Registers'
         expected:
-          'Currently Running First Demand':                               [ 'Hot water' ]
+          'Currently Running 1st Demand':                                 [ 'Hot water' ]
           'Currently Running Demands':                                    [ 'Hot water' ]
           'Compressor Available Gears':                                   [ '9.000' ]
           'Compressor Speed':                                             [ '3348' ]
