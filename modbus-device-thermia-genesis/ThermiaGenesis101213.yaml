@@ -2152,3 +2152,372 @@ tests:
           'Mix Valve 5 Seasonal Cooling Outdoor Temperature':             [ '0.230' ]
           'Mix Valve 5 Seasonal Heating Outdoor Temperature':             [ '0.170' ]
           'Immersion Heater Status':                                      []
+
+  - id: 'TestAt_2025_05_02_09_21_02'
+    description: 'Test generated from device data at 2025-05-02T09:21:02.268Z on a Thermia Calibra Cool 7 running Genesis 11. This was minutes after using a lot of hot water on a day where the cooling was running.'
+    input:
+      - firstRegisterAddress: 'ir:00001'
+        registers: |-
+          0003 0004 ---- 0384 0D14 0000 22A1 15FC 1744 06CD
+          05C1 4E20 0A2B ---- 14FA 13BC 142B 0000 0BB8 06A4
+          03E8 01F4 0000 FE0C FA24 F63C 4E20 ---- ---- 0000
+          ---- ---- ---- ---- ---- 03E8 ---- ---- 219C 4E20
+          4E20 ---- 0000 2636 4E20 ---- 0064 0000 2301 0000
+          05C4 0000 0000 1E6A 0063 0063 000B 0000 00C5 0000
+          02BC 0003 0008 0063 0063 0063 0000 0000 0000 0000
+          0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+          0000 0004 0000 0000 0000 0000 0000 0000 0000 0000
+          C3DC 0000 0000 0000 4E20 4E20 4E20 4E20 4E20 4E20
+          4E20 ---- 4E20 4E20 4E20 4E20 4E20 ---- 4E20 ----
+          4E20 ---- 4E20 ---- 4E20 ---- 4E20 4E20 4E20 4E20
+          00D9 17EA 17F2 04BA 01FA 017B 041D 0F06 166A 06B7
+          0096 0000 0000 0000 0000 0000 0012 ---- 0007 0000
+          0000 0000 0000 0000 0007 0007 0000 0000 0000 0000
+          0000 0000 0000 0000 0000 0000 ---- ---- ---- 0000
+          0000 0000 0000 ---- ---- ---- ---- ---- ---- 0000
+          0000 ---- 0000 ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          000B 0000 000C ---- 1F6E ---- ---- ---- 0040
+      - firstRegisterAddress: 'hr:00000'
+        registers: |-
+          0003 ---- ---- 1194 07D0 0802 0834 09C4 0AF0 0C1C
+          0C80 0E10 0FA0 ---- ---- ---- 06A4 ---- ---- ----
+          ---- ---- 1130 1770 ---- ---- 0001 0009 0007 0005
+          0708 1770 1194 0000 2710 1770 0000 1964 05DC 2710
+          0000 2710 0000 2710 0000 2710 0000 2710 1194 0000
+          2710 1388 1F40 07D0 0FA0 0000 2710 ---- 0A28 0000
+          2710 012C 012C 003C ---- ---- ---- 07D0 FE0C 00C8
+          04B0 1964 1770 30D4 ---- FFFA 0FA0 07D0 0190 2710
+          2710 1388 1388 ---- ---- 0001 0009 0001 0009 ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- 0708 0514 03E8 1770 0834
+          0B54 0D48 0FA0 10CC 13EC 170C 09C4 0000 4E20 ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- 03E8
+          1770 0834 0B54 0D48 0FA0 10CC 13EC 170C 03E8 1770
+          0834 0B54 0D48 0FA0 10CC 13EC 170C ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- 03E8
+          1770 0834 0B54 0D48 0FA0 10CC 13EC 170C 03E8 1770
+          0834 0B54 0D48 0FA0 10CC 13EC 170C ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- 0000 00C8
+          000A ---- 06A4 076C 03E8 0000 06A4 0017 0011 0000
+          06A4 0017 0011 0000 06A4 0017 0011 0000 06A4 0017
+          0011 ----
+    blocks:
+      - id: 'Input Registers'
+        expected:
+          'Currently Running 1st Demand':                                 [ 'Hot water' ]
+          'Currently Running Demands':                                    [ 'Hot water' ]
+          'Compressor Available Gears':                                   [ '9.000' ]
+          'Compressor Speed':                                             [ '3348' ]
+          'External Heater Demand':                                       [ '0.000' ]
+          'Discharge Pipe Temperature':                                   [ '88.650' ]
+          'Condenser In Temperature':                                     [ '56.280' ]
+          'Condenser Out Temperature':                                    [ '59.560' ]
+          'Brine In Temperature':                                         [ '17.410' ]
+          'Brine Out Temperature':                                        [ '14.730' ]
+          'System Supply Line Temperature':                               []
+          'Outdoor Temperature':                                          [ '26.030' ]
+          'Tap Water Top Temperature':                                    [ '53.700' ]
+          'Tap Water Lower Temperature':                                  [ '50.520' ]
+          'Tap Water Weighted Temperature':                               [ '51.630' ]
+          'System Supply Line Calculated Set Point':                      [ '0.000' ]
+          'System Supply Line Selected Heat Curve':                       [ '30.000' ]
+          'Heat Curve X1':                                                [ '17.000' ]
+          'Heat Curve X2':                                                [ '10.000' ]
+          'Heat Curve X3':                                                [ '5.000' ]
+          'Heat Curve X4':                                                [ '0.000' ]
+          'Heat Curve X5':                                                [ '-5.000' ]
+          'Heat Curve X6':                                                [ '-15.000' ]
+          'Heat Curve X7':                                                [ '-25.000' ]
+          'System Return Line Temperature':                               []
+          'Calculated Demand':                                            [ '0.000' ]
+          'Cooling Season Integral Value':                                [ '1000' ]
+          'Condenser Circulation Pump Speed':                             [ '86.040' ]
+          'Mix Valve 1 Supply Line Temperature':                          []
+          'Buffer Tank Temperature':                                      []
+          'Mix Valve 1 Position':                                         [ '0.000' ]
+          'Brine Circulation Pump Speed':                                 [ '97.820' ]
+          'HGW Supply Line Temperature':                                  []
+          'Tap Water Valve Position':                                     [ '100' ]
+          'Compressor Operating Hours':                                   [ '8961' ]
+          'Tap Water Operating Hours':                                    [ '1476' ]
+          'External Additional Heater Operating Hours':                   [ '0' ]
+          'Compressor Speed Percent':                                     [ '77.860' ]
+          'Currently Running 2nd Demand':                                 [ 'No demand' ]
+          'Currently Running 3rd Demand':                                 [ 'No demand' ]
+          'Software Version Major':                                       [ '11' ]
+          'Software Version Minor':                                       [ '0' ]
+          'Software Version Micro':                                       [ '197' ]
+          'Software Version':                                             [ '11.0.197' ]
+          'Compressor Temporarily Blocked Start Restriction Timer':       [ '0' ]
+          'Compressor Current Gear':                                      [ '7.000' ]
+          'Queued Demand 1st':                                            [ 'Hot water' ]
+          'Queued Demand 2nd':                                            [ 'Passive Cooling' ]
+          'Queued Demand 3rd':                                            [ 'No demand' ]
+          'Queued Demand 4th':                                            [ 'No demand' ]
+          'Queued Demand 5th':                                            [ 'No demand' ]
+          'Active Step Internal Immersion Heater':                        [ '0' ]
+          'Buffer Tank Charge Set Point':                                 [ '0.000' ]
+          'Electric Meter L1 Current':                                    [ '0.000' ]
+          'Electric Meter L2 Current':                                    [ '0.000' ]
+          'Electric Meter L3 Current':                                    [ '0.000' ]
+          'Electric Meter L1 0 Voltage':                                  [ '0.000' ]
+          'Electric Meter L2 0 Voltage':                                  [ '0.000' ]
+          'Electric Meter L3 0 Voltage':                                  [ '0.000' ]
+          'Electric Meter L1 L2 Voltage':                                 [ '0.000' ]
+          'Electric Meter L2 L3 Voltage':                                 [ '0.000' ]
+          'Electric Meter L3 L1 Voltage':                                 [ '0.000' ]
+          'Electric Meter L1 Power':                                      [ '0' ]
+          'Electric Meter L2 Power':                                      [ '0' ]
+          'Electric Meter L3 Power':                                      [ '0' ]
+          'Electric Meter Meter Value':                                   [ '0' ]
+          'Current Smart Grid Mode':                                      [ 'Normal' ]
+          'Electric Meter KWh Total':                                     [ '0.000' ]
+          'WCS Valve Position':                                           [ '0.000' ]
+          'TWC Valve Position':                                           [ '0.000' ]
+          'Mix Valve 2 Position':                                         [ '0.000' ]
+          'Mix Valve 3 Position':                                         [ '0.000' ]
+          'Mix Valve 4 Position':                                         [ '0.000' ]
+          'Mix Valve 5 Position':                                         [ '0.000' ]
+          'Dew Point Room':                                               [ '-153.960' ]
+          'Cooling Supply Line Mix Valve Position':                       [ '0.000' ]
+          'Surplus Heat Fan Speed':                                       [ '0.000' ]
+          'Pool Supply Line Mix Valve Position':                          [ '0.000' ]
+          'TWC Supply Line Temperature':                                  []
+          'TWC Return Temperature':                                       []
+          'WCS Return Line Temperature':                                  []
+          'TWC End Tank Temperature':                                     []
+          'Mix Valve 2 Supply Line Temperature':                          []
+          'Mix Valve 3 Supply Line Temperature':                          []
+          'Mix Valve 4 Supply Line Temperature':                          []
+          'Cooling Circuit Return Line Temperature':                      []
+          'Cooling Tank Temperature':                                     []
+          'Cooling Tank Return Line Temperature':                         []
+          'Cooling Circuit Supply Line Temperature':                      []
+          'Mix Valve 5 Supply Line Temperature':                          []
+          'Mix Valve 2 Return Line Temperature':                          []
+          'Mix Valve 3 Return Line Temperature':                          []
+          'Mix Valve 4 Return Line Temperature':                          []
+          'Mix Valve 5 Return Line Temperature':                          []
+          'Surplus Heat Return Line Temperature':                         []
+          'Surplus Heat Supply Line Temperature':                         []
+          'Pool Supply Line Temperature':                                 []
+          'Pool Return Line Temperature':                                 []
+          'Room Temperature':                                             [ '21.700' ]
+          'Bubble Point High Pressure Temperature':                       [ '61.220' ]
+          'Dew Point High Pressure Temperature':                          [ '61.300' ]
+          'Dew Point Low Pressure Temperature':                           [ '12.100' ]
+          'Superheat Temperature':                                        [ '5.060' ]
+          'Sub Cooling Temperature':                                      [ '3.790' ]
+          'Low Pressure Side Pressure':                                   [ '10.530' ]
+          'High Pressure Side Pressure':                                  [ '38.460' ]
+          'Liquid Line Temperature':                                      [ '57.380' ]
+          'Suction Gas Temperature':                                      [ '17.190' ]
+          'Heating Season Integral Value':                                [ '150' ]
+          'P Value For Gear Shifting And Demand Calculation':             [ '0.000' ]
+          'I Value For Gear Shifting And Demand Calculation':             [ '0.000' ]
+          'D Value For Gear Shifting And Demand Calculation':             [ '0.000' ]
+          'I Value For Compressor Buffer Tank':                           [ '0.000' ]
+          'P Value For Compressor Buffer Tank':                           [ '0.000' ]
+          'Mix Valve Cooling Opening Degree':                             [ '18' ]
+          'Desired Gear For Tap Water':                                   [ '7' ]
+          'Desired Gear For Heating':                                     [ '0' ]
+          'Desired Gear For Cooling':                                     [ '0' ]
+          'Desired Gear For Pool':                                        [ '0' ]
+          'Number Of Available Secondaries Genesis':                      [ '0' ]
+          'Number Of Available Secondaries Legacy':                       [ '0' ]
+          'Total Distributed Gears To All Units':                         [ '7' ]
+          'Maximum Gear Out Of All The Currently Requested Gears':        [ '7' ]
+          'Mix Valve 1 Desired Temperature Distribution Circuit':         [ '0.000' ]
+          'Mix Valve 2 Desired Temperature Distribution Circuit':         [ '0.000' ]
+          'Mix Valve 3 Desired Temperature Distribution Circuit':         [ '0.000' ]
+          'Mix Valve 4 Desired Temperature Distribution Circuit':         [ '0.000' ]
+          'Mix Valve 5 Desired Temperature Distribution Circuit':         [ '0.000' ]
+          'Disconnect Hot Gas End Tank':                                  [ 'Connected' ]
+          'Legacy Heat Pump Compressor Running':                          []
+          'Legacy Heat Pump Reporting Alarm':                             []
+          'Legacy Heat Pump Start Signal':                                []
+          'Legacy Heat Pump Tap Water Signal':                            []
+          'Primary Unit Alarm Class D':                                   []
+          'Primary Unit Alarm Lost Communication':                        []
+          'Primary Unit Alarm Class A':                                   []
+          'Primary Unit Alarm Class B':                                   []
+          'Primary Unit Alarm Class E':                                   []
+          'Primary Unit Alarm General':                                   []
+          'Primary Unit Alarm Lost Communication Legacy Heat Pump':       []
+          'Control Software Version Major':                               [ '11' ]
+          'Control Software Version Minor':                               [ '0' ]
+          'Control Software Version Micro':                               [ '12' ]
+          'Control Software Version':                                     [ '11.0.12' ]
+          'Expansion Valve Opening Degree':                               [ '80.460' ]
+          'Inverter Temperature':                                         [ '64' ]
+      - id: 'Holding Registers'
+        expected:
+          'Operational Mode':                                             [ 'ON/Auto' ]
+          'Max Limitation Set Point Curve Radiator':                      [ '45.000' ]
+          'Min Limitation Set Point Curve Radiator':                      [ '20.000' ]
+          'Comfort Wheel Setting':                                        [ '20.500' ]
+          'Set Point Heat Curve Y1':                                      [ '21.000' ]
+          'Set Point Heat Curve Y2':                                      [ '25.000' ]
+          'Set Point Heat Curve Y3':                                      [ '28.000' ]
+          'Set Point Heat Curve Y4':                                      [ '31.000' ]
+          'Set Point Heat Curve Y5':                                      [ '32.000' ]
+          'Set Point Heat Curve Y6':                                      [ '36.000' ]
+          'Set Point Heat Curve Y7':                                      [ '40.000' ]
+          'Heating Season Stop Temperature':                              [ '17.000' ]
+          'Tap Water Start Temperature':                                  [ '44.000' ]
+          'Tap Water Stop Temperature':                                   [ '60.000' ]
+          'Minimum Allowed Gear In Heating':                              [ '1' ]
+          'Maximum Allowed Gear In Heating':                              [ '9' ]
+          'Maximum Allowed Gear In Tap Water':                            [ '7' ]
+          'Minimum Allowed Gear In Tap Water':                            [ '5' ]
+          'Cooling Mix Valve Set Point':                                  [ '18.000' ]
+          'TWC Mix Valve Set Point':                                      [ '60.000' ]
+          'WCS Return Line Set Point':                                    [ '45.000' ]
+          'TWC Mix Valve Lowest Allowed Opening Degree':                  [ '0.000' ]
+          'TWC Mix Valve Highest Allowed Opening Degree':                 [ '100.000' ]
+          'TWC Start Temperature Immersion Heater':                       [ '60.000' ]
+          'TWC Start Delay Immersion Heater Seconds':                     [ '0.000' ]
+          'TWC Stop Temperature Immersion Heater':                        [ '65.000' ]
+          'WCS Mix Valve Lowest Allowed Opening Degree':                  [ '15.000' ]
+          'WCS Mix Valve Highest Allowed Opening Degree':                 [ '100.000' ]
+          'Mix Valve 2 Lowest Allowed Opening Degree':                    [ '0.000' ]
+          'Mix Valve 2 Highest Allowed Opening Degree':                   [ '100.000' ]
+          'Mix Valve 3 Lowest Allowed Opening Degree':                    [ '0.000' ]
+          'Mix Valve 3 Highest Allowed Opening Degree':                   [ '100.000' ]
+          'Mix Valve 4 Lowest Allowed Opening Degree':                    [ '0.000' ]
+          'Mix Valve 4 Highest Allowed Opening Degree':                   [ '100.000' ]
+          'Mix Valve 5 Lowest Allowed Opening Degree':                    [ '0.000' ]
+          'Mix Valve 5 Highest Allowed Opening Degree':                   [ '100.000' ]
+          'Surplus Heat Chiller Set Point':                               [ '45.000' ]
+          'Cooling Supply Line Mix Valve Lowest Allowed Opening Degree':  [ '0.000' ]
+          'Cooling Supply Line Mix Valve Highest Allowed Opening Degree': [ '100.000' ]
+          'Surplus Heat Opening Degree For Starting Fan1':                [ '50.000' ]
+          'Surplus Heat Opening Degree For Starting Fan2':                [ '80.000' ]
+          'Surplus Heat Opening Degree For Stopping Fan1':                [ '20.000' ]
+          'Surplus Heat Opening Degree For Stopping Fan2':                [ '40.000' ]
+          'Surplus Heat Lowest Allowed Opening Degree':                   [ '0.000' ]
+          'Surplus Heat Highest Allowed Opening Degree':                  [ '100.000' ]
+          'Pool Charge Set Point':                                        [ '26.000' ]
+          'Pool Mix Valve Lowest Allowed Opening Degree':                 [ '0.000' ]
+          'Pool Mix Valve Highest Allowed Opening Degree':                [ '100.000' ]
+          'Gear Shift Delay Heating':                                     [ '300' ]
+          'Gear Shift Delay Pool':                                        [ '300' ]
+          'Gear Shift Delay Cooling':                                     [ '60' ]
+          'Brine In High Alarm Limit':                                    [ '20.000' ]
+          'Brine In Low Alarm Limit':                                     [ '-5.000' ]
+          'Brine Out Low Alarm Limit':                                    [ '2.000' ]
+          'Brine Max Delta Limit':                                        [ '12.000' ]
+          'Hot Gas Pump Start Temperature Discharge Pipe':                [ '65.000' ]
+          'Hot Gas Pump Lower Stop Limit Temperature Discharge Pipe':     [ '60.000' ]
+          'Hot Gas Pump Upper Stop Limit Temperature Discharge Pipe':     [ '125.000' ]
+          'External Additional Heater Start':                             [ '-6' ]
+          'Condenser Pump Lowest Allowed Speed':                          [ '40.000' ]
+          'Brine Pump Lowest Allowed Speed':                              [ '20.000' ]
+          'External Additional Heater Stop':                              [ '4.000' ]
+          'Condenser Pump Highest Allowed Speed':                         [ '100.000' ]
+          'Brine Pump Highest Allowed Speed':                             [ '100.000' ]
+          'Condenser Pump Standby Speed':                                 [ '50.000' ]
+          'Brine Pump Standby Speed':                                     [ '50.000' ]
+          'Minimum Allowed Gear In Pool':                                 [ '1' ]
+          'Maximum Allowed Gear In Pool':                                 [ '9' ]
+          'Minimum Allowed Gear In Cooling':                              [ '1' ]
+          'Maximum Allowed Gear In Cooling':                              [ '9' ]
+          'Start Temp For Cooling':                                       [ '18.000' ]
+          'Stop Temp For Cooling':                                        [ '13.000' ]
+          'Mix Valve 1 Min Limitation Set Point Curve Radiator':          [ '10.000' ]
+          'Mix Valve 1 Max Limitation Set Point Curve Radiator':          [ '60.000' ]
+          'Mix Valve 1 Set Point Curve Y1':                               [ '21.000' ]
+          'Mix Valve 1 Set Point Curve Y2':                               [ '29.000' ]
+          'Mix Valve 1 Set Point Curve Y3':                               [ '34.000' ]
+          'Mix Valve 1 Set Point Curve Y4':                               [ '40.000' ]
+          'Mix Valve 1 Set Point Curve Y5':                               [ '43.000' ]
+          'Mix Valve 1 Set Point Curve Y6':                               [ '51.000' ]
+          'Mix Valve 1 Set Point Curve Y7':                               [ '59.000' ]
+          'Fixed System Supply Set Point':                                [ '25.000' ]
+          'Outdoor Temperature Source':                                   [ 'PT1000' ]
+          'Outdoor Temperature Sensor':                                   []
+          'Maximum Phase Current':                                        []
+          'Compressor Current Hysteresis':                                []
+          'Mix Valve 2 Min Limitation Set Point Curve Radiator':          [ '10.000' ]
+          'Mix Valve 2 Max Limitation Set Point Curve Radiator':          [ '60.000' ]
+          'Mix Valve 2 Set Point Curve Y1':                               [ '21.000' ]
+          'Mix Valve 2 Set Point Curve Y2':                               [ '29.000' ]
+          'Mix Valve 2 Set Point Curve Y3':                               [ '34.000' ]
+          'Mix Valve 2 Set Point Curve Y4':                               [ '40.000' ]
+          'Mix Valve 2 Set Point Curve Y5':                               [ '43.000' ]
+          'Mix Valve 2 Set Point Curve Y6':                               [ '51.000' ]
+          'Mix Valve 2 Set Point Curve Y7':                               [ '59.000' ]
+          'Mix Valve 3 Min Limitation Set Point Curve Radiator':          [ '10.000' ]
+          'Mix Valve 3 Max Limitation Set Point Curve Radiator':          [ '60.000' ]
+          'Mix Valve 3 Set Point Curve Y1':                               [ '21.000' ]
+          'Mix Valve 3 Set Point Curve Y2':                               [ '29.000' ]
+          'Mix Valve 3 Set Point Curve Y3':                               [ '34.000' ]
+          'Mix Valve 3 Set Point Curve Y4':                               [ '40.000' ]
+          'Mix Valve 3 Set Point Curve Y5':                               [ '43.000' ]
+          'Mix Valve 3 Set Point Curve Y6':                               [ '51.000' ]
+          'Mix Valve 3 Set Point Curve Y7':                               [ '59.000' ]
+          'Mix Valve 4 Min Limitation Set Point Curve Radiator':          [ '10.000' ]
+          'Mix Valve 4 Max Limitation Set Point Curve Radiator':          [ '60.000' ]
+          'Mix Valve 4 Set Point Curve Y1':                               [ '21.000' ]
+          'Mix Valve 4 Set Point Curve Y2':                               [ '29.000' ]
+          'Mix Valve 4 Set Point Curve Y3':                               [ '34.000' ]
+          'Mix Valve 4 Set Point Curve Y4':                               [ '40.000' ]
+          'Mix Valve 4 Set Point Curve Y5':                               [ '43.000' ]
+          'Mix Valve 4 Set Point Curve Y6':                               [ '51.000' ]
+          'Mix Valve 4 Set Point Curve Y7':                               [ '59.000' ]
+          'Mix Valve 5 Min Limitation Set Point Curve Radiator':          [ '10.000' ]
+          'Mix Valve 5 Max Limitation Set Point Curve Radiator':          [ '60.000' ]
+          'Mix Valve 5 Set Point Curve Y1':                               [ '21.000' ]
+          'Mix Valve 5 Set Point Curve Y2':                               [ '29.000' ]
+          'Mix Valve 5 Set Point Curve Y3':                               [ '34.000' ]
+          'Mix Valve 5 Set Point Curve Y4':                               [ '40.000' ]
+          'Mix Valve 5 Set Point Curve Y5':                               [ '43.000' ]
+          'Mix Valve 5 Set Point Curve Y6':                               [ '51.000' ]
+          'Mix Valve 5 Set Point Curve Y7':                               [ '59.000' ]
+          'Mix Valve 1 Selected Mode':                                    [ 'Heat' ]
+          'Set Point Return Temp From Pool To Heat Exchanger':            [ '20.000' ]
+          'Set Point Pool Hysteresis':                                    [ '1.000' ]
+          'Mix Valve 1 Set Point For Supply Line Temp Passive Cooling':   [ '17.000' ]
+          'Set Point Minimum Outdoor Temp When Cooling Is Permitted':     [ '19.000' ]
+          'External Heater Outdoor Temp Limit':                           [ '10.000' ]
+          'Mix Valve 2 Selected Mode':                                    [ 'Heat' ]
+          'Mix Valve 2 Desired Cooling Temperature Set Point':            [ '17.000' ]
+          'Mix Valve 2 Seasonal Cooling Outdoor Temperature':             [ '0.230' ]
+          'Mix Valve 2 Seasonal Heating Outdoor Temperature':             [ '0.170' ]
+          'Mix Valve 3 Selected Mode':                                    [ 'Heat' ]
+          'Mix Valve 3 Desired Cooling Temperature Set Point':            [ '17.000' ]
+          'Mix Valve 3 Seasonal Cooling Outdoor Temperature':             [ '0.230' ]
+          'Mix Valve 3 Seasonal Heating Outdoor Temperature':             [ '0.170' ]
+          'Mix Valve 4 Selected Mode':                                    [ 'Heat' ]
+          'Mix Valve 4 Desired Cooling Temperature Set Point':            [ '17.000' ]
+          'Mix Valve 4 Seasonal Cooling Outdoor Temperature':             [ '0.230' ]
+          'Mix Valve 4 Seasonal Heating Outdoor Temperature':             [ '0.170' ]
+          'Mix Valve 5 Selected Mode':                                    [ 'Heat' ]
+          'Mix Valve 5 Desired Cooling Temperature Set Point':            [ '17.000' ]
+          'Mix Valve 5 Seasonal Cooling Outdoor Temperature':             [ '0.230' ]
+          'Mix Valve 5 Seasonal Heating Outdoor Temperature':             [ '0.170' ]
+          'Immersion Heater Status':                                      []
