@@ -16,37 +16,71 @@
  */
 package nl.basjes.modbus.thermia
 
-import com.ghgande.j2mod.modbus.facade.AbstractModbusMaster
-import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster
 import nl.basjes.modbus.device.api.ModbusDevice
-import nl.basjes.modbus.device.exception.ModbusException
-import nl.basjes.modbus.device.j2mod.ModbusDeviceJ2Mod
 import nl.basjes.modbus.device.thermia.genesis.ThermiaGenesis
+import nl.basjes.modbus.schema.toYaml
+import java.util.Timer
+import kotlin.concurrent.timerTask
+import kotlin.time.Clock.System.now
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 
-fun main() {
-    val master: AbstractModbusMaster = ModbusTCPMaster("localhost", 1502    )
-        try {
-            master.connect()
-            val modbusDevice: ModbusDevice = ModbusDeviceJ2Mod(master, 1)
 
-            val thermia = ThermiaGenesis()
-            thermia.connect(modbusDevice)
-            thermia.inputRegisters.outdoorTemperature.need()
-            thermia.inputRegisters.roomTemperature.need()
-            thermia.inputRegisters.tapWaterWeightedTemperature.need()
-            thermia.holdingRegisters.comfortWheelSetting.need()
-            while (true) {
-                Thread.sleep(1000)
-                thermia.update(999)
-                println("TapWater Weighted Temperature = ${thermia.inputRegisters.tapWaterWeightedTemperature.value}")
-                println("Outdoor Temperature           = ${thermia.inputRegisters.outdoorTemperature.value}")
-                println("Room Temperature              = ${thermia.inputRegisters.roomTemperature.value}")
-                println("Setting Room Temperature      = ${thermia.holdingRegisters.comfortWheelSetting.value}")
-                println("---------")
-            }
-        } catch (e: Exception) {
-            throw ModbusException("Unable to connect to the master", e)
-        } finally {
-            master.disconnect()
-        }
+fun getThermiaTestCase(modbusDevice: ModbusDevice) {
+    val thermia = ThermiaGenesis()
+    thermia.connect(modbusDevice)
+    thermia.tests.clear()
+    thermia.updateAll()
+    thermia.schemaDevice.createTestsUsingCurrentRealData()
+    println(thermia.schemaDevice.toYaml())
+}
+
+@OptIn(ExperimentalTime::class)
+fun getThermiaValues(modbusDevice: ModbusDevice) {
+    val thermia = ThermiaGenesis()
+    thermia.connect(modbusDevice, 100)
+
+    val fields = listOf(
+        thermia.inputRegisters.currentlyRunning1stDemand,
+        thermia.inputRegisters.currentlyRunning2ndDemand,
+        thermia.inputRegisters.currentlyRunning3rdDemand,
+        thermia.inputRegisters.queuedDemand1st,
+        thermia.inputRegisters.queuedDemand2nd,
+        thermia.inputRegisters.queuedDemand3rd,
+        thermia.inputRegisters.queuedDemand4th,
+        thermia.inputRegisters.outdoorTemperature,
+        thermia.inputRegisters.roomTemperature,
+        thermia.inputRegisters.tapWaterWeightedTemperature,
+        thermia.holdingRegisters.comfortWheelSetting,
+    )
+
+    fields.forEach { it.need() }
+
+    var count = 0
+
+    var previousRun = now()
+
+    val timer = Timer("Fetcher")
+    timer.scheduleAtFixedRate(
+        timerTask {
+            val thisRun = now()
+            println("Fetching thermia input registers $thisRun (is ${thisRun-previousRun} after previous)    ${count++}")
+            previousRun = thisRun
+            val start = now()
+            thermia.update()
+            val stop = now()
+            println("Fetching took ${stop-start}")
+            fields.forEach { printField(it) }
+            println("---------")
+        }, 0, 5000
+    )
+
+    Thread.sleep(20000) // Run for at most 20 seconds
+    timer.cancel()
+}
+
+@OptIn(ExperimentalTime::class)
+fun printField(field: ThermiaGenesis.DeviceField) {
+    val fieldValueTime = field.field.valueEpochMs ?.let { Instant.fromEpochMilliseconds(it).toString() } ?: "<Immutable>"
+    println(String.format("%-40s = %-15s %-5s  @  %s", field.field.id, field.value, field.field.unit, fieldValueTime))
 }

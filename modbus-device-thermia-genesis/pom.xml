@@ -61,6 +61,25 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>nl.basjes.modbus</groupId>
+      <artifactId>modbus-api-plc4j</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>nl.basjes.modbus</groupId>
+      <artifactId>modbus-api-digitalpetri</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.digitalpetri.modbus</groupId>
+      <artifactId>modbus-tcp</artifactId>
+      <version>2.1.0</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
