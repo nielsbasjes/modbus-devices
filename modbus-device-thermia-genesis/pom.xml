@@ -21,7 +21,7 @@
   <parent>
     <groupId>nl.basjes.modbus.devices</groupId>
     <artifactId>modbus-devices-parent</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.1-SNAPSHOT</version>
   </parent>
   <artifactId>modbus-device-thermia-genesis</artifactId>
 
@@ -142,7 +142,7 @@
     <url>https://github.com/nielsbasjes/modbus-devices</url>
     <connection>scm:git:https://github.com/nielsbasjes/modbus-devices.git</connection>
     <developerConnection>scm:git:file:///${project.basedir}</developerConnection>
-    <tag>v0.2.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
 
