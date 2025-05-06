@@ -19,7 +19,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>nl.basjes.modbus.devices</groupId>
-  <version>0.1.2-SNAPSHOT</version>
+  <version>0.2.0</version>
   <artifactId>modbus-devices-parent</artifactId>
 
   <packaging>pom</packaging>
@@ -33,7 +33,7 @@
     <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 
     <!-- Needed to make the build reproducible https://reproducible-builds.org/ -->
-    <project.build.outputTimestamp>2025-04-30T17:08:48Z</project.build.outputTimestamp>
+    <project.build.outputTimestamp>2025-05-06T06:50:33Z</project.build.outputTimestamp>
 
     <java.version>17</java.version>
     <kotlin.version>2.1.20</kotlin.version>
@@ -430,7 +430,7 @@
     <url>https://github.com/nielsbasjes/modbus-devices</url>
     <connection>scm:git:https://github.com/nielsbasjes/modbus-devices.git</connection>
     <developerConnection>scm:git:file:///${project.basedir}</developerConnection>
-    <tag>HEAD</tag>
+    <tag>v0.2.0</tag>
   </scm>
 
 
