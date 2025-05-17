@@ -92,7 +92,7 @@
         <artifactId>modbus-schema-maven-plugin</artifactId>
         <configuration>
           <modbusSchemaFile>ThermiaGenesis101213.yaml</modbusSchemaFile>
-          <packageName>nl.basjes.modbus.device.thermia.genesis</packageName>
+          <packageName>nl.basjes.modbus.thermia</packageName>
           <className>ThermiaGenesis</className>
           <language>java</language>
         </configuration>

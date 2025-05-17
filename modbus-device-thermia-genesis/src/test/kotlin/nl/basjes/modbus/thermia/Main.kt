@@ -17,7 +17,7 @@
 package nl.basjes.modbus.thermia
 
 import nl.basjes.modbus.device.api.ModbusDevice
-import nl.basjes.modbus.device.thermia.genesis.ThermiaGenesis
+import nl.basjes.modbus.thermia.ThermiaGenesis
 import nl.basjes.modbus.schema.toYaml
 import java.util.Timer
 import kotlin.concurrent.timerTask

@@ -60,7 +60,7 @@
 
         <configuration>
           <modbusSchemaFile>SDM630.yaml</modbusSchemaFile>
-          <packageName>nl.basjes.modbus.device.eastron</packageName>
+          <packageName>nl.basjes.modbus.eastron</packageName>
           <className>SDM630</className>
           <language>java</language>
         </configuration>
