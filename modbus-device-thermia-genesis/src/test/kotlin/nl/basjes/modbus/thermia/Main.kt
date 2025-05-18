@@ -17,14 +17,12 @@
 package nl.basjes.modbus.thermia
 
 import nl.basjes.modbus.device.api.ModbusDevice
-import nl.basjes.modbus.thermia.ThermiaGenesis
 import nl.basjes.modbus.schema.toYaml
 import java.util.Timer
 import kotlin.concurrent.timerTask
 import kotlin.time.Clock.System.now
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
-
 
 fun getThermiaTestCase(modbusDevice: ModbusDevice) {
     val thermia = ThermiaGenesis()
@@ -40,19 +38,20 @@ fun getThermiaValues(modbusDevice: ModbusDevice) {
     val thermia = ThermiaGenesis()
     thermia.connect(modbusDevice, 100)
 
-    val fields = listOf(
-        thermia.inputRegisters.currentlyRunning1stDemand,
-        thermia.inputRegisters.currentlyRunning2ndDemand,
-        thermia.inputRegisters.currentlyRunning3rdDemand,
-        thermia.inputRegisters.queuedDemand1st,
-        thermia.inputRegisters.queuedDemand2nd,
-        thermia.inputRegisters.queuedDemand3rd,
-        thermia.inputRegisters.queuedDemand4th,
-        thermia.inputRegisters.outdoorTemperature,
-        thermia.inputRegisters.roomTemperature,
-        thermia.inputRegisters.tapWaterWeightedTemperature,
-        thermia.holdingRegisters.comfortWheelSetting,
-    )
+    val fields =
+        listOf(
+            thermia.inputRegisters.currentlyRunning1stDemand,
+            thermia.inputRegisters.currentlyRunning2ndDemand,
+            thermia.inputRegisters.currentlyRunning3rdDemand,
+            thermia.inputRegisters.queuedDemand1st,
+            thermia.inputRegisters.queuedDemand2nd,
+            thermia.inputRegisters.queuedDemand3rd,
+            thermia.inputRegisters.queuedDemand4th,
+            thermia.inputRegisters.outdoorTemperature,
+            thermia.inputRegisters.roomTemperature,
+            thermia.inputRegisters.tapWaterWeightedTemperature,
+            thermia.holdingRegisters.comfortWheelSetting,
+        )
 
     fields.forEach { it.need() }
 
@@ -64,15 +63,17 @@ fun getThermiaValues(modbusDevice: ModbusDevice) {
     timer.scheduleAtFixedRate(
         timerTask {
             val thisRun = now()
-            println("Fetching thermia input registers $thisRun (is ${thisRun-previousRun} after previous)    ${count++}")
+            println("Fetching thermia input registers $thisRun (is ${thisRun - previousRun} after previous)    ${count++}")
             previousRun = thisRun
             val start = now()
             thermia.update()
             val stop = now()
-            println("Fetching took ${stop-start}")
+            println("Fetching took ${stop - start}")
             fields.forEach { printField(it) }
             println("---------")
-        }, 0, 5000
+        },
+        0,
+        5000,
     )
 
     Thread.sleep(20000) // Run for at most 20 seconds

@@ -33,7 +33,6 @@ fun main() {
         getThermiaTestCase(modbusDevice)
 
         getThermiaValues(modbusDevice)
-
     } catch (e: Exception) {
         throw ModbusException("Unable to connect to the master", e)
     } finally {

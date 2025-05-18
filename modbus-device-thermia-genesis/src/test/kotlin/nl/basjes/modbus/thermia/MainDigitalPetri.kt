@@ -38,6 +38,7 @@ fun main() {
 
         val modbusDevice: ModbusDevice = ModbusDeviceDigitalPetri(client, 1)
 
+
         getThermiaTestCase(modbusDevice)
 
         getThermiaValues(modbusDevice)
