@@ -51,6 +51,7 @@
     <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
     <maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
     <cyclonedx-maven-plugin.version>2.9.1</cyclonedx-maven-plugin.version>
+    <exec-maven-plugin.version>3.5.0</exec-maven-plugin.version>
 
     <kotlin.code.style>official</kotlin.code.style>
     <kotlin.compiler.jvmTarget>${java.version}</kotlin.compiler.jvmTarget>
@@ -235,7 +236,7 @@
 <!--              <waitUntil>published</waitUntil>-->
               <waitUntil>validated</waitUntil>
               <excludeArtifacts>
-                <excludeArtifact>devtools</excludeArtifact>
+                <excludeArtifact>githooks</excludeArtifact>
               </excludeArtifacts>
             </configuration>
           </plugin>
@@ -385,7 +386,7 @@
           <version>${maven-artifact-plugin.version}</version>
           <configuration>
             <skipModules>
-              <skipModule>nl.basjes.modbus.devices/devtools</skipModule>
+              <skipModule>nl.basjes.modbus.devices/githooks</skipModule>
             </skipModules>
           </configuration>
         </plugin>
@@ -402,7 +403,7 @@
   </build>
 
   <modules>
-    <module>devtools</module>
+    <module>.git-hooks</module>
     <module>modbus-device-sdm630</module>
     <module>modbus-device-thermia-genesis</module>
   </modules>
