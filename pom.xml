@@ -402,6 +402,7 @@
   </build>
 
   <modules>
+    <module>devtools</module>
     <module>modbus-device-sdm630</module>
     <module>modbus-device-thermia-genesis</module>
   </modules>
