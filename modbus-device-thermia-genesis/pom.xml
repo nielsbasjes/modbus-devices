@@ -87,6 +87,12 @@
     <testSourceDirectory>src/test/kotlin</testSourceDirectory>
 
     <plugins>
+      <plugin>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-maven-plugin</artifactId>
+        <version>${kotlin.version}</version>
+        <extensions>true</extensions>
+      </plugin>
 
       <plugin>
         <groupId>nl.basjes.modbus</groupId>
@@ -95,7 +101,7 @@
           <modbusSchemaFile>ThermiaGenesis101213.yaml</modbusSchemaFile>
           <packageName>nl.basjes.modbus.thermia</packageName>
           <className>ThermiaGenesis</className>
-          <language>java</language>
+          <language>kotlin</language>
         </configuration>
 
         <executions>

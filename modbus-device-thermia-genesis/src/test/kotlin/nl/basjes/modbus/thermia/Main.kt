@@ -27,7 +27,6 @@ import kotlin.time.Instant
 fun getThermiaTestCase(modbusDevice: ModbusDevice) {
     val thermia = ThermiaGenesis()
     thermia.connect(modbusDevice)
-    thermia.tests.clear()
     thermia.updateAll()
     thermia.schemaDevice.createTestsUsingCurrentRealData()
     println(thermia.schemaDevice.toYaml())
@@ -36,7 +35,7 @@ fun getThermiaTestCase(modbusDevice: ModbusDevice) {
 @OptIn(ExperimentalTime::class)
 fun getThermiaValues(modbusDevice: ModbusDevice) {
     val thermia = ThermiaGenesis()
-    thermia.connect(modbusDevice, 100)
+    thermia.connect(modbusDevice)
 
     val fields =
         listOf(

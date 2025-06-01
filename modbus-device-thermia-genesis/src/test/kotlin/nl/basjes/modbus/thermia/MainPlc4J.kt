@@ -17,7 +17,6 @@
 package nl.basjes.modbus.thermia
 
 import nl.basjes.modbus.device.plc4j.ModbusDevicePlc4j
-import kotlin.use
 
 fun main() {
     val hostname = "localhost"

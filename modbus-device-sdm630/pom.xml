@@ -39,6 +39,11 @@
 
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-test-junit5</artifactId>
       <scope>test</scope>
     </dependency>
@@ -53,6 +58,12 @@
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.jetbrains.kotlin</groupId>
+        <artifactId>kotlin-maven-plugin</artifactId>
+        <version>${kotlin.version}</version>
+        <extensions>true</extensions>
+      </plugin>
 
       <plugin>
         <groupId>nl.basjes.modbus</groupId>
@@ -62,7 +73,7 @@
           <modbusSchemaFile>SDM630.yaml</modbusSchemaFile>
           <packageName>nl.basjes.modbus.eastron</packageName>
           <className>SDM630</className>
-          <language>java</language>
+          <language>kotlin</language>
         </configuration>
 
         <executions>
