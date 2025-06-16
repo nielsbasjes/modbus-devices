@@ -58,7 +58,7 @@
     <dokka-maven-plugin.version>2.0.0</dokka-maven-plugin.version>
 
     <junit5.version>5.13.1</junit5.version>
-    <log4j.version>2.24.3</log4j.version>
+    <log4j.version>2.25.0</log4j.version>
 
     <modbus-schema.version>0.7.0</modbus-schema.version>
   </properties>
