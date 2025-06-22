@@ -39,17 +39,17 @@ fun getThermiaValues(modbusDevice: ModbusDevice) {
 
     val fields =
         listOf(
-            thermia.inputRegisters.currentlyRunning1stDemand,
-            thermia.inputRegisters.currentlyRunning2ndDemand,
-            thermia.inputRegisters.currentlyRunning3rdDemand,
-            thermia.inputRegisters.queuedDemand1st,
-            thermia.inputRegisters.queuedDemand2nd,
-            thermia.inputRegisters.queuedDemand3rd,
-            thermia.inputRegisters.queuedDemand4th,
-            thermia.inputRegisters.outdoorTemperature,
-            thermia.inputRegisters.roomTemperature,
-            thermia.inputRegisters.tapWaterWeightedTemperature,
-            thermia.holdingRegisters.comfortWheelSetting,
+            thermia.sensors.currentlyRunning1stDemand,
+            thermia.sensors.currentlyRunning2ndDemand,
+            thermia.sensors.currentlyRunning3rdDemand,
+            thermia.sensors.queuedDemand1st,
+            thermia.sensors.queuedDemand2nd,
+            thermia.sensors.queuedDemand3rd,
+            thermia.sensors.queuedDemand4th,
+            thermia.sensors.outdoorTemperature,
+            thermia.sensors.roomTemperature,
+            thermia.sensors.tapWaterWeightedTemperature,
+            thermia.settings.comfortWheelSetting,
         )
 
     fields.forEach { it.need() }

@@ -19,8 +19,8 @@
 description: 'Thermia Genesis (combined schema for versions 10, 12 and 13)'
 schemaFeatureLevel: 1
 blocks:
-  - id: 'Input Registers'
-    description: 'IR block'
+  - id: 'Sensors'
+    description: 'All the sensors in the system'
     fields:
 
       - id: 'Currently Running 1st Demand'
@@ -703,8 +703,8 @@ blocks:
         expression: 'int16(ir:00319 ; 0x4E20)'
         unit: '°C'
 
-  - id: 'Holding Registers'
-    description: 'HR block'
+  - id: 'Settings'
+    description: 'All the settings in the system'
     fields:
 
       - id: 'Operational Mode'
@@ -1488,7 +1488,7 @@ tests:
           0011 xxxx
     blocks:
 
-      - id: 'Input Registers'
+      - id: 'Sensors'
         expected:
           'Currently Running 1st Demand':                                 [ 'No demand' ]
           'Currently Running Demands':                                    [ 'No demand' ]
@@ -1637,7 +1637,7 @@ tests:
           'Expansion Valve Opening Degree':                               [ '0.000' ]
           'Inverter Temperature':                                         [ '24' ]
 
-      - id: 'Holding Registers'
+      - id: 'Settings'
         expected:
           'Operational Mode':                                             [ 'ON/Auto' ]
           'Max Limitation Set Point Curve Radiator':                      [ '45.000' ]
@@ -1857,7 +1857,7 @@ tests:
           06A4 0017 0011 0000 06A4 0017 0011 0000 06A4 0017
           0011 ----
     blocks:
-      - id: 'Input Registers'
+      - id: 'Sensors'
         expected:
           'Currently Running 1st Demand':                                 [ 'Hot water' ]
           'Currently Running Demands':                                    [ 'Hot water' ]
@@ -2005,7 +2005,7 @@ tests:
           'Control Software Version':                                     [ '11.0.12' ]
           'Expansion Valve Opening Degree':                               [ '48.860' ]
           'Inverter Temperature':                                         [ '53' ]
-      - id: 'Holding Registers'
+      - id: 'Settings'
         expected:
           'Operational Mode':                                             [ 'ON/Auto' ]
           'Max Limitation Set Point Curve Radiator':                      [ '45.000' ]
@@ -2226,7 +2226,7 @@ tests:
           06A4 0017 0011 0000 06A4 0017 0011 0000 06A4 0017
           0011 ----
     blocks:
-      - id: 'Input Registers'
+      - id: 'Sensors'
         expected:
           'Currently Running 1st Demand':                                 [ 'Hot water' ]
           'Currently Running Demands':                                    [ 'Hot water' ]
@@ -2374,7 +2374,7 @@ tests:
           'Control Software Version':                                     [ '11.0.12' ]
           'Expansion Valve Opening Degree':                               [ '80.460' ]
           'Inverter Temperature':                                         [ '64' ]
-      - id: 'Holding Registers'
+      - id: 'Settings'
         expected:
           'Operational Mode':                                             [ 'ON/Auto' ]
           'Max Limitation Set Point Curve Radiator':                      [ '45.000' ]
@@ -2595,7 +2595,7 @@ tests:
           06A4 0017 0011 0000 06A4 0017 0011 0000 06A4 0017
           0011 XXXX
     blocks:
-      - id: 'Input Registers'
+      - id: 'Sensors'
         expected:
           'Currently Running 1st Demand':                                 [ 'No demand' ]
           'Currently Running Demands':                                    [ 'No demand' ]
@@ -2744,7 +2744,7 @@ tests:
           'Expansion Valve Opening Degree':                               [ '0.000' ]
           'Inverter Temperature':                                         [ '22' ]
 
-      - id: 'Holding Registers'
+      - id: 'Settings'
         expected:
           'Operational Mode':                                             [ 'ON/Auto' ]
           'Max Limitation Set Point Curve Radiator':                      [ '45.000' ]

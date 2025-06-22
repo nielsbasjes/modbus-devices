@@ -24,7 +24,7 @@ schemaFeatureLevel: 1
 # the maximum number of registers per request is 80.
 maxRegistersPerModbusRequest: 80
 blocks:
-  - id: 'Main'
+  - id: 'measurements'
     description: 'The only block of registers'
     fields:
       - id: 'Phase 1 Line To Neutral Volts'
@@ -495,7 +495,7 @@ tests:
           44D4 99F6 3F3B 2C36 0000 0000 422C 1556 0000 0000
           4247 C61B 4109 BA5E 0000 0000 40B1 BA5E 0000 0000
     blocks:
-      - id: 'Main'
+      - id: 'measurements'
         expected:
           'Phase 1 Line To Neutral Volts':      [  234.636 ]
           'Phase 2 Line To Neutral Volts':      [  234.369 ]
