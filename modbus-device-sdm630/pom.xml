@@ -21,7 +21,7 @@
   <parent>
     <groupId>nl.basjes.modbus.devices</groupId>
     <artifactId>modbus-devices-parent</artifactId>
-    <version>0.4.0</version>
+    <version>0.4.1-SNAPSHOT</version>
   </parent>
 
   <artifactId>modbus-device-sdm630</artifactId>
@@ -124,7 +124,7 @@
     <url>https://github.com/nielsbasjes/modbus-devices</url>
     <connection>scm:git:https://github.com/nielsbasjes/modbus-devices.git</connection>
     <developerConnection>scm:git:file:///${project.basedir}</developerConnection>
-    <tag>v0.4.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
 
