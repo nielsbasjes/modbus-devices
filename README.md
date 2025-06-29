@@ -32,7 +32,7 @@ I have split this into 4 projects:
   - Wrap any Modbus Schema and serve a device over GraphQL
   - [![License](https://img.shields.io/:license-apache-blue.svg?classes=inline)](https://www.apache.org/licenses/LICENSE-2.0.html)
     [![Github actions Build status](https://img.shields.io/github/actions/workflow/status/nielsbasjes/modbus-graphql/build.yml?branch=main&label=main%20branch&classes=inline)](https://github.com/nielsbasjes/modbus-graphql/actions)
-    [![Maven Central](https://img.shields.io/maven-central/v/nl.basjes.sunspec/modbus-graphql-parent.svg?label=Maven%20Central&classes=inline)](https://central.sonatype.com/namespace/nl.basjes.sunspec)
+    [![Maven Central](https://img.shields.io/maven-central/v/nl.basjes.modbus.graphql/modbus-graphql-parent.svg?label=Maven%20Central&classes=inline)](https://central.sonatype.com/namespace/nl.basjes.modbus.graphql)
     [![GitHub stars](https://img.shields.io/github/stars/nielsbasjes/modbus-graphql?label=GitHub%20stars&classes=inline)](https://github.com/nielsbasjes/modbus-graphql/stargazers)
 
 The documentation can be found here https://modbus.basjes.nl/
