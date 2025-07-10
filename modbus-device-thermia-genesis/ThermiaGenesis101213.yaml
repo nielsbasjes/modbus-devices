@@ -1,4 +1,4 @@
-# $schema: https://modbus.basjes.nl/v1/ModbusSchema.json
+# $schema: https://modbus.basjes.nl/v2/ModbusSchema.json
 #
 # Modbus Schema Toolkit
 # Copyright (C) 2019-2025 Niels Basjes
@@ -17,7 +17,7 @@
 #
 
 description: 'Thermia Genesis (combined schema for versions 10, 12 and 13)'
-schemaFeatureLevel: 1
+schemaFeatureLevel: 2
 blocks:
   - id: 'Sensors'
     description: 'All the sensors in the system'
@@ -1417,8 +1417,8 @@ tests:
   - id: 'Test At 2025 04 13 18 08 00'
     description: 'Test generated from device data at 2025-04-13T18:08:00.6Z on a Thermia Calibra Cool 7 running Genesis 11'
     input:
-      - firstRegisterAddress: 'ir:00001'
-        registers: |-
+      - firstAddress: 'ir:00001'
+        rawValues: |-
           0063 0400 ---- 0384 0000 0000 096F 094B 09D8 085C
           08A9 4E20 05A8 ---- 146B 12DF 1368 0000 0BB8 06A4
           03E8 01F4 0000 FE0C FA24 F63C 4E20 ---- ---- 0000
@@ -1451,8 +1451,8 @@ tests:
           ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
           ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
           000B 0000 000C ---- 0000 ---- ---- ---- 0018
-      - firstRegisterAddress: 'hr:00000'
-        registers: |-
+      - firstAddress: 'hr:00000'
+        rawValues: |-
           0003 ---- ---- 1194 07D0 07D0 07D0 0960 0A8C 0BB8
           0C1C 0DAC 0F3C ---- ---- ---- 06A4 ---- ---- ----
           ---- ---- 1130 1770 ---- ---- 0001 0009 0007 0005
@@ -1787,8 +1787,8 @@ tests:
   - id: 'TestAt_2025_04_29_10_44_27'
     description: 'Test generated from device data at 2025-04-29T10:44:27.938Z on a Thermia Calibra Cool 7 running Genesis 11. This was minutes after using a lot of hot water.'
     input:
-      - firstRegisterAddress: 'ir:00001'
-        registers: |-
+      - firstAddress: 'ir:00001'
+        rawValues: |-
           0003 0004 ---- 0384 0D14 0000 1CFE 1176 13F6 04C3
           039D 4E20 0855 ---- 12B7 0EB8 101E 0000 0BB8 06A4
           03E8 01F4 0000 FE0C FA24 F63C 4E20 ---- ---- 0000
@@ -1821,8 +1821,8 @@ tests:
           ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
           ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
           000B 0000 000C ---- 1316 ---- ---- ---- 0035
-      - firstRegisterAddress: 'hr:00000'
-        registers: |-
+      - firstAddress: 'hr:00000'
+        rawValues: |-
           0003 ---- ---- 1194 07D0 0802 0834 09C4 0AF0 0C1C
           0C80 0E10 0FA0 ---- ---- ---- 06A4 ---- ---- ----
           ---- ---- 1130 1770 ---- ---- 0001 0009 0007 0005
@@ -2156,8 +2156,8 @@ tests:
   - id: 'TestAt_2025_05_02_09_21_02'
     description: 'Test generated from device data at 2025-05-02T09:21:02.268Z on a Thermia Calibra Cool 7 running Genesis 11. This was minutes after using a lot of hot water on a day where the cooling was running.'
     input:
-      - firstRegisterAddress: 'ir:00001'
-        registers: |-
+      - firstAddress: 'ir:00001'
+        rawValues: |-
           0003 0004 ---- 0384 0D14 0000 22A1 15FC 1744 06CD
           05C1 4E20 0A2B ---- 14FA 13BC 142B 0000 0BB8 06A4
           03E8 01F4 0000 FE0C FA24 F63C 4E20 ---- ---- 0000
@@ -2190,8 +2190,8 @@ tests:
           ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
           ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
           000B 0000 000C ---- 1F6E ---- ---- ---- 0040
-      - firstRegisterAddress: 'hr:00000'
-        registers: |-
+      - firstAddress: 'hr:00000'
+        rawValues: |-
           0003 ---- ---- 1194 07D0 0802 0834 09C4 0AF0 0C1C
           0C80 0E10 0FA0 ---- ---- ---- 06A4 ---- ---- ----
           ---- ---- 1130 1770 ---- ---- 0001 0009 0007 0005
@@ -2525,8 +2525,8 @@ tests:
   - id: 'TestAt_2025_05_18_10_19_41'
     description: 'Test generated from device data at 2025-05-18T10:19:41.772Z'
     input:
-      - firstRegisterAddress: 'ir:00001'
-        registers: |-
+      - firstAddress: 'ir:00001'
+        rawValues: |-
           0063 0400 0000 0384 0000 0000 0879 087A 0992 07B6
           07F7 4E20 07A1 07A1 1258 1175 11C4 0000 0BB8 06A4
           03E8 01F4 0000 FE0C FA24 F63C 4E20 0000 0000 0000
@@ -2559,8 +2559,8 @@ tests:
           ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
           ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
           000B 0000 000C 0001 0000 0000 0000 0000 0016
-      - firstRegisterAddress: 'hr:00000'
-        registers: |-
+      - firstAddress: 'hr:00000'
+        rawValues: |-
           0003 0000 0000 1194 07D0 0802 0834 09C4 0AF0 0C1C
           0C80 0E10 0FA0 0000 0000 0000 06A4 0000 0000 0000
           0000 0000 1130 1770 0000 0000 0001 0009 0007 0005

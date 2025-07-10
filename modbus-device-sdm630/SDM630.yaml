@@ -1,4 +1,4 @@
-# $schema: https://modbus.basjes.nl/v1/ModbusSchema.json
+# $schema: https://modbus.basjes.nl/v2/ModbusSchema.json
 #
 # Modbus Schema Toolkit
 # Copyright (C) 2019-2025 Niels Basjes
@@ -17,7 +17,7 @@
 #
 
 description: 'Eastron SDM-630 Modbus V2'
-schemaFeatureLevel: 1
+schemaFeatureLevel: 2
 # Based upon https://www.eastroneurope.com/images/uploads/products/protocol/SDM630_MODBUS_Protocol.pdf
 
 # The SDM630Modbus can transfer a maximum of 40 values in a single transaction; therefore
@@ -452,8 +452,8 @@ tests:
   - id: 'The Niels Basjes device'
     description: 'Test generated from my own device'
     input:
-      - firstRegisterAddress: 'ir:00000'
-        registers: |-
+      - firstAddress: 'ir:00000'
+        rawValues: |-
           436A A2CB 436A 5E5E 436B CFF8 4060 354B 4048 A3A4
           4081 3697 4405 C7E8 4409 8DA7 4437 E384 444C A922
           4437 4283 446D 7231 441A E1FC 43F2 2F0C 4416 37EA
