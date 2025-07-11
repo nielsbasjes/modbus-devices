@@ -18,6 +18,7 @@ package nl.basjes.modbus.thermia
 
 import nl.basjes.modbus.device.api.ModbusDevice
 import nl.basjes.modbus.schema.toYaml
+import nl.basjes.modbus.schema.utils.toTable
 import java.util.Timer
 import kotlin.concurrent.timerTask
 import kotlin.time.Clock.System.now
@@ -27,7 +28,9 @@ import kotlin.time.Instant
 fun getThermiaTestCase(modbusDevice: ModbusDevice) {
     val thermia = ThermiaGenesis()
     thermia.connect(modbusDevice)
-    thermia.updateAll()
+    val modbusQueries = thermia.updateAll()
+    println(modbusQueries.toTable())
+
     thermia.schemaDevice.createTestsUsingCurrentRealData()
     println(thermia.schemaDevice.toYaml())
 }

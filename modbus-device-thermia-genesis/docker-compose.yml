@@ -1,0 +1,27 @@
+#
+# Modbus Schema Toolkit
+# Copyright (C) 2019-2025 Niels Basjes
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an AS IS BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+services:
+  thermia-graphql:
+    image: nielsbasjes/modbus-tcp-graphql:latest
+#    command: '--modbus.host=modbus.iot.basjes.nl --modbus.port=502 --modbus.unit=1'
+    command: '--modbus.host=releaser.lan.basjes.nl --modbus.port=1502 --modbus.unit=1'
+    volumes:
+      # INSIDE the docker image it MUST become "/ModbusSchema.yaml"
+#      - ./minimal.yaml:/ModbusSchema.yaml:ro
+      - ./ThermiaGenesis101213.yaml:/ModbusSchema.yaml:ro
+    ports:
+      - 8080:8080

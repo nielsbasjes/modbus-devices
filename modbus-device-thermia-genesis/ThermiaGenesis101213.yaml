@@ -18,1402 +18,2645 @@
 
 description: 'Thermia Genesis (combined schema for versions 10, 12 and 13)'
 schemaFeatureLevel: 2
+
 blocks:
-  - id: 'Sensors'
+  - id:          'Sensors'
     description: 'All the sensors in the system'
-    fields:
 
-      - id: 'Currently Running 1st Demand'
+    fields:
+      - id:          'Currently Running 1st Demand'
         description: 'Currently running: First prioritised demand'
-        expression: 'enum(ir:00001 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        expression:  'enum(ir:00001 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
 
-      - id: 'Currently Running Demands'
+      - id:          'Currently Running Demands'
         description: 'Currently running: Bit registers that shows the all the current running demands'
-        expression: 'bitset(ir:00002 ; 0->''Manual operation'' ; 1->''Defrost'' ; 2->''Hot water'' ; 3->''Heat'' ; 4->''Active Cooling'' ; 5->''Pool'' ; 6->''Anti legionella'' ; 7->''Passive Cooling'' ; 8->''Reserved'' ; 9->''Standby'' ; 10->''No demand'' ; 11->''OFF'')'
+        expression:  'bitset(ir:00002 ; 0->''Manual operation'' ; 1->''Defrost'' ; 2->''Hot water'' ; 3->''Heat'' ; 4->''Active Cooling'' ; 5->''Pool'' ; 6->''Anti legionella'' ; 7->''Passive Cooling'' ; 8->''Reserved'' ; 9->''Standby'' ; 10->''No demand'' ; 11->''OFF'')'
 
-      - id: 'Compressor Available Gears'
+      - id:          'Compressor Available Gears'
         description: 'Compressor available gears'
-        expression: 'int16(ir:00004)/100'
+        expression:  'int16(ir:00004)/100'
 
-      - id: 'Compressor Speed'
+      - id:          'Compressor Speed'
         description: 'Compressor speed'
-        expression: 'int16(ir:00005)'
-        unit: 'rpm'
+        expression:  'int16(ir:00005)'
+        unit:        'rpm'
 
-      - id: 'External Heater Demand'
+      - id:          'External Heater Demand'
         description: 'External additional heater: Current demand (%)'
-        expression: 'int16(ir:00006)/100'
-        unit: '%'
+        expression:  'int16(ir:00006)/100'
+        unit:        '%'
 
-      - id: 'Discharge Pipe Temperature'
+      - id:          'Discharge Pipe Temperature'
         description: 'Discharge pipe temperature'
-        expression: 'int16(ir:00007 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00007 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Condenser In Temperature'
+      - id:          'Condenser In Temperature'
         description: 'Condenser in temperature'
-        expression: 'int16(ir:00008 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00008 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Condenser Out Temperature'
+      - id:          'Condenser Out Temperature'
         description: 'Condenser out temperature'
-        expression: 'int16(ir:00009 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00009 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Brine In Temperature'
+      - id:          'Brine In Temperature'
         description: 'Brine in temperature'
-        expression: 'int16(ir:00010 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00010 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Brine Out Temperature'
+      - id:          'Brine Out Temperature'
         description: 'Brine out temperature'
-        expression: 'int16(ir:00011 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00011 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'System Supply Line Temperature'
+      - id:          'System Supply Line Temperature'
         description: 'System supply line temperature'
-        expression: 'int16(ir:00012 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00012 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Outdoor Temperature'
+      - id:          'Outdoor Temperature'
         description: 'Outdoor temperature'
-        expression: 'int16(ir:00013 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00013 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Tap Water Top Temperature'
+      - id:          'Tap Water Top Temperature'
         description: 'Tap water top temperature'
-        expression: 'int16(ir:00015 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00015 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Tap Water Lower Temperature'
+      - id:          'Tap Water Lower Temperature'
         description: 'Tap water lower temperature'
-        expression: 'int16(ir:00016 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00016 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Tap Water Weighted Temperature'
+      - id:          'Tap Water Weighted Temperature'
         description: 'Tap water weighted temperature'
-        expression: 'int16(ir:00017 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00017 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'System Supply Line Calculated Set Point'
+      - id:          'System Supply Line Calculated Set Point'
         description: 'System supply line calculated set point'
-        expression: 'int16(ir:00018 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00018 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'System Supply Line Selected Heat Curve'
+      - id:          'System Supply Line Selected Heat Curve'
         description: 'Selected heat curve, (system) supply line'
-        expression: 'int16(ir:00019 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00019 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Heat Curve X1'
+      - id:          'Heat Curve X1'
         description: 'Heat curve, X-coordinate 1 (highest outdoor temperature)'
-        expression: 'int16(ir:00020 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00020 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Heat Curve X2'
+      - id:          'Heat Curve X2'
         description: 'Heat curve, X-coordinate 2'
-        expression: 'int16(ir:00021 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00021 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Heat Curve X3'
+      - id:          'Heat Curve X3'
         description: 'Heat curve, X-coordinate 3'
-        expression: 'int16(ir:00022 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00022 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Heat Curve X4'
+      - id:          'Heat Curve X4'
         description: 'Heat curve, X-coordinate 4'
-        expression: 'int16(ir:00023 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00023 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Heat Curve X5'
+      - id:          'Heat Curve X5'
         description: 'Heat curve, X-coordinate 5'
-        expression: 'int16(ir:00024 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00024 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Heat Curve X6'
+      - id:          'Heat Curve X6'
         description: 'Heat curve, X-coordinate 6'
-        expression: 'int16(ir:00025 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00025 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Heat Curve X7'
+      - id:          'Heat Curve X7'
         description: 'Heat curve, X-coordinate 7 (lowest outdoor temperature)'
-        expression: 'int16(ir:00026 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00026 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'System Return Line Temperature'
+      - id:          'System Return Line Temperature'
         description: 'System return line temperature.'
-        expression: 'int16(ir:00027 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00027 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Calculated Demand'
+      - id:          'Calculated Demand'
         description: 'Calculated demand (heat)'
-        expression: 'int16(ir:00030)/100'
+        expression:  'int16(ir:00030)/100'
 
-      - id: 'Cooling Season Integral Value'
+      - id:          'Cooling Season Integral Value'
         description: 'Cooling season integral value'
-        expression: 'int16(ir:00036)'
+        expression:  'int16(ir:00036)'
 
-      - id: 'Condenser Circulation Pump Speed'
+      - id:          'Condenser Circulation Pump Speed'
         description: 'Condenser circulation pump speed (%)'
-        expression: 'int16(ir:00039)/100'
-        unit: '%'
+        expression:  'int16(ir:00039)/100'
+        unit:        '%'
 
-      - id: 'Mix Valve 1 Supply Line Temperature'
+      - id:          'Mix Valve 1 Supply Line Temperature'
         description: 'Mix valve 1 supply line temperature'
-        expression: 'int16(ir:00040 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00040 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Buffer Tank Temperature'
+      - id:          'Buffer Tank Temperature'
         description: 'Buffer tank temperature'
-        expression: 'int16(ir:00041 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00041 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 1 Position'
+      - id:          'Mix Valve 1 Position'
         description: 'Mix valve 1 position'
-        expression: 'int16(ir:00043)/100'
-        unit: '%'
+        expression:  'int16(ir:00043)/100'
+        unit:        '%'
 
-      - id: 'Brine Circulation Pump Speed'
+      - id:          'Brine Circulation Pump Speed'
         description: 'Brine circulation pump speed (%)'
-        expression: 'int16(ir:00044)/100'
-        unit: '%'
+        expression:  'int16(ir:00044)/100'
+        unit:        '%'
 
-      - id: 'HGW Supply Line Temperature'
+      - id:          'HGW Supply Line Temperature'
         description: 'HGW supply line temperature'
-        expression: 'int16(ir:00045 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00045 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Tap Water Valve Position'
+      - id:          'Tap Water Valve Position'
         description: 'Tap water valve position (%)'
-        expression: 'int16(ir:00047)'
-        unit: '%'
+        expression:  'int16(ir:00047)'
+        unit:        '%'
 
-      - id: 'Compressor Operating Hours'
+      - id:          'Compressor Operating Hours'
         description: 'Compressor operating hours'
-        expression: 'uint32(ir:00048 # 2)'
-        unit: 'h'
+        expression:  'uint32(ir:00048 # 2)'
+        unit:        'h'
 
-      - id: 'Tap Water Operating Hours'
+      - id:          'Tap Water Operating Hours'
         description: 'Tap water operating hours'
-        expression: 'uint32(ir:00050 # 2)'
-        unit: 'h'
+        expression:  'uint32(ir:00050 # 2)'
+        unit:        'h'
 
-      - id: 'External Additional Heater Operating Hours'
+      - id:          'External Additional Heater Operating Hours'
         description: 'External additional heater operating hours'
-        expression: 'uint32(ir:00052 # 2)'
-        unit: 'h'
+        expression:  'uint32(ir:00052 # 2)'
+        unit:        'h'
 
-      - id: 'Compressor Speed Percent'
+      - id:          'Compressor Speed Percent'
         description: 'Compressor speed percent'
-        expression: 'int16(ir:00054)/100'
-        unit: '%'
+        expression:  'int16(ir:00054)/100'
+        unit:        '%'
 
-      - id: 'Currently Running 2nd Demand'
+      - id:          'Currently Running 2nd Demand'
         description: 'Currently running: Second prioritised demand'
-        expression: 'enum(ir:00055 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        expression:  'enum(ir:00055 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
 
-      - id: 'Currently Running 3rd Demand'
+      - id:          'Currently Running 3rd Demand'
         description: 'Currently running: Third prioritised demand'
-        expression: 'enum(ir:00056 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        expression:  'enum(ir:00056 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
 
-      - id: 'Software Version Major'
+      - id:          'Software Version Major'
         description: 'Software version: Major'
-        expression: 'int16(ir:00057)'
+        expression:  'int16(ir:00057)'
 
-      - id: 'Software Version Minor'
+      - id:          'Software Version Minor'
         description: 'Software version: Minor'
-        expression: 'int16(ir:00058)'
+        expression:  'int16(ir:00058)'
 
-      - id: 'Software Version Micro'
+      - id:          'Software Version Micro'
         description: 'Software version: Micro'
-        expression: 'int16(ir:00059)'
+        expression:  'int16(ir:00059)'
 
-      - id: 'Software Version'
+      - id:          'Software Version'
         description: 'Software version'
-        expression: 'concat(Software Version Major, ''.'', Software Version Minor, ''.'', Software Version Micro)'
+        expression:  'concat(Software Version Major, ''.'', Software Version Minor, ''.'', Software Version Micro)'
 
-      - id: 'Compressor Temporarily Blocked Start Restriction Timer'
+      - id:          'Compressor Temporarily Blocked Start Restriction Timer'
         description: 'Compressor temporarily blocked, (start restriction timer)'
-        expression: 'int16(ir:00060)'
+        expression:  'int16(ir:00060)'
 
-      - id: 'Compressor Current Gear'
+      - id:          'Compressor Current Gear'
         description: 'Compressor current gear'
-        expression: 'int16(ir:00061)/100'
+        expression:  'int16(ir:00061)/100'
 
-      - id: 'Queued Demand 1st'
+      - id:          'Queued Demand 1st'
         description: 'Queued demand, first priority'
-        expression: 'enum(ir:00062 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        expression:  'enum(ir:00062 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
 
-      - id: 'Queued Demand 2nd'
+      - id:          'Queued Demand 2nd'
         description: 'Queued demand, second priority'
-        expression: 'enum(ir:00063 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        expression:  'enum(ir:00063 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
 
-      - id: 'Queued Demand 3rd'
+      - id:          'Queued Demand 3rd'
         description: 'Queued demand, third priority'
-        expression: 'enum(ir:00064 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        expression:  'enum(ir:00064 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
 
-      - id: 'Queued Demand 4th'
+      - id:          'Queued Demand 4th'
         description: 'Queued demand, fourth priority'
-        expression: 'enum(ir:00065 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        expression:  'enum(ir:00065 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
 
-      - id: 'Queued Demand 5th'
+      - id:          'Queued Demand 5th'
         description: 'Queued demand, fifth priority'
-        expression: 'enum(ir:00066 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        expression:  'enum(ir:00066 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
 
-      - id: 'Active Step Internal Immersion Heater'
+      - id:          'Active Step Internal Immersion Heater'
         description: 'Active step internal immersion heater, Mega S-E only'
-        expression: 'int16(ir:00067)'
-        unit: 'step'
+        expression:  'int16(ir:00067)'
+        unit:        'step'
 
-      - id: 'Buffer Tank Charge Set Point'
+      - id:          'Buffer Tank Charge Set Point'
         description: 'Buffer tank charge set point'
-        expression: 'int16(ir:00068 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00068 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Electric Meter L1 Current'
+      - id:          'Electric Meter L1 Current'
         description: 'Electric meter L1 current (A)'
-        expression: 'int16(ir:00069)/100'
-        unit: 'A'
+        expression:  'int16(ir:00069)/100'
+        unit:        'A'
 
-      - id: 'Electric Meter L2 Current'
+      - id:          'Electric Meter L2 Current'
         description: 'Electric meter L2 current (A)'
-        expression: 'int16(ir:00070)/100'
-        unit: 'A'
+        expression:  'int16(ir:00070)/100'
+        unit:        'A'
 
-      - id: 'Electric Meter L3 Current'
+      - id:          'Electric Meter L3 Current'
         description: 'Electric meter L3 current (A)'
-        expression: 'int16(ir:00071)/100'
-        unit: 'A'
+        expression:  'int16(ir:00071)/100'
+        unit:        'A'
 
-      - id: 'Electric Meter L1 0 Voltage'
+      - id:          'Electric Meter L1 0 Voltage'
         description: 'Electric meter L1-0 voltage (V)'
-        expression: 'int16(ir:00072)/100'
-        unit: 'V'
+        expression:  'int16(ir:00072)/100'
+        unit:        'V'
 
-      - id: 'Electric Meter L2 0 Voltage'
+      - id:          'Electric Meter L2 0 Voltage'
         description: 'Electric meter L2-0 voltage (V)'
-        expression: 'int16(ir:00073)/100'
-        unit: 'V'
+        expression:  'int16(ir:00073)/100'
+        unit:        'V'
 
-      - id: 'Electric Meter L3 0 Voltage'
+      - id:          'Electric Meter L3 0 Voltage'
         description: 'Electric meter L3-0 voltage (V)'
-        expression: 'int16(ir:00074)/100'
-        unit: 'V'
+        expression:  'int16(ir:00074)/100'
+        unit:        'V'
 
-      - id: 'Electric Meter L1 L2 Voltage'
+      - id:          'Electric Meter L1 L2 Voltage'
         description: 'Electric meter L1-L2 voltage (V)'
-        expression: 'int16(ir:00075)/10'
-        unit: 'V'
+        expression:  'int16(ir:00075)/10'
+        unit:        'V'
 
-      - id: 'Electric Meter L2 L3 Voltage'
+      - id:          'Electric Meter L2 L3 Voltage'
         description: 'Electric meter L2-L3 voltage (V)'
-        expression: 'int16(ir:00076)/10'
-        unit: 'V'
+        expression:  'int16(ir:00076)/10'
+        unit:        'V'
 
-      - id: 'Electric Meter L3 L1 Voltage'
+      - id:          'Electric Meter L3 L1 Voltage'
         description: 'Electric meter L3-L1 voltage (V)'
-        expression: 'int16(ir:00077)/10'
-        unit: 'V'
+        expression:  'int16(ir:00077)/10'
+        unit:        'V'
 
-      - id: 'Electric Meter L1 Power'
+      - id:          'Electric Meter L1 Power'
         description: 'Electric meter L1 power (W)'
-        expression: 'int16(ir:00078)'
-        unit: 'W'
+        expression:  'int16(ir:00078)'
+        unit:        'W'
 
-      - id: 'Electric Meter L2 Power'
+      - id:          'Electric Meter L2 Power'
         description: 'Electric meter L2 power (W)'
-        expression: 'int16(ir:00079)'
-        unit: 'W'
+        expression:  'int16(ir:00079)'
+        unit:        'W'
 
-      - id: 'Electric Meter L3 Power'
+      - id:          'Electric Meter L3 Power'
         description: 'Electric meter L3 power (W)'
-        expression: 'int16(ir:00080)'
-        unit: 'W'
+        expression:  'int16(ir:00080)'
+        unit:        'W'
 
-      - id: 'Electric Meter Meter Value'
+      - id:          'Electric Meter Meter Value'
         description: 'Electric meter - meter value (kWh)'
-        expression: 'int16(ir:00081)'
-        unit: 'kWh'
+        expression:  'int16(ir:00081)'
+        unit:        'kWh'
 
-      - id: 'Current Smart Grid Mode'
+      - id:          'Current Smart Grid Mode'
         description: 'Current Smart Grid mode'
-        expression: 'enum(ir:00082 ; 1->''EVU'' ; 4->''Normal'' ; 5->''Comfort'' ; 6->''Boost'')'
+        expression:  'enum(ir:00082 ; 1->''EVU'' ; 4->''Normal'' ; 5->''Comfort'' ; 6->''Boost'')'
 
-      - id: 'Electric Meter KWh Total'
+      - id:          'Electric Meter KWh Total'
         description: 'Electric meter kWh total'
-        expression: 'uint32(ir:00083 # 2)/10'
-        unit: 'kWh'
+        expression:  'uint32(ir:00083 # 2)/10'
+        unit:        'kWh'
 
-      - id: 'WCS Valve Position'
+      - id:          'WCS Valve Position'
         description: 'WCS valve position (EM)'
-        expression: 'int16(ir:00085)/100'
-        unit: '%'
+        expression:  'int16(ir:00085)/100'
+        unit:        '%'
 
-      - id: 'TWC Valve Position'
+      - id:          'TWC Valve Position'
         description: 'TWC valve position (EM)'
-        expression: 'int16(ir:00086)/100'
-        unit: '%'
+        expression:  'int16(ir:00086)/100'
+        unit:        '%'
 
-      - id: 'Mix Valve 2 Position'
+      - id:          'Mix Valve 2 Position'
         description: 'Mix valve 2 position (EM)'
-        expression: 'int16(ir:00087)/100'
-        unit: '%'
+        expression:  'int16(ir:00087)/100'
+        unit:        '%'
 
-      - id: 'Mix Valve 3 Position'
+      - id:          'Mix Valve 3 Position'
         description: 'Mix valve 3 position (EM)'
-        expression: 'int16(ir:00088)/100'
-        unit: '%'
+        expression:  'int16(ir:00088)/100'
+        unit:        '%'
 
-      - id: 'Mix Valve 4 Position'
+      - id:          'Mix Valve 4 Position'
         description: 'Mix valve 4 position (EM)'
-        expression: 'int16(ir:00089)/100'
-        unit: '%'
+        expression:  'int16(ir:00089)/100'
+        unit:        '%'
 
-      - id: 'Mix Valve 5 Position'
+      - id:          'Mix Valve 5 Position'
         description: 'Mix valve 5 position (EM)'
-        expression: 'int16(ir:00090)/100'
-        unit: '%'
+        expression:  'int16(ir:00090)/100'
+        unit:        '%'
 
-      - id: 'Dew Point Room'
+      - id:          'Dew Point Room'
         description: 'Dew point room (EM)'
-        expression: 'int16(ir:00091)/100'
+        expression:  'int16(ir:00091)/100'
 
-      - id: 'Cooling Supply Line Mix Valve Position'
+      - id:          'Cooling Supply Line Mix Valve Position'
         description: 'Cooling supply line mix valve position (EM)'
-        expression: 'int16(ir:00092)/100'
-        unit: '%'
+        expression:  'int16(ir:00092)/100'
+        unit:        '%'
 
-      - id: 'Surplus Heat Fan Speed'
+      - id:          'Surplus Heat Fan Speed'
         description: 'Surplus heat fan speed (EM)'
-        expression: 'int16(ir:00093)/100'
-        unit: '%'
+        expression:  'int16(ir:00093)/100'
+        unit:        '%'
 
-      - id: 'Pool Supply Line Mix Valve Position'
+      - id:          'Pool Supply Line Mix Valve Position'
         description: 'Pool supply line mix valve position (EM)'
-        expression: 'int16(ir:00094)/100'
-        unit: '%'
+        expression:  'int16(ir:00094)/100'
+        unit:        '%'
 
-      - id: 'TWC Supply Line Temperature'
+      - id:          'TWC Supply Line Temperature'
         description: 'TWC supply line temperature (EM)'
-        expression: 'int16(ir:00095 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00095 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'TWC Return Temperature'
+      - id:          'TWC Return Temperature'
         description: 'TWC return temperature (EM)'
-        expression: 'int16(ir:00096 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00096 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'WCS Return Line Temperature'
+      - id:          'WCS Return Line Temperature'
         description: 'WCS return line temperature (EM)'
-        expression: 'int16(ir:00097 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00097 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'TWC End Tank Temperature'
+      - id:          'TWC End Tank Temperature'
         description: 'TWC end tank temperature (EM)'
-        expression: 'int16(ir:00098 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00098 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 2 Supply Line Temperature'
+      - id:          'Mix Valve 2 Supply Line Temperature'
         description: 'Mix valve 2 supply line temperature (EM)'
-        expression: 'int16(ir:00099 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00099 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 3 Supply Line Temperature'
+      - id:          'Mix Valve 3 Supply Line Temperature'
         description: 'Mix valve 3 supply line temperature (EM)'
-        expression: 'int16(ir:00100 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00100 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 4 Supply Line Temperature'
+      - id:          'Mix Valve 4 Supply Line Temperature'
         description: 'Mix valve 4 supply line temperature (EM)'
-        expression: 'int16(ir:00101 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00101 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Cooling Circuit Return Line Temperature'
+      - id:          'Cooling Circuit Return Line Temperature'
         description: 'Cooling circuit return line temperature (EM)'
-        expression: 'int16(ir:00103 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00103 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Cooling Tank Temperature'
+      - id:          'Cooling Tank Temperature'
         description: 'Cooling tank temperature (EM)'
-        expression: 'int16(ir:00104 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00104 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Cooling Tank Return Line Temperature'
+      - id:          'Cooling Tank Return Line Temperature'
         description: 'Cooling tank return line temperature (EM)'
-        expression: 'int16(ir:00105 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00105 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Cooling Circuit Supply Line Temperature'
+      - id:          'Cooling Circuit Supply Line Temperature'
         description: 'Cooling circuit supply line temperature (EM)'
-        expression: 'int16(ir:00106 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00106 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 5 Supply Line Temperature'
+      - id:          'Mix Valve 5 Supply Line Temperature'
         description: 'Mix valve 5 supply line temperature (EM)'
-        expression: 'int16(ir:00107 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00107 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 2 Return Line Temperature'
+      - id:          'Mix Valve 2 Return Line Temperature'
         description: 'Mix valve 2 return line temperature (EM)'
-        expression: 'int16(ir:00109 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00109 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 3 Return Line Temperature'
+      - id:          'Mix Valve 3 Return Line Temperature'
         description: 'Mix valve 3 return line temperature (EM)'
-        expression: 'int16(ir:00111 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00111 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 4 Return Line Temperature'
+      - id:          'Mix Valve 4 Return Line Temperature'
         description: 'Mix valve 4 return line temperature (EM)'
-        expression: 'int16(ir:00113 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00113 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 5 Return Line Temperature'
+      - id:          'Mix Valve 5 Return Line Temperature'
         description: 'Mix valve 5 return line temperature (EM)'
-        expression: 'int16(ir:00115 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00115 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Surplus Heat Return Line Temperature'
+      - id:          'Surplus Heat Return Line Temperature'
         description: 'Surplus heat return line temperature (EM)'
-        expression: 'int16(ir:00117 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00117 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Surplus Heat Supply Line Temperature'
+      - id:          'Surplus Heat Supply Line Temperature'
         description: 'Surplus heat supply line temperature (EM)'
-        expression: 'int16(ir:00118 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00118 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Pool Supply Line Temperature'
+      - id:          'Pool Supply Line Temperature'
         description: 'Pool supply line temperature (EM)'
-        expression: 'int16(ir:00119 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00119 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Pool Return Line Temperature'
+      - id:          'Pool Return Line Temperature'
         description: 'Pool return line temperature (EM)'
-        expression: 'int16(ir:00120 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00120 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Room Temperature'
+      - id:          'Room Temperature'
         description: 'Room temperature sensor'
-        expression: 'int16(ir:00121 ; 0x4E20)/10'
-        unit: '°C'
+        expression:  'int16(ir:00121 ; 0x4E20)/10'
+        unit:        '°C'
 
-      - id: 'Bubble Point High Pressure Temperature'
+      - id:          'Bubble Point High Pressure Temperature'
         description: 'Bubble point, high pressure temperature'
-        expression: 'int16(ir:00122 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00122 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Dew Point High Pressure Temperature'
+      - id:          'Dew Point High Pressure Temperature'
         description: 'Dew point, high pressure temperature'
-        expression: 'int16(ir:00123 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00123 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Dew Point Low Pressure Temperature'
+      - id:          'Dew Point Low Pressure Temperature'
         description: 'Dew point, low pressure temperature'
-        expression: 'int16(ir:00124 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00124 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Superheat Temperature'
+      - id:          'Superheat Temperature'
         description: 'Superheat temperature'
-        expression: 'int16(ir:00125 ; 0x4E20)/100'
-        unit: 'K'
+        expression:  'int16(ir:00125 ; 0x4E20)/100'
+        unit:        'K'
 
-      - id: 'Sub Cooling Temperature'
+      - id:          'Sub Cooling Temperature'
         description: 'Sub cooling temperature'
-        expression: 'int16(ir:00126 ; 0x4E20)/100'
-        unit: 'K'
+        expression:  'int16(ir:00126 ; 0x4E20)/100'
+        unit:        'K'
 
-      - id: 'Low Pressure Side Pressure'
+      - id:          'Low Pressure Side Pressure'
         description: 'Low pressure side, pressure (bar(g))'
-        expression: 'int16(ir:00127)/100'
-        unit: 'bar(g)'
+        expression:  'int16(ir:00127)/100'
+        unit:        'bar(g)'
 
-      - id: 'High Pressure Side Pressure'
+      - id:          'High Pressure Side Pressure'
         description: 'High pressure side, pressure (bar(g))'
-        expression: 'int16(ir:00128)/100'
-        unit: 'bar(g)'
+        expression:  'int16(ir:00128)/100'
+        unit:        'bar(g)'
 
-      - id: 'Liquid Line Temperature'
+      - id:          'Liquid Line Temperature'
         description: 'Liquid line temperature'
-        expression: 'int16(ir:00129 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00129 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Suction Gas Temperature'
+      - id:          'Suction Gas Temperature'
         description: 'Suction gas temperature'
-        expression: 'int16(ir:00130 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00130 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Heating Season Integral Value'
+      - id:          'Heating Season Integral Value'
         description: 'Heating season integral value'
-        expression: 'int16(ir:00131)'
+        expression:  'int16(ir:00131)'
 
-      - id: 'P Value For Gear Shifting And Demand Calculation'
+      - id:          'P Value For Gear Shifting And Demand Calculation'
         description: 'P - value for gear shifting and demand calculation'
-        expression: 'int16(ir:00132)/100'
+        expression:  'int16(ir:00132)/100'
 
-      - id: 'I Value For Gear Shifting And Demand Calculation'
+      - id:          'I Value For Gear Shifting And Demand Calculation'
         description: 'I - value for gear shifting and demand calculation'
-        expression: 'int16(ir:00133)/100'
+        expression:  'int16(ir:00133)/100'
 
-      - id: 'D Value For Gear Shifting And Demand Calculation'
+      - id:          'D Value For Gear Shifting And Demand Calculation'
         description: 'D - value for gear shifting and demand calculation'
-        expression: 'int16(ir:00134)/100'
+        expression:  'int16(ir:00134)/100'
 
-      - id: 'I Value For Compressor Buffer Tank'
+      - id:          'I Value For Compressor Buffer Tank'
         description: 'I - value for compressor ON/OFF (Buffer tank)'
-        expression: 'int16(ir:00135)/100'
+        expression:  'int16(ir:00135)/100'
 
-      - id: 'P Value For Compressor Buffer Tank'
+      - id:          'P Value For Compressor Buffer Tank'
         description: 'P - value for compressor ON/OFF (Buffer tank)'
-        expression: 'int16(ir:00136)/100'
+        expression:  'int16(ir:00136)/100'
 
-      - id: 'Mix Valve Cooling Opening Degree'
+      - id:          'Mix Valve Cooling Opening Degree'
         description: 'Mix valve cooling opening degree (EM2/3)'
-        expression: 'int16(ir:00137)'
-        unit: '%'
+        expression:  'int16(ir:00137)'
+        unit:        '%'
 
-      - id: 'Desired Gear For Tap Water'
+      - id:          'Desired Gear For Tap Water'
         description: 'Desired gear for tap water'
-        expression: 'int16(ir:00139)'
+        expression:  'int16(ir:00139)'
 
-      - id: 'Desired Gear For Heating'
+      - id:          'Desired Gear For Heating'
         description: 'Desired gear for heating'
-        expression: 'int16(ir:00140)'
+        expression:  'int16(ir:00140)'
 
-      - id: 'Desired Gear For Cooling'
+      - id:          'Desired Gear For Cooling'
         description: 'Desired gear for cooling'
-        expression: 'int16(ir:00141)'
+        expression:  'int16(ir:00141)'
 
-      - id: 'Desired Gear For Pool'
+      - id:          'Desired Gear For Pool'
         description: 'Desired gear for pool'
-        expression: 'int16(ir:00142)'
+        expression:  'int16(ir:00142)'
 
-      - id: 'Number Of Available Secondaries Genesis'
+      - id:          'Number Of Available Secondaries Genesis'
         description: 'Number of available secondaries Genesis'
-        expression: 'int16(ir:00143)'
+        expression:  'int16(ir:00143)'
 
-      - id: 'Number Of Available Secondaries Legacy'
+      - id:          'Number Of Available Secondaries Legacy'
         description: 'Number of available secondaries Legacy'
-        expression: 'int16(ir:00144)'
+        expression:  'int16(ir:00144)'
 
-      - id: 'Total Distributed Gears To All Units'
+      - id:          'Total Distributed Gears To All Units'
         description: 'Total distributed gears to all units'
-        expression: 'int16(ir:00145)'
+        expression:  'int16(ir:00145)'
 
-      - id: 'Maximum Gear Out Of All The Currently Requested Gears'
+      - id:          'Maximum Gear Out Of All The Currently Requested Gears'
         description: 'Maximum gear out of all the currently requested gears'
-        expression: 'int16(ir:00146)'
+        expression:  'int16(ir:00146)'
 
-      - id: 'Mix Valve 1 Desired Temperature Distribution Circuit'
+      - id:          'Mix Valve 1 Desired Temperature Distribution Circuit'
         description: 'Desired temperature distribution circuit Mix valve 1'
-        expression: 'int16(ir:00147 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00147 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 2 Desired Temperature Distribution Circuit'
+      - id:          'Mix Valve 2 Desired Temperature Distribution Circuit'
         description: 'Desired temperature distribution circuit Mix valve 2'
-        expression: 'int16(ir:00148 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00148 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 3 Desired Temperature Distribution Circuit'
+      - id:          'Mix Valve 3 Desired Temperature Distribution Circuit'
         description: 'Desired temperature distribution circuit Mix valve 3'
-        expression: 'int16(ir:00149 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00149 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 4 Desired Temperature Distribution Circuit'
+      - id:          'Mix Valve 4 Desired Temperature Distribution Circuit'
         description: 'Desired temperature distribution circuit Mix valve 4'
-        expression: 'int16(ir:00150 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00150 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 5 Desired Temperature Distribution Circuit'
+      - id:          'Mix Valve 5 Desired Temperature Distribution Circuit'
         description: 'Desired temperature distribution circuit Mix valve 5'
-        expression: 'int16(ir:00151 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(ir:00151 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Disconnect Hot Gas End Tank'
+      - id:          'Disconnect Hot Gas End Tank'
         description: 'Disconnect hot gas end tank, 0 = connected, 1 = disconnected'
-        expression: 'enum(ir:00152 ; 0->''Connected'' ; 1->''Disconnected'')'
+        expression:  'enum(ir:00152 ; 0->''Connected'' ; 1->''Disconnected'')'
 
-      - id: 'Legacy Heat Pump Compressor Running'
+      - id:          'Legacy Heat Pump Compressor Running'
         description: 'Legacy heat pump compressor running (bit field)'
-        expression: 'bitset(ir:00153 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
+        expression:  'bitset(ir:00153 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
 
-      - id: 'Legacy Heat Pump Reporting Alarm'
+      - id:          'Legacy Heat Pump Reporting Alarm'
         description: 'Legacy heat pump reporting alarm (bit field)'
-        expression: 'bitset(ir:00154 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
+        expression:  'bitset(ir:00154 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
 
-      - id: 'Legacy Heat Pump Start Signal'
+      - id:          'Legacy Heat Pump Start Signal'
         description: 'Legacy heat pump start signal (bit field)'
-        expression: 'bitset(ir:00155 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
+        expression:  'bitset(ir:00155 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
 
-      - id: 'Legacy Heat Pump Tap Water Signal'
+      - id:          'Legacy Heat Pump Tap Water Signal'
         description: 'Legacy heat pump tap water signal (bit field)'
-        expression: 'bitset(ir:00156 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
+        expression:  'bitset(ir:00156 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
 
-      - id: 'Primary Unit Alarm Class D'
+      - id:          'Primary Unit Alarm Class D'
         description: 'Primary unit alarm - the combined output of all Class D alarms. This signal is a bit field, one bit for each secondary heat pump unit.'
-        expression: 'bitset(ir:00160 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
+        expression:  'bitset(ir:00160 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
 
-      - id: 'Primary Unit Alarm Lost Communication'
+      - id:          'Primary Unit Alarm Lost Communication'
         description: 'Primary unit alarm - the primary unit has lost communication with one or more Genesis secondaries. This signal is a bit field, one bit for each heat pump.'
-        expression: 'bitset(ir:00161 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
+        expression:  'bitset(ir:00161 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
 
-      - id: 'Primary Unit Alarm Class A'
+      - id:          'Primary Unit Alarm Class A'
         description: 'Primary unit alarm - Class A alarm detected on the Genesis secondary heat pump unit. This signal is a bit field, one bit for each secondary heat pump unit.'
-        expression: 'bitset(ir:00162 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
+        expression:  'bitset(ir:00162 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
 
-      - id: 'Primary Unit Alarm Class B'
+      - id:          'Primary Unit Alarm Class B'
         description: 'Primary unit alarm - Class B alarm detected on the Genesis secondary heat pump unit. This signal is a bit field, one bit for each secondary heat pump unit.'
-        expression: 'bitset(ir:00163 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
+        expression:  'bitset(ir:00163 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
 
-      - id: 'Primary Unit Alarm Class E'
+      - id:          'Primary Unit Alarm Class E'
         description: 'Primary unit alarm - the combined output of all Class E alarms. This signal is a bit field, one bit for each legacy secondary heat pump unit.'
-        expression: 'bitset(ir:00170 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
+        expression:  'bitset(ir:00170 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
 
-      - id: 'Primary Unit Alarm General'
+      - id:          'Primary Unit Alarm General'
         description: 'Primary unit alarm - general legacy heat pump alarm. This signal is a bit field, one bit for each legacy secondary heat pump unit. Detects if the sum alarm of the secondary unit is active.'
-        expression: 'bitset(ir:00171 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
+        expression:  'bitset(ir:00171 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
 
-      - id: 'Primary Unit Alarm Lost Communication Legacy Heat Pump'
+      - id:          'Primary Unit Alarm Lost Communication Legacy Heat Pump'
         description: 'Primary unit alarm - the primary unit can not communicate with the corresponding expansion card for the legacy heat pump. This signal is a bit field, one bit for each legacy secondary heat pump unit.'
-        expression: 'bitset(ir:00173 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
+        expression:  'bitset(ir:00173 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
 
-      - id: 'Control Software Version Major'
+      - id:          'Control Software Version Major'
         description: 'Control software version: Major'
-        expression: 'int16(ir:00311)'
+        expression:  'int16(ir:00311)'
 
-      - id: 'Control Software Version Minor'
+      - id:          'Control Software Version Minor'
         description: 'Control software version: Minor'
-        expression: 'int16(ir:00312)'
+        expression:  'int16(ir:00312)'
 
-      - id: 'Control Software Version Micro'
+      - id:          'Control Software Version Micro'
         description: 'Control software version: Micro'
-        expression: 'int16(ir:00313)'
+        expression:  'int16(ir:00313)'
 
-      - id: 'Control Software Version'
+      - id:          'Control Software Version'
         description: 'Control software version: Major'
-        expression: 'concat(Control Software Version Major, ''.'', Control Software Version Minor, ''.'', Control Software Version Micro)'
+        expression:  'concat(Control Software Version Major, ''.'', Control Software Version Minor, ''.'', Control Software Version Micro)'
 
-      - id: 'Expansion Valve Opening Degree'
+      - id:          'Expansion Valve Opening Degree'
         description: 'Expansion valve opening degree'
-        expression: 'int16(ir:00315)/100'
-        unit: '%'
+        expression:  'int16(ir:00315)/100'
+        unit:        '%'
 
-      - id: 'Inverter Temperature'
+      - id:          'Inverter Temperature'
         description: 'Inverter temperature'
-        expression: 'int16(ir:00319 ; 0x4E20)'
-        unit: '°C'
+        expression:  'int16(ir:00319 ; 0x4E20)'
+        unit:        '°C'
 
-  - id: 'Settings'
+  - id:          'Settings'
     description: 'All the settings in the system'
+
     fields:
-
-      - id: 'Operational Mode'
+      - id:          'Operational Mode'
         description: 'Operational mode *2'
-        expression: 'enum(hr:00000 ; 1->''OFF'' ; 2->''Standby'' ; 3->''ON/Auto'')'
+        expression:  'enum(hr:00000 ; 1->''OFF'' ; 2->''Standby'' ; 3->''ON/Auto'')'
 
-      - id: 'Max Limitation Set Point Curve Radiator'
+      - id:          'Max Limitation Set Point Curve Radiator'
         description: 'Max limitation, set point curve radiator'
-        expression: 'int16(hr:00003 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00003 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Min Limitation Set Point Curve Radiator'
+      - id:          'Min Limitation Set Point Curve Radiator'
         description: 'Min limitation, set point curve radiator'
-        expression: 'int16(hr:00004 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00004 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Comfort Wheel Setting'
+      - id:          'Comfort Wheel Setting'
         description: 'Comfort wheel setting'
-        expression: 'int16(hr:00005 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00005 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Set Point Heat Curve Y1'
+      - id:          'Set Point Heat Curve Y1'
         description: 'Set point heat curve, Y-coordinate 1 (highest outdoor temperature)'
-        expression: 'int16(hr:00006 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00006 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Set Point Heat Curve Y2'
+      - id:          'Set Point Heat Curve Y2'
         description: 'Set point heat curve, Y-coordinate 2'
-        expression: 'int16(hr:00007 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00007 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Set Point Heat Curve Y3'
+      - id:          'Set Point Heat Curve Y3'
         description: 'Set point heat curve, Y-coordinate 3'
-        expression: 'int16(hr:00008 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00008 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Set Point Heat Curve Y4'
+      - id:          'Set Point Heat Curve Y4'
         description: 'Set point heat curve, Y-coordinate 4'
-        expression: 'int16(hr:00009 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00009 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Set Point Heat Curve Y5'
+      - id:          'Set Point Heat Curve Y5'
         description: 'Set point heat curve, Y-coordinate 5'
-        expression: 'int16(hr:00010 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00010 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Set Point Heat Curve Y6'
+      - id:          'Set Point Heat Curve Y6'
         description: 'Set point heat curve, Y-coordinate 6'
-        expression: 'int16(hr:00011 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00011 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Set Point Heat Curve Y7'
+      - id:          'Set Point Heat Curve Y7'
         description: 'Set point heat curve, Y-coordinate 7 (lowest outdoor temperature)'
-        expression: 'int16(hr:00012 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00012 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Heating Season Stop Temperature'
+      - id:          'Heating Season Stop Temperature'
         description: 'Heating season stop temperature'
-        expression: 'int16(hr:00016 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00016 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Tap Water Start Temperature'
+      - id:          'Tap Water Start Temperature'
         description: 'Start temperature tap water (only valid when tap water mode is Normal)'
-        expression: 'int16(hr:00022 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00022 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Tap Water Stop Temperature'
+      - id:          'Tap Water Stop Temperature'
         description: 'Stop temperature tap water (only valid when tap water mode is Normal)'
-        expression: 'int16(hr:00023 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00023 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Minimum Allowed Gear In Heating'
+      - id:          'Minimum Allowed Gear In Heating'
         description: 'Minimum allowed gear in heating'
-        expression: 'int16(hr:00026)'
+        expression:  'int16(hr:00026)'
 
-      - id: 'Maximum Allowed Gear In Heating'
+      - id:          'Maximum Allowed Gear In Heating'
         description: 'Maximum allowed gear in heating'
-        expression: 'int16(hr:00027)'
+        expression:  'int16(hr:00027)'
 
-      - id: 'Maximum Allowed Gear In Tap Water'
+      - id:          'Maximum Allowed Gear In Tap Water'
         description: 'Maximum allowed gear in tap water (only valid when tap water mode is Normal)'
-        expression: 'int16(hr:00028)'
+        expression:  'int16(hr:00028)'
 
-      - id: 'Minimum Allowed Gear In Tap Water'
+      - id:          'Minimum Allowed Gear In Tap Water'
         description: 'Minimum allowed gear in tap water (only valid when tap water mode is Normal)'
-        expression: 'int16(hr:00029)'
+        expression:  'int16(hr:00029)'
 
-      - id: 'Cooling Mix Valve Set Point'
+      - id:          'Cooling Mix Valve Set Point'
         description: 'Cooling mix valve set point (EM)'
-        expression: 'int16(hr:00030)/100'
-        unit: '%'
+        expression:  'int16(hr:00030)/100'
+        unit:        '%'
 
-      - id: 'TWC Mix Valve Set Point'
+      - id:          'TWC Mix Valve Set Point'
         description: 'TWC mix valve set point (EM)'
-        expression: 'int16(hr:00031)/100'
-        unit: '%'
+        expression:  'int16(hr:00031)/100'
+        unit:        '%'
 
-      - id: 'WCS Return Line Set Point'
+      - id:          'WCS Return Line Set Point'
         description: 'WCS return line set point (EM)'
-        expression: 'int16(hr:00032)/100'
-        unit: '%'
+        expression:  'int16(hr:00032)/100'
+        unit:        '%'
 
-      - id: 'TWC Mix Valve Lowest Allowed Opening Degree'
+      - id:          'TWC Mix Valve Lowest Allowed Opening Degree'
         description: 'TWC mix valve lowest allowed opening degree (EM)'
-        expression: 'int16(hr:00033)/100'
-        unit: '%'
+        expression:  'int16(hr:00033)/100'
+        unit:        '%'
 
-      - id: 'TWC Mix Valve Highest Allowed Opening Degree'
+      - id:          'TWC Mix Valve Highest Allowed Opening Degree'
         description: 'TWC mix valve highest allowed opening degree (EM)'
-        expression: 'int16(hr:00034)/100'
-        unit: '%'
+        expression:  'int16(hr:00034)/100'
+        unit:        '%'
 
-      - id: 'TWC Start Temperature Immersion Heater'
+      - id:          'TWC Start Temperature Immersion Heater'
         description: 'TWC start temperature immersion heater (EM)'
-        expression: 'int16(hr:00035 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00035 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'TWC Start Delay Immersion Heater Seconds'
+      - id:          'TWC Start Delay Immersion Heater Seconds'
         description: 'TWC start delay immersion heater, seconds (EM)'
-        expression: 'int16(hr:00036)/100'
-        unit: 'seconds'
+        expression:  'int16(hr:00036)/100'
+        unit:        'seconds'
 
-      - id: 'TWC Stop Temperature Immersion Heater'
+      - id:          'TWC Stop Temperature Immersion Heater'
         description: 'TWC stop temperature immersion heater (EM)'
-        expression: 'int16(hr:00037 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00037 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'WCS Mix Valve Lowest Allowed Opening Degree'
+      - id:          'WCS Mix Valve Lowest Allowed Opening Degree'
         description: 'WCS mix valve lowest allowed opening degree (EM)'
-        expression: 'int16(hr:00038)/100'
-        unit: '%'
+        expression:  'int16(hr:00038)/100'
+        unit:        '%'
 
-      - id: 'WCS Mix Valve Highest Allowed Opening Degree'
+      - id:          'WCS Mix Valve Highest Allowed Opening Degree'
         description: 'WCS mix valve highest allowed opening degree (EM)'
-        expression: 'int16(hr:00039)/100'
-        unit: '%'
+        expression:  'int16(hr:00039)/100'
+        unit:        '%'
 
-      - id: 'Mix Valve 2 Lowest Allowed Opening Degree'
+      - id:          'Mix Valve 2 Lowest Allowed Opening Degree'
         description: 'Mix valve 2 lowest allowed opening degree (EM)'
-        expression: 'int16(hr:00040)/100'
-        unit: '%'
+        expression:  'int16(hr:00040)/100'
+        unit:        '%'
 
-      - id: 'Mix Valve 2 Highest Allowed Opening Degree'
+      - id:          'Mix Valve 2 Highest Allowed Opening Degree'
         description: 'Mix valve 2 highest allowed opening degree (EM)'
-        expression: 'int16(hr:00041)/100'
-        unit: '%'
+        expression:  'int16(hr:00041)/100'
+        unit:        '%'
 
-      - id: 'Mix Valve 3 Lowest Allowed Opening Degree'
+      - id:          'Mix Valve 3 Lowest Allowed Opening Degree'
         description: 'Mix valve 3 lowest allowed opening degree (EM)'
-        expression: 'int16(hr:00042)/100'
-        unit: '%'
+        expression:  'int16(hr:00042)/100'
+        unit:        '%'
 
-      - id: 'Mix Valve 3 Highest Allowed Opening Degree'
+      - id:          'Mix Valve 3 Highest Allowed Opening Degree'
         description: 'Mix valve 3 highest allowed opening degree (EM)'
-        expression: 'int16(hr:00043)/100'
-        unit: '%'
+        expression:  'int16(hr:00043)/100'
+        unit:        '%'
 
-      - id: 'Mix Valve 4 Lowest Allowed Opening Degree'
+      - id:          'Mix Valve 4 Lowest Allowed Opening Degree'
         description: 'Mix valve 4 lowest allowed opening degree (EM)'
-        expression: 'int16(hr:00044)/100'
-        unit: '%'
+        expression:  'int16(hr:00044)/100'
+        unit:        '%'
 
-      - id: 'Mix Valve 4 Highest Allowed Opening Degree'
+      - id:          'Mix Valve 4 Highest Allowed Opening Degree'
         description: 'Mix valve 4 highest allowed opening degree (EM)'
-        expression: 'int16(hr:00045)/100'
-        unit: '%'
+        expression:  'int16(hr:00045)/100'
+        unit:        '%'
 
-      - id: 'Mix Valve 5 Lowest Allowed Opening Degree'
+      - id:          'Mix Valve 5 Lowest Allowed Opening Degree'
         description: 'Mix valve 5 lowest allowed opening degree (EM)'
-        expression: 'int16(hr:00046)/100'
-        unit: '%'
+        expression:  'int16(hr:00046)/100'
+        unit:        '%'
 
-      - id: 'Mix Valve 5 Highest Allowed Opening Degree'
+      - id:          'Mix Valve 5 Highest Allowed Opening Degree'
         description: 'Mix valve 5 highest allowed opening degree (EM)'
-        expression: 'int16(hr:00047)/100'
-        unit: '%'
+        expression:  'int16(hr:00047)/100'
+        unit:        '%'
 
-      - id: 'Surplus Heat Chiller Set Point'
+      - id:          'Surplus Heat Chiller Set Point'
         description: 'Surplus heat chiller set point (EM)'
-        expression: 'int16(hr:00048)/100'
-        unit: '%'
+        expression:  'int16(hr:00048)/100'
+        unit:        '%'
 
-      - id: 'Cooling Supply Line Mix Valve Lowest Allowed Opening Degree'
+      - id:          'Cooling Supply Line Mix Valve Lowest Allowed Opening Degree'
         description: 'Cooling supply line mix valve: Lowest allowed opening degree (EM)'
-        expression: 'int16(hr:00049)/100'
-        unit: '%'
+        expression:  'int16(hr:00049)/100'
+        unit:        '%'
 
-      - id: 'Cooling Supply Line Mix Valve Highest Allowed Opening Degree'
+      - id:          'Cooling Supply Line Mix Valve Highest Allowed Opening Degree'
         description: 'Cooling supply line mix valve: Highest allowed opening degree (EM)'
-        expression: 'int16(hr:00050)/100'
-        unit: '%'
+        expression:  'int16(hr:00050)/100'
+        unit:        '%'
 
-      - id: 'Surplus Heat Opening Degree For Starting Fan1'
+      - id:          'Surplus Heat Opening Degree For Starting Fan1'
         description: 'Surplus heat opening degree for starting fan 1 (EM)'
-        expression: 'int16(hr:00051)/100'
-        unit: '%'
+        expression:  'int16(hr:00051)/100'
+        unit:        '%'
 
-      - id: 'Surplus Heat Opening Degree For Starting Fan2'
+      - id:          'Surplus Heat Opening Degree For Starting Fan2'
         description: 'Surplus heat opening degree for starting fan 2 (EM)'
-        expression: 'int16(hr:00052)/100'
-        unit: '%'
+        expression:  'int16(hr:00052)/100'
+        unit:        '%'
 
-      - id: 'Surplus Heat Opening Degree For Stopping Fan1'
+      - id:          'Surplus Heat Opening Degree For Stopping Fan1'
         description: 'Surplus heat opening degree for stopping fan 1 (EM)'
-        expression: 'int16(hr:00053)/100'
-        unit: '%'
+        expression:  'int16(hr:00053)/100'
+        unit:        '%'
 
-      - id: 'Surplus Heat Opening Degree For Stopping Fan2'
+      - id:          'Surplus Heat Opening Degree For Stopping Fan2'
         description: 'Surplus heat opening degree for stopping fan 2 (EM)'
-        expression: 'int16(hr:00054)/100'
-        unit: '%'
+        expression:  'int16(hr:00054)/100'
+        unit:        '%'
 
-      - id: 'Surplus Heat Lowest Allowed Opening Degree'
+      - id:          'Surplus Heat Lowest Allowed Opening Degree'
         description: 'Surplus heat lowest allowed opening degree (EM)'
-        expression: 'int16(hr:00055)/100'
-        unit: '%'
+        expression:  'int16(hr:00055)/100'
+        unit:        '%'
 
-      - id: 'Surplus Heat Highest Allowed Opening Degree'
+      - id:          'Surplus Heat Highest Allowed Opening Degree'
         description: 'Surplus heat highest allowed opening degree (EM)'
-        expression: 'int16(hr:00056)/100'
-        unit: '%'
+        expression:  'int16(hr:00056)/100'
+        unit:        '%'
 
-      - id: 'Pool Charge Set Point'
+      - id:          'Pool Charge Set Point'
         description: 'Pool charge set point (EM)'
-        expression: 'int16(hr:00058)/100'
-        unit: '%'
+        expression:  'int16(hr:00058)/100'
+        unit:        '%'
 
-      - id: 'Pool Mix Valve Lowest Allowed Opening Degree'
+      - id:          'Pool Mix Valve Lowest Allowed Opening Degree'
         description: 'Pool mix valve lowest allowed opening degree (EM)'
-        expression: 'int16(hr:00059)/100'
-        unit: '%'
+        expression:  'int16(hr:00059)/100'
+        unit:        '%'
 
-      - id: 'Pool Mix Valve Highest Allowed Opening Degree'
+      - id:          'Pool Mix Valve Highest Allowed Opening Degree'
         description: 'Pool mix valve highest allowed opening degree (EM)'
-        expression: 'int16(hr:00060)/100'
-        unit: '%'
+        expression:  'int16(hr:00060)/100'
+        unit:        '%'
 
-      - id: 'Gear Shift Delay Heating'
+      - id:          'Gear Shift Delay Heating'
         description: 'Gear shift delay heating'
-        expression: 'int16(hr:00061)'
-        unit: 'min'
+        expression:  'int16(hr:00061)'
+        unit:        'min'
 
-      - id: 'Gear Shift Delay Pool'
+      - id:          'Gear Shift Delay Pool'
         description: 'Gear shift delay pool'
-        expression: 'int16(hr:00062)'
-        unit: 'min'
+        expression:  'int16(hr:00062)'
+        unit:        'min'
 
-      - id: 'Gear Shift Delay Cooling'
+      - id:          'Gear Shift Delay Cooling'
         description: 'Gear shift delay cooling'
-        expression: 'int16(hr:00063)'
-        unit: 'min'
+        expression:  'int16(hr:00063)'
+        unit:        'min'
 
-      - id: 'Brine In High Alarm Limit'
+      - id:          'Brine In High Alarm Limit'
         description: 'Brine in high alarm limit'
-        expression: 'int16(hr:00067 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00067 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Brine In Low Alarm Limit'
+      - id:          'Brine In Low Alarm Limit'
         description: 'Brine in low alarm limit'
-        expression: 'int16(hr:00068 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00068 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Brine Out Low Alarm Limit'
+      - id:          'Brine Out Low Alarm Limit'
         description: 'Brine out low alarm limit'
-        expression: 'int16(hr:00069 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00069 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Brine Max Delta Limit'
+      - id:          'Brine Max Delta Limit'
         description: 'Brine max delta limit'
-        expression: 'int16(hr:00070)/100'
-        unit: 'K'
+        expression:  'int16(hr:00070)/100'
+        unit:        'K'
 
-      - id: 'Hot Gas Pump Start Temperature Discharge Pipe'
+      - id:          'Hot Gas Pump Start Temperature Discharge Pipe'
         description: 'Hot gas pump start temperature discharge pipe'
-        expression: 'int16(hr:00071 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00071 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Hot Gas Pump Lower Stop Limit Temperature Discharge Pipe'
+      - id:          'Hot Gas Pump Lower Stop Limit Temperature Discharge Pipe'
         description: 'Hot gas pump lower stop limit temperature discharge pipe'
-        expression: 'int16(hr:00072 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00072 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Hot Gas Pump Upper Stop Limit Temperature Discharge Pipe'
+      - id:          'Hot Gas Pump Upper Stop Limit Temperature Discharge Pipe'
         description: 'Hot gas pump upper stop limit temperature discharge pipe'
-        expression: 'int16(hr:00073 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00073 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'External Additional Heater Start'
+      - id:          'External Additional Heater Start'
         description: 'External additional heater start (PID sum)'
-        expression: 'int16(hr:00075)'
+        expression:  'int16(hr:00075)'
 
-      - id: 'Condenser Pump Lowest Allowed Speed'
+      - id:          'Condenser Pump Lowest Allowed Speed'
         description: 'Condenser pump lowest allowed speed (%)'
-        expression: 'int16(hr:00076)/100'
-        unit: '%'
+        expression:  'int16(hr:00076)/100'
+        unit:        '%'
 
-      - id: 'Brine Pump Lowest Allowed Speed'
+      - id:          'Brine Pump Lowest Allowed Speed'
         description: 'Brine pump lowest allowed speed (%)'
-        expression: 'int16(hr:00077)/100'
-        unit: '%'
+        expression:  'int16(hr:00077)/100'
+        unit:        '%'
 
-      - id: 'External Additional Heater Stop'
+      - id:          'External Additional Heater Stop'
         description: 'External additional heater stop (PID sum)'
-        expression: 'int16(hr:00078)/100'
+        expression:  'int16(hr:00078)/100'
 
-      - id: 'Condenser Pump Highest Allowed Speed'
+      - id:          'Condenser Pump Highest Allowed Speed'
         description: 'Condenser pump highest allowed speed (%)'
-        expression: 'int16(hr:00079)/100'
-        unit: '%'
+        expression:  'int16(hr:00079)/100'
+        unit:        '%'
 
-      - id: 'Brine Pump Highest Allowed Speed'
+      - id:          'Brine Pump Highest Allowed Speed'
         description: 'Brine pump highest allowed speed (%)'
-        expression: 'int16(hr:00080)/100'
-        unit: '%'
+        expression:  'int16(hr:00080)/100'
+        unit:        '%'
 
-      - id: 'Condenser Pump Standby Speed'
+      - id:          'Condenser Pump Standby Speed'
         description: 'Condenser pump standby speed (%)'
-        expression: 'int16(hr:00081)/100'
-        unit: '%'
+        expression:  'int16(hr:00081)/100'
+        unit:        '%'
 
-      - id: 'Brine Pump Standby Speed'
+      - id:          'Brine Pump Standby Speed'
         description: 'Brine pump standby speed (%)'
-        expression: 'int16(hr:00082)/100'
-        unit: '%'
+        expression:  'int16(hr:00082)/100'
+        unit:        '%'
 
-      - id: 'Minimum Allowed Gear In Pool'
+      - id:          'Minimum Allowed Gear In Pool'
         description: 'Minimum allowed gear in pool'
-        expression: 'int16(hr:00085)'
+        expression:  'int16(hr:00085)'
 
-      - id: 'Maximum Allowed Gear In Pool'
+      - id:          'Maximum Allowed Gear In Pool'
         description: 'Maximum allowed gear in pool'
-        expression: 'int16(hr:00086)'
+        expression:  'int16(hr:00086)'
 
-      - id: 'Minimum Allowed Gear In Cooling'
+      - id:          'Minimum Allowed Gear In Cooling'
         description: 'Minimum allowed gear in cooling'
-        expression: 'int16(hr:00087)'
+        expression:  'int16(hr:00087)'
 
-      - id: 'Maximum Allowed Gear In Cooling'
+      - id:          'Maximum Allowed Gear In Cooling'
         description: 'Maximum allowed gear in cooling'
-        expression: 'int16(hr:00088)'
+        expression:  'int16(hr:00088)'
 
-      - id: 'Start Temp For Cooling'
+      - id:          'Start Temp For Cooling'
         description: 'Start temp for cooling (EM)'
-        expression: 'int16(hr:00105 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00105 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Stop Temp For Cooling'
+      - id:          'Stop Temp For Cooling'
         description: 'Stop temp for cooling (EM)'
-        expression: 'int16(hr:00106 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00106 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 1 Min Limitation Set Point Curve Radiator'
+      - id:          'Mix Valve 1 Min Limitation Set Point Curve Radiator'
         description: 'Min limitation Set point curve radiator Mix valve 1'
-        expression: 'int16(hr:00107 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00107 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 1 Max Limitation Set Point Curve Radiator'
+      - id:          'Mix Valve 1 Max Limitation Set Point Curve Radiator'
         description: 'Max limitation Set point curve radiator Mix valve 1'
-        expression: 'int16(hr:00108 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00108 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 1 Set Point Curve Y1'
+      - id:          'Mix Valve 1 Set Point Curve Y1'
         description: 'Set point curve, Y-coordinate 1 Mix valve 1 (highest outdoor temperature)'
-        expression: 'int16(hr:00109 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00109 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 1 Set Point Curve Y2'
+      - id:          'Mix Valve 1 Set Point Curve Y2'
         description: 'Set point curve, Y-coordinate 2 Mix valve 1'
-        expression: 'int16(hr:00110 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00110 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 1 Set Point Curve Y3'
+      - id:          'Mix Valve 1 Set Point Curve Y3'
         description: 'Set point curve, Y-coordinate 3 Mix valve 1'
-        expression: 'int16(hr:00111 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00111 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 1 Set Point Curve Y4'
+      - id:          'Mix Valve 1 Set Point Curve Y4'
         description: 'Set point curve, Y-coordinate 4 Mix valve 1'
-        expression: 'int16(hr:00112 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00112 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 1 Set Point Curve Y5'
+      - id:          'Mix Valve 1 Set Point Curve Y5'
         description: 'Set point curve, Y-coordinate 5 Mix valve 1'
-        expression: 'int16(hr:00113 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00113 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 1 Set Point Curve Y6'
+      - id:          'Mix Valve 1 Set Point Curve Y6'
         description: 'Set point curve, Y-coordinate 6 Mix valve 1'
-        expression: 'int16(hr:00114 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00114 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 1 Set Point Curve Y7'
+      - id:          'Mix Valve 1 Set Point Curve Y7'
         description: 'Set point curve, Y-coordinate 7 Mix valve 1 (lowest outdoor temperature)'
-        expression: 'int16(hr:00115 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00115 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Fixed System Supply Set Point'
+      - id:          'Fixed System Supply Set Point'
         description: 'Fixed system supply set point, requires defacto address 42 to be enabled'
-        expression: 'int16(hr:00116 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00116 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Outdoor Temperature Source'
+      - id:          'Outdoor Temperature Source'
         description: 'Outdoor temperature source, is an enumeration where 0 = designated PT1000 sensor located on BM-card. 1 = BMS register hr:118 (De Facto). When the source is BMS the outdoor temperature alarm is automatically removed when the sensor data is valid. If no valid sensor data is present the heat pump will use its designated PT1000 sensor and if that sensor is missing the heat pump will use 0 degrees C as a fallback value.'
-        expression: 'enum(hr:00117 ; 0->''PT1000'' ; 1->''OutdoorTemperatureSensor'')'
+        expression:  'enum(hr:00117 ; 0->''PT1000'' ; 1->''OutdoorTemperatureSensor'')'
 
-      - id: 'Outdoor Temperature Sensor'
+      - id:          'Outdoor Temperature Sensor'
         description: 'Outdoor temperature sensor, this register will be the source of the outdoor temperature given that BMS-address hr:117 is set to 1. The valid range of the temperature is between -50 to 200 degrees C. If this register is not updated with a new temperature within 12 hours or the value is outside the valid range, the fallback logic will be triggered stated in description of BMS register hr:117. This signal is automatically filtered in the heat pump.'
-        expression: 'int16(hr:00118 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00118 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Maximum Phase Current'
+      - id:          'Maximum Phase Current'
         description: 'Maximum phase current'
-        expression: 'int16(hr:00119)'
-        unit: 'A'
+        expression:  'int16(hr:00119)'
+        unit:        'A'
 
-      - id: 'Compressor Current Hysteresis'
+      - id:          'Compressor Current Hysteresis'
         description: 'Compressor current hysteresis'
-        expression: 'int16(hr:00120)'
-        unit: 'A'
+        expression:  'int16(hr:00120)'
+        unit:        'A'
 
-      - id: 'Mix Valve 2 Min Limitation Set Point Curve Radiator'
+      - id:          'Mix Valve 2 Min Limitation Set Point Curve Radiator'
         description: 'Min limitation Set point curve radiator Mix valve 2'
-        expression: 'int16(hr:00199 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00199 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 2 Max Limitation Set Point Curve Radiator'
+      - id:          'Mix Valve 2 Max Limitation Set Point Curve Radiator'
         description: 'Max limitation Set point curve radiator Mix valve 2'
-        expression: 'int16(hr:00200 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00200 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 2 Set Point Curve Y1'
+      - id:          'Mix Valve 2 Set Point Curve Y1'
         description: 'Set point curve, Y-coordinate 1 Mix valve 2 (highest outdoor temperature)'
-        expression: 'int16(hr:00201 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00201 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 2 Set Point Curve Y2'
+      - id:          'Mix Valve 2 Set Point Curve Y2'
         description: 'Set point curve, Y-coordinate 2 Mix valve 2'
-        expression: 'int16(hr:00202 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00202 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 2 Set Point Curve Y3'
+      - id:          'Mix Valve 2 Set Point Curve Y3'
         description: 'Set point curve, Y-coordinate 3 Mix valve 2'
-        expression: 'int16(hr:00203 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00203 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 2 Set Point Curve Y4'
+      - id:          'Mix Valve 2 Set Point Curve Y4'
         description: 'Set point curve, Y-coordinate 4 Mix valve 2'
-        expression: 'int16(hr:00204 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00204 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 2 Set Point Curve Y5'
+      - id:          'Mix Valve 2 Set Point Curve Y5'
         description: 'Set point curve, Y-coordinate 5 Mix valve 2'
-        expression: 'int16(hr:00205 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00205 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 2 Set Point Curve Y6'
+      - id:          'Mix Valve 2 Set Point Curve Y6'
         description: 'Set point curve, Y-coordinate 6 Mix valve 2'
-        expression: 'int16(hr:00206 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00206 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 2 Set Point Curve Y7'
+      - id:          'Mix Valve 2 Set Point Curve Y7'
         description: 'Set point curve, Y-coordinate 7 Mix valve 2 (lowest outdoor temperature)'
-        expression: 'int16(hr:00207 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00207 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 3 Min Limitation Set Point Curve Radiator'
+      - id:          'Mix Valve 3 Min Limitation Set Point Curve Radiator'
         description: 'Min limitation Set point curve radiator Mix valve 3'
-        expression: 'int16(hr:00208 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00208 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 3 Max Limitation Set Point Curve Radiator'
+      - id:          'Mix Valve 3 Max Limitation Set Point Curve Radiator'
         description: 'Max limitation Set point curve radiator Mix valve 3'
-        expression: 'int16(hr:00209 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00209 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 3 Set Point Curve Y1'
+      - id:          'Mix Valve 3 Set Point Curve Y1'
         description: 'Set point curve, Y-coordinate 1 Mix valve 3 (highest outdoor temperature)'
-        expression: 'int16(hr:00210 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00210 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 3 Set Point Curve Y2'
+      - id:          'Mix Valve 3 Set Point Curve Y2'
         description: 'Set point curve, Y-coordinate 2 Mix valve 3'
-        expression: 'int16(hr:00211 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00211 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 3 Set Point Curve Y3'
+      - id:          'Mix Valve 3 Set Point Curve Y3'
         description: 'Set point curve, Y-coordinate 3 Mix valve 3'
-        expression: 'int16(hr:00212 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00212 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 3 Set Point Curve Y4'
+      - id:          'Mix Valve 3 Set Point Curve Y4'
         description: 'Set point curve, Y-coordinate 4 Mix valve 3'
-        expression: 'int16(hr:00213 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00213 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 3 Set Point Curve Y5'
+      - id:          'Mix Valve 3 Set Point Curve Y5'
         description: 'Set point curve, Y-coordinate 5 Mix valve 3'
-        expression: 'int16(hr:00214 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00214 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 3 Set Point Curve Y6'
+      - id:          'Mix Valve 3 Set Point Curve Y6'
         description: 'Set point curve, Y-coordinate 6 Mix valve 3'
-        expression: 'int16(hr:00215 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00215 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 3 Set Point Curve Y7'
+      - id:          'Mix Valve 3 Set Point Curve Y7'
         description: 'Set point curve, Y-coordinate 7 Mix valve 3 (lowest outdoor temperature)'
-        expression: 'int16(hr:00216 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00216 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 4 Min Limitation Set Point Curve Radiator'
+      - id:          'Mix Valve 4 Min Limitation Set Point Curve Radiator'
         description: 'Min limitation Set point curve radiator Mix valve 4'
-        expression: 'int16(hr:00239 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00239 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 4 Max Limitation Set Point Curve Radiator'
+      - id:          'Mix Valve 4 Max Limitation Set Point Curve Radiator'
         description: 'Max limitation Set point curve radiator Mix valve 4'
-        expression: 'int16(hr:00240 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00240 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 4 Set Point Curve Y1'
+      - id:          'Mix Valve 4 Set Point Curve Y1'
         description: 'Set point curve, Y-coordinate 1 Mix valve 4 (highest outdoor temperature)'
-        expression: 'int16(hr:00241 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00241 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 4 Set Point Curve Y2'
+      - id:          'Mix Valve 4 Set Point Curve Y2'
         description: 'Set point curve, Y-coordinate 2 Mix valve 4'
-        expression: 'int16(hr:00242 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00242 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 4 Set Point Curve Y3'
+      - id:          'Mix Valve 4 Set Point Curve Y3'
         description: 'Set point curve, Y-coordinate 3 Mix valve 4'
-        expression: 'int16(hr:00243 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00243 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 4 Set Point Curve Y4'
+      - id:          'Mix Valve 4 Set Point Curve Y4'
         description: 'Set point curve, Y-coordinate 4 Mix valve 4'
-        expression: 'int16(hr:00244 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00244 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 4 Set Point Curve Y5'
+      - id:          'Mix Valve 4 Set Point Curve Y5'
         description: 'Set point curve, Y-coordinate 5 Mix valve 4'
-        expression: 'int16(hr:00245 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00245 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 4 Set Point Curve Y6'
+      - id:          'Mix Valve 4 Set Point Curve Y6'
         description: 'Set point curve, Y-coordinate 6 Mix valve 4'
-        expression: 'int16(hr:00246 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00246 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 4 Set Point Curve Y7'
+      - id:          'Mix Valve 4 Set Point Curve Y7'
         description: 'Set point curve, Y-coordinate 7 Mix valve 4 (lowest outdoor temperature)'
-        expression: 'int16(hr:00247 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00247 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 5 Min Limitation Set Point Curve Radiator'
+      - id:          'Mix Valve 5 Min Limitation Set Point Curve Radiator'
         description: 'Min limitation Set point curve radiator Mix valve 5'
-        expression: 'int16(hr:00248 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00248 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 5 Max Limitation Set Point Curve Radiator'
+      - id:          'Mix Valve 5 Max Limitation Set Point Curve Radiator'
         description: 'Max limitation Set point curve radiator Mix valve 5'
-        expression: 'int16(hr:00249 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00249 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 5 Set Point Curve Y1'
+      - id:          'Mix Valve 5 Set Point Curve Y1'
         description: 'Set point curve, Y-coordinate 1 Mix valve 5 (highest outdoor temperature)'
-        expression: 'int16(hr:00250 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00250 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 5 Set Point Curve Y2'
+      - id:          'Mix Valve 5 Set Point Curve Y2'
         description: 'Set point curve, Y-coordinate 2 Mix valve 5'
-        expression: 'int16(hr:00251 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00251 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 5 Set Point Curve Y3'
+      - id:          'Mix Valve 5 Set Point Curve Y3'
         description: 'Set point curve, Y-coordinate 3 Mix valve 5'
-        expression: 'int16(hr:00252 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00252 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 5 Set Point Curve Y4'
+      - id:          'Mix Valve 5 Set Point Curve Y4'
         description: 'Set point curve, Y-coordinate 4 Mix valve 5'
-        expression: 'int16(hr:00253 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00253 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 5 Set Point Curve Y5'
+      - id:          'Mix Valve 5 Set Point Curve Y5'
         description: 'Set point curve, Y-coordinate 5 Mix valve 5'
-        expression: 'int16(hr:00254 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00254 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 5 Set Point Curve Y6'
+      - id:          'Mix Valve 5 Set Point Curve Y6'
         description: 'Set point curve, Y-coordinate 6 Mix valve 5'
-        expression: 'int16(hr:00255 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00255 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 5 Set Point Curve Y7'
+      - id:          'Mix Valve 5 Set Point Curve Y7'
         description: 'Set point curve, Y-coordinate 7 Mix valve 5 (lowest outdoor temperature)'
-        expression: 'int16(hr:00256 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00256 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 1 Selected Mode'
+      - id:          'Mix Valve 1 Selected Mode'
         description: 'Selected mode for mixing valve 1, 0:Heat, 1:Cool, 2:Auto'
-        expression: 'enum(hr:00298 ; 0->''Heat'' ; 1->''Cool'' ; 2->''Auto'')'
+        expression:  'enum(hr:00298 ; 0->''Heat'' ; 1->''Cool'' ; 2->''Auto'')'
 
-      - id: 'Set Point Return Temp From Pool To Heat Exchanger'
+      - id:          'Set Point Return Temp From Pool To Heat Exchanger'
         description: 'Set point return temp from pool to heat exchanger (EM)'
-        expression: 'int16(hr:00299 ; 0x4E20)/10'
-        unit: '°C'
+        expression:  'int16(hr:00299 ; 0x4E20)/10'
+        unit:        '°C'
 
-      - id: 'Set Point Pool Hysteresis'
+      - id:          'Set Point Pool Hysteresis'
         description: 'Set point pool hysteresis (EM)'
-        expression: 'int16(hr:00300)/10'
-        unit: 'K'
+        expression:  'int16(hr:00300)/10'
+        unit:        'K'
 
-      - id: 'Mix Valve 1 Set Point For Supply Line Temp Passive Cooling'
+      - id:          'Mix Valve 1 Set Point For Supply Line Temp Passive Cooling'
         description: 'Set point for supply line temp passive cooling with mixing valve 1'
-        expression: 'int16(hr:00302)/100'
-        unit: '°C'
+        expression:  'int16(hr:00302)/100'
+        unit:        '°C'
 
-      - id: 'Set Point Minimum Outdoor Temp When Cooling Is Permitted'
+      - id:          'Set Point Minimum Outdoor Temp When Cooling Is Permitted'
         description: 'Set point minimum outdoor temp when cooling is permitted'
-        expression: 'int16(hr:00303 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00303 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'External Heater Outdoor Temp Limit'
+      - id:          'External Heater Outdoor Temp Limit'
         description: 'External heater outdoor temp limit'
-        expression: 'int16(hr:00304 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00304 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 2 Selected Mode'
+      - id:          'Mix Valve 2 Selected Mode'
         description: 'Selected mode for mixing valve 2, 0:Heat, 1:Cool, 2:Auto (EM3 only)'
-        expression: 'enum(hr:00305 ; 0->''Heat'' ; 1->''Cool'' ; 2->''Auto'')'
+        expression:  'enum(hr:00305 ; 0->''Heat'' ; 1->''Cool'' ; 2->''Auto'')'
 
-      - id: 'Mix Valve 2 Desired Cooling Temperature Set Point'
+      - id:          'Mix Valve 2 Desired Cooling Temperature Set Point'
         description: 'Desired cooling temperature setpoint mixing valve 2 (EM3 only)'
-        expression: 'int16(hr:00306 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00306 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 2 Seasonal Cooling Outdoor Temperature'
+      - id:          'Mix Valve 2 Seasonal Cooling Outdoor Temperature'
         description: 'Seasonal cooling temperature (outdoor temp.), mixing valve 2 (EM3 only)'
-        expression: 'int16(hr:00307 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00307 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 2 Seasonal Heating Outdoor Temperature'
+      - id:          'Mix Valve 2 Seasonal Heating Outdoor Temperature'
         description: 'Seasonal heating temperature (outdoor temp.), mixing valve 2 (EM3 only)'
-        expression: 'int16(hr:00308 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00308 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 3 Selected Mode'
+      - id:          'Mix Valve 3 Selected Mode'
         description: 'Selected mode for mixing valve 3, 0:Heat, 1:Cool, 2:Auto (EM3 only)'
-        expression: 'enum(hr:00309 ; 0->''Heat'' ; 1->''Cool'' ; 2->''Auto'')'
+        expression:  'enum(hr:00309 ; 0->''Heat'' ; 1->''Cool'' ; 2->''Auto'')'
 
-      - id: 'Mix Valve 3 Desired Cooling Temperature Set Point'
+      - id:          'Mix Valve 3 Desired Cooling Temperature Set Point'
         description: 'Desired cooling temperature setpoint mixing valve 3 (EM3 only)'
-        expression: 'int16(hr:00310 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00310 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 3 Seasonal Cooling Outdoor Temperature'
+      - id:          'Mix Valve 3 Seasonal Cooling Outdoor Temperature'
         description: 'Seasonal cooling temperature (outdoor temp.), mixing valve 3 (EM3 only)'
-        expression: 'int16(hr:00311)/100'
-        unit: '°C'
+        expression:  'int16(hr:00311)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 3 Seasonal Heating Outdoor Temperature'
+      - id:          'Mix Valve 3 Seasonal Heating Outdoor Temperature'
         description: 'Seasonal heating temperature (outdoor temp.), mixing valve 3 (EM3 only)'
-        expression: 'int16(hr:00312 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00312 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 4 Selected Mode'
+      - id:          'Mix Valve 4 Selected Mode'
         description: 'Selected mode for mixing valve 4, 0:Heat, 1:Cool, 2:Auto (EM3 only)'
-        expression: 'enum(hr:00313 ; 0->''Heat'' ; 1->''Cool'' ; 2->''Auto'')'
+        expression:  'enum(hr:00313 ; 0->''Heat'' ; 1->''Cool'' ; 2->''Auto'')'
 
-      - id: 'Mix Valve 4 Desired Cooling Temperature Set Point'
+      - id:          'Mix Valve 4 Desired Cooling Temperature Set Point'
         description: 'Desired cooling temperature setpoint mixing valve 4 (EM3 only)'
-        expression: 'int16(hr:00314 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00314 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 4 Seasonal Cooling Outdoor Temperature'
+      - id:          'Mix Valve 4 Seasonal Cooling Outdoor Temperature'
         description: 'Seasonal cooling temperature (outdoor temp.), mixing valve 4 (EM3 only)'
-        expression: 'int16(hr:00315)/100'
-        unit: '°C'
+        expression:  'int16(hr:00315)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 4 Seasonal Heating Outdoor Temperature'
+      - id:          'Mix Valve 4 Seasonal Heating Outdoor Temperature'
         description: 'Seasonal heating temperature (outdoor temp.), mixing valve 4 (EM3 only)'
-        expression: 'int16(hr:00316 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00316 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 5 Selected Mode'
+      - id:          'Mix Valve 5 Selected Mode'
         description: 'Selected mode for mixing valve 5, 0:Heat, 1:Cool, 2:Auto (EM3 only)'
-        expression: 'enum(hr:00317 ; 0->''Heat'' ; 1->''Cool'' ; 2->''Auto'')'
+        expression:  'enum(hr:00317 ; 0->''Heat'' ; 1->''Cool'' ; 2->''Auto'')'
 
-      - id: 'Mix Valve 5 Desired Cooling Temperature Set Point'
+      - id:          'Mix Valve 5 Desired Cooling Temperature Set Point'
         description: 'Desired cooling temperature setpoint mixing valve 5 (EM3 only)'
-        expression: 'int16(hr:00318 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00318 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 5 Seasonal Cooling Outdoor Temperature'
+      - id:          'Mix Valve 5 Seasonal Cooling Outdoor Temperature'
         description: 'Seasonal cooling temperature (outdoor temp.), mixing valve 5 (EM3 only)'
-        expression: 'int16(hr:00319 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00319 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Mix Valve 5 Seasonal Heating Outdoor Temperature'
+      - id:          'Mix Valve 5 Seasonal Heating Outdoor Temperature'
         description: 'Seasonal heating temperature (outdoor temp.), mixing valve 5 (EM3 only)'
-        expression: 'int16(hr:00320 ; 0x4E20)/100'
-        unit: '°C'
+        expression:  'int16(hr:00320 ; 0x4E20)/100'
+        unit:        '°C'
 
-      - id: 'Immersion Heater Status'
+      - id:          'Immersion Heater Status'
         description: 'Enabled immersion heater, Mega S-E only'
-        expression: 'enum(hr:00321 ; 0->''Disabled'' ; 2->''Enabled'')'
+        expression:  'enum(hr:00321 ; 0->''Disabled'' ; 2->''Enabled'')'
+
+  - id:          'Switches'
+    description: 'The switches to base settings in the system'
+
+    fields:
+      - id:          'Reset all alarms'
+        description: 'Reset all alarms'
+        expression:  'boolean(c:00003)'
+
+      - id:          'Enable internal additional heater'
+        description: 'Enable internal additional heater'
+        expression:  'boolean(c:00004)'
+
+      - id:          'Enable external additional heater'
+        description: 'Enable external additional heater'
+        expression:  'boolean(c:00005)'
+
+      - id:          'Enable HGW'
+        description: 'Enable HGW'
+        expression:  'boolean(c:00006)'
+
+      - id:          'Enable flow switch pressure switch'
+        description: 'Enable flow switch/pressure switch'
+        expression:  'boolean(c:00007)'
+
+      - id:          'Enable tap water'
+        description: 'Enable tap water'
+        expression:  'boolean(c:00008)'
+
+      - id:          'Enable heat'
+        description: 'Enable heat'
+        expression:  'boolean(c:00009)'
+
+      - id:          'Enable active cooling'
+        description: 'Enable active cooling'
+        expression:  'boolean(c:00010)'
+
+      - id:          'Enable mix valve 1'
+        description: 'Enable mix valve 1'
+        expression:  'boolean(c:00011)'
+
+      - id:          'Enable TWC'
+        description: 'Enable TWC'
+        expression:  'boolean(c:00012)'
+
+      - id:          'Enable WCS'
+        description: 'Enable WCS'
+        expression:  'boolean(c:00013)'
+
+      - id:          'Enable hot gas pump'
+        description: 'Enable hot gas pump'
+        expression:  'boolean(c:00014)'
+
+      - id:          'Enable mix valve 2'
+        description: 'Enable mix valve 2 (EM)'
+        expression:  'boolean(c:00016)'
+
+      - id:          'Enable mix valve 3'
+        description: 'Enable mix valve 3 (EM)'
+        expression:  'boolean(c:00017)'
+
+      - id:          'Enable mix valve 4'
+        description: 'Enable mix valve 4 (EM)'
+        expression:  'boolean(c:00018)'
+
+      - id:          'Enable mix valve 5'
+        description: 'Enable mix valve 5 (EM)'
+        expression:  'boolean(c:00019)'
+
+      - id:          'Enable brine out monitoring'
+        description: 'Enable brine out monitoring'
+        expression:  'boolean(c:00020)'
+
+      - id:          'Enable brine pump continuous operation'
+        description: 'Enable brine pump continuous operation'
+        expression:  'boolean(c:00021)'
+
+      - id:          'Enable system circulation pump'
+        description: 'Enable system circulation pump'
+        expression:  'boolean(c:00022)'
+
+      - id:          'Enable dew point calculation'
+        description: 'Enable dew point calculation'
+        expression:  'boolean(c:00023)'
+
+      - id:          'Enable anti legionella'
+        description: 'Enable anti legionella'
+        expression:  'boolean(c:00024)'
+
+      - id:          'Enable additional heater only'
+        description: 'Enable additional heater only (No compressor). Requires Operation mode: Standby'
+        expression:  'boolean(c:00025)'
+
+      - id:          'Enable current limitation'
+        description: 'Enable current limitation'
+        expression:  'boolean(c:00026)'
+
+      - id:          'Enable pool'
+        description: 'Enable pool (EM)'
+        expression:  'boolean(c:00028)'
+
+      - id:          'Enable surplus heat chiller'
+        description: 'Enable surplus heat, chiller (no borehole)'
+        expression:  'boolean(c:00029)'
+
+      - id:          'Enable surplus heat borehole'
+        description: 'Enable surplus heat, borehole (no chiller)'
+        expression:  'boolean(c:00030)'
+
+      - id:          'Enable external additional heater for pool'
+        description: 'Enable external additional heater for pool (EM)'
+        expression:  'boolean(c:00031)'
+
+      - id:          'Enable internal additional heater for pool'
+        description: 'Enable internal additional heater for pool (EM)'
+        expression:  'boolean(c:00032)'
+
+      - id:          'Enable passive cooling'
+        description: 'Enable passive cooling (EM)'
+        expression:  'boolean(c:00033)'
+
+      - id:          'Enable condenser pump variable speed mode'
+        description: 'Enable variable speed mode for condenser pump'
+        expression:  'boolean(c:00034)'
+
+      - id:          'Enable brine pump variable speed mode'
+        description: 'Enable variable speed mode for brine pump'
+        expression:  'boolean(c:00035)'
+
+      - id:          'Enable cooling mode for mixing valve 1'
+        description: 'Enable cooling mode for mixing valve 1'
+        expression:  'boolean(c:00036)'
+
+      - id:          'Enable outdoor temp dependent for cooling with mixing valve 1'
+        description: 'Enable outdoor temp dependent for cooling with mixing valve 1'
+        expression:  'boolean(c:00037)'
+
+      - id:          'Enable internal brine pump to start when cooling is active for mixing valve 1'
+        description: 'Enable internal brine pump to start when cooling is active for mixing valve 1'
+        expression:  'boolean(c:00038)'
+
+      - id:          'Enable outdoor temp dependent for external heater'
+        description: 'Enable outdoor temp dependent for external heater'
+        expression:  'boolean(c:00039)'
+
+      - id:          'Enable brine in monitoring'
+        description: 'Enable brine in monitoring'
+        expression:  'boolean(c:00040)'
+
+      - id:          'Enable fixed system supply set point'
+        description: 'Enable fixed system supply set point, allows defacto address 40117'
+        expression:  'boolean(c:00041)'
+
+      - id:          'Enable evaporator freeze protection'
+        description: 'Enable evaporator freeze protection'
+        expression:  'boolean(c:00042)'
+
+      - id:          'Enable outdoor temp dependent for cooling with mixing valve 2'
+        description: 'Enable outdoor temp dependent for cooling with mixing valve 2 (EM3 only). Should always be set to 1 in auto mode.'
+        expression:  'boolean(c:00043)'
+
+      - id:          'Enable dew point calculation on mixing valve 2'
+        description: 'Enable dew point calculation on mixing valve 2, requires room sensor for mixing valve 2 (EM3 only)'
+        expression:  'boolean(c:00044)'
+
+      - id:          'Enable outdoor temp dependent for heating with mixing valve 2'
+        description: 'Enable outdoor temp dependent for heating with mixing valve 2 (EM3 only). Should always be set to 1 in auto mode.'
+        expression:  'boolean(c:00045)'
+
+      - id:          'Enable outdoor temp dependent for cooling with mixing valve 3'
+        description: 'Enable outdoor temp dependent for cooling with mixing valve 3 (EM3 only). Should always be set to 1 in auto mode.'
+        expression:  'boolean(c:00046)'
+
+      - id:          'Enable dew point calculation on mixing valve 3'
+        description: 'Enable dew point calculation on mixing valve 3, requires room sensor for mixing valve 3 (EM3 only)'
+        expression:  'boolean(c:00047)'
+
+      - id:          'Enable outdoor temp dependent for heating with mixing valve 3'
+        description: 'Enable outdoor temp dependent for heating with mixing valve 3 (EM3 only). Should always be set to 1 in auto mode.'
+        expression:  'boolean(c:00048)'
+
+      - id:          'Enable outdoor temp dependent for cooling with mixing valve 4'
+        description: 'Enable outdoor temp dependent for cooling with mixing valve 4 (EM3 only). Should always be set to 1 in auto mode.'
+        expression:  'boolean(c:00049)'
+
+      - id:          'Enable dew point calculation on mixing valve 4'
+        description: 'Enable dew point calculation on mixing valve 4, requires room sensor for mixing valve 4 (EM3 only)'
+        expression:  'boolean(c:00050)'
+
+      - id:          'Enable outdoor temp dependent for heating with mixing valve 4'
+        description: 'Enable outdoor temp dependent for heating with mixing valve 4 (EM3 only). Should always be set to 1 in auto mode.'
+        expression:  'boolean(c:00051)'
+
+      - id:          'Enable outdoor temp dependent for cooling with mixing valve 5'
+        description: 'Enable outdoor temp dependent for cooling with mixing valve 5 (EM3 only). Should always be set to 1 in auto mode.'
+        expression:  'boolean(c:00052)'
+
+      - id:          'Enable dew point calculation on mixing valve 5'
+        description: 'Enable dew point calculation on mixing valve 5, requires room sensor for mixing valve 5 (EM3 only)'
+        expression:  'boolean(c:00053)'
+
+      - id:          'Enable outdoor temp dependent for heating with mixing valve 5'
+        description: 'Enable outdoor temp dependent for heating with mixing valve 5 (EM3 only). Should always be set to 1 in auto mode.'
+        expression:  'boolean(c:00054)'
+
+      - id:          'Enable internal brine pump to start when cooling is active for mixing valve 2'
+        description: 'Enable internal brine pump to start when cooling is active for mixing valve 2 (EM3 only)'
+        expression:  'boolean(c:00055)'
+
+      - id:          'Enable internal brine pump to start when cooling is active for mixing valve 3'
+        description: 'Enable internal brine pump to start when cooling is active for mixing valve 3 (EM3 only)'
+        expression:  'boolean(c:00056)'
+
+      - id:          'Enable internal brine pump to start when cooling is active for mixing valve 4'
+        description: 'Enable internal brine pump to start when cooling is active for mixing valve 4 (EM3 only)'
+        expression:  'boolean(c:00057)'
+
+      - id:          'Enable internal brine pump to start when cooling is active for mixing valve 5'
+        description: 'Enable internal brine pump to start when cooling is active for mixing valve 5 (EM3 only)'
+        expression:  'boolean(c:00058)'
+
+      - id:          'Enable continuous operation mode for condenser pump'
+        description: 'Enable continuous operation mode for condenser pump.'
+        expression:  'boolean(c:00059)'
+
+      - id:          'Allow current limiter to restrict external additional heater'
+        description: 'Allow current limiter to restrict external additional heater'
+        expression:  'boolean(c:00062)'
+
+      - id:          'Allow current limiter to restrict secondary heat pump units'
+        description: 'Allow current limiter to restrict secondary heat pump units'
+        expression:  'boolean(c:00063)'
+
+  - id:          'Alarms'
+    description: 'Alarms and notifications that can be activated'
+
+    fields:
+      - id:          'Alarm active Class A'
+        description: 'Alarm active, Class: A'
+        expression:  'boolean(di:00000)'
+
+      - id:          'Alarm active Class B'
+        description: 'Alarm active, Class: B'
+        expression:  'boolean(di:00001)'
+
+      - id:          'Alarm active Class C'
+        description: 'Alarm active, Class: C'
+        expression:  'boolean(di:00002)'
+
+      - id:          'Alarm active Class D'
+        description: 'Alarm active, Class: D - Genesis secondary'
+        expression:  'boolean(di:00003)'
+
+      - id:          'Alarm active Class E'
+        description: 'Alarm active, Class: E - Legacy secondary'
+        expression:  'boolean(di:00004)'
+
+      - id:          'High pressure switch alarm'
+        description: 'High pressure switch alarm'
+        expression:  'boolean(di:00009)'
+
+      - id:          'Low pressure level alarm'
+        description: 'Low pressure level alarm'
+        expression:  'boolean(di:00010)'
+
+      - id:          'High discharge pipe temperature alarm'
+        description: 'High discharge pipe temperature alarm'
+        expression:  'boolean(di:00011)'
+
+      - id:          'Operating pressure limit indication'
+        description: 'Operating pressure limit indication'
+        expression:  'boolean(di:00012)'
+
+      - id:          'Discharge pipe sensor alarm'
+        description: 'Discharge pipe sensor alarm'
+        expression:  'boolean(di:00013)'
+
+      - id:          'Liquid line sensor alarm'
+        description: 'Liquid line sensor alarm'
+        expression:  'boolean(di:00014)'
+
+      - id:          'Suction gas sensor alarm'
+        description: 'Suction gas sensor alarm'
+        expression:  'boolean(di:00015)'
+
+      - id:          'Flow pressure switch alarm'
+        description: 'Flow/pressure switch alarm'
+        expression:  'boolean(di:00016)'
+
+      - id:          'Power input phase detection alarm'
+        description: 'Power input phase detection alarm'
+        expression:  'boolean(di:00022)'
+
+      - id:          'Inverter unit alarm'
+        description: 'Inverter unit alarm'
+        expression:  'boolean(di:00023)'
+
+      - id:          'System supply low temperature alarm'
+        description: 'System supply low temperature alarm'
+        expression:  'boolean(di:00024)'
+
+      - id:          'Compressor low speed alarm'
+        description: 'Compressor low speed alarm'
+        expression:  'boolean(di:00025)'
+
+      - id:          'Low super heat alarm'
+        description: 'Low super heat alarm'
+        expression:  'boolean(di:00026)'
+
+      - id:          'Pressure ratio out of range alarm'
+        description: 'Pressure ratio out of range alarm'
+        expression:  'boolean(di:00027)'
+
+      - id:          'Compressor pressure outside envelope alarm'
+        description: 'Compressor pressure outside envelope alarm'
+        expression:  'boolean(di:00028)'
+
+      - id:          'Brine temperature out of range alarm'
+        description: 'Brine temperature out of range alarm'
+        expression:  'boolean(di:00029)'
+
+      - id:          'Brine in sensor alarm'
+        description: 'Brine in sensor alarm'
+        expression:  'boolean(di:00030)'
+
+      - id:          'Brine out sensor alarm'
+        description: 'Brine out sensor alarm'
+        expression:  'boolean(di:00031)'
+
+      - id:          'Condenser in sensor alarm'
+        description: 'Condenser in sensor alarm'
+        expression:  'boolean(di:00032)'
+
+      - id:          'Condenser out sensor alarm'
+        description: 'Condenser out sensor alarm'
+        expression:  'boolean(di:00033)'
+
+      - id:          'Outdoor sensor alarm'
+        description: 'Outdoor sensor alarm'
+        expression:  'boolean(di:00034)'
+
+      - id:          'System supply line sensor alarm'
+        description: 'System supply line sensor alarm'
+        expression:  'boolean(di:00035)'
+
+      - id:          'Mix valve 1 supply line sensor alarm'
+        description: 'Mix valve 1 supply line sensor alarm'
+        expression:  'boolean(di:00036)'
+
+      - id:          'Mix valve 2 supply line sensor alarm'
+        description: 'Mix valve 2 supply line sensor alarm (EM)'
+        expression:  'boolean(di:00037)'
+
+      - id:          'Mix valve 3 supply line sensor alarm'
+        description: 'Mix valve 3 supply line sensor alarm (EM)'
+        expression:  'boolean(di:00038)'
+
+      - id:          'Mix valve 4 supply line sensor alarm'
+        description: 'Mix valve 4 supply line sensor alarm (EM)'
+        expression:  'boolean(di:00039)'
+
+      - id:          'Mix valve 5 supply line sensor alarm'
+        description: 'Mix valve 5 supply line sensor alarm (EM)'
+        expression:  'boolean(di:00040)'
+
+      - id:          'WCS return line sensor alarm'
+        description: 'WCS return line sensor alarm (EM)'
+        expression:  'boolean(di:00044)'
+
+      - id:          'TWC supply line sensor alarm'
+        description: 'TWC supply line sensor alarm (EM)'
+        expression:  'boolean(di:00045)'
+
+      - id:          'Cooling tank sensor alarm'
+        description: 'Cooling tank sensor alarm (EM)'
+        expression:  'boolean(di:00046)'
+
+      - id:          'Cooling supply line sensor alarm'
+        description: 'Cooling supply line sensor alarm (EM)'
+        expression:  'boolean(di:00047)'
+
+      - id:          'Cooling circuit return line sensor alarm'
+        description: 'Cooling circuit return line sensor alarm (EM)'
+        expression:  'boolean(di:00048)'
+
+      - id:          'Brine delta out of range alarm'
+        description: 'Brine delta out of range alarm'
+        expression:  'boolean(di:00049)'
+
+      - id:          'Tap water mid sensor alarm'
+        description: 'Tap water mid sensor alarm'
+        expression:  'boolean(di:00050)'
+
+      - id:          'TWC circulation return sensor alarm'
+        description: 'TWC circulation return sensor alarm (EM)'
+        expression:  'boolean(di:00051)'
+
+      - id:          'HGW sensor alarm'
+        description: 'HGW sensor alarm'
+        expression:  'boolean(di:00052)'
+
+      - id:          'Internal additional heater alarm'
+        description: 'Internal additional heater alarm'
+        expression:  'boolean(di:00053)'
+
+      - id:          'Brine in high temperature alarm'
+        description: 'Brine in high temperature alarm'
+        expression:  'boolean(di:00055)'
+
+      - id:          'Brine in low temperature alarm'
+        description: 'Brine in low temperature alarm'
+        expression:  'boolean(di:00056)'
+
+      - id:          'Brine out low temperature alarm'
+        description: 'Brine out low temperature alarm'
+        expression:  'boolean(di:00057)'
+
+      - id:          'TWC circulation return low temperature alarm'
+        description: 'TWC circulation return low temperature alarm (EM)'
+        expression:  'boolean(di:00058)'
+
+      - id:          'TWC supply low temperature alarm'
+        description: 'TWC supply low temperature alarm (EM)'
+        expression:  'boolean(di:00059)'
+
+      - id:          'Mix valve 1 supply temperature deviation alarm'
+        description: 'Mix valve 1 supply temperature deviation alarm'
+        expression:  'boolean(di:00060)'
+
+      - id:          'Mix valve 2 supply temperature deviation alarm'
+        description: 'Mix valve 2 supply temperature deviation alarm (EM)'
+        expression:  'boolean(di:00061)'
+
+      - id:          'Mix valve 3 supply temperature deviation alarm'
+        description: 'Mix valve 3 supply temperature deviation alarm (EM)'
+        expression:  'boolean(di:00062)'
+
+      - id:          'Mix valve 4 supply temperature deviation alarm'
+        description: 'Mix valve 4 supply temperature deviation alarm (EM)'
+        expression:  'boolean(di:00063)'
+
+      - id:          'Mix valve 5 supply temperature deviation alarm'
+        description: 'Mix valve 5 supply temperature deviation alarm (EM)'
+        expression:  'boolean(di:00064)'
+
+      - id:          'WCS return line temperature deviation alarm'
+        description: 'WCS return line temperature deviation alarm (EM)'
+        expression:  'boolean(di:00065)'
+
+      - id:          'Sum alarm'
+        description: 'Sum alarm'
+        expression:  'boolean(di:00066)'
+
+      - id:          'Cooling circuit supply line temperature deviation alarm'
+        description: 'Cooling circuit supply line temperature deviation alarm (EM)'
+        expression:  'boolean(di:00067)'
+
+      - id:          'Cooling tank temperature deviation alarm'
+        description: 'Cooling tank temperature deviation alarm (EM)'
+        expression:  'boolean(di:00068)'
+
+      - id:          'Surplus heat temperature deviation alarm'
+        description: 'Surplus heat temperature deviation alarm (EM)'
+        expression:  'boolean(di:00069)'
+
+      - id:          'Humidity room sensor alarm'
+        description: 'Humidity room sensor alarm'
+        expression:  'boolean(di:00070)'
+
+      - id:          'Surplus heat supply line sensor alarm'
+        description: 'Surplus heat supply line sensor alarm (EM)'
+        expression:  'boolean(di:00071)'
+
+      - id:          'Surplus heat return line sensor alarm'
+        description: 'Surplus heat return line sensor alarm (EM)'
+        expression:  'boolean(di:00072)'
+
+      - id:          'Cooling tank return line sensor alarm'
+        description: 'Cooling tank return line sensor alarm (EM)'
+        expression:  'boolean(di:00073)'
+
+      - id:          'Temperature room sensor alarm'
+        description: 'Temperature room sensor alarm'
+        expression:  'boolean(di:00074)'
+
+      - id:          'Inverter unit communication alarm'
+        description: 'Inverter unit communication alarm'
+        expression:  'boolean(di:00075)'
+
+      - id:          'Pool return line sensor alarm'
+        description: 'Pool return line sensor alarm'
+        expression:  'boolean(di:00076)'
+
+      - id:          'External stop for pool'
+        description: 'External stop for pool, read only'
+        expression:  'boolean(di:00077)'
+
+      - id:          'External start brine pump'
+        description: 'External start brine pump, read only'
+        expression:  'boolean(di:00078)'
+
+      - id:          'External relay for brine ground water pump'
+        description: 'External relay for brine/ground water pump.'
+        expression:  'boolean(di:00079)'
+
+      - id:          'Tap water end tank sensor alarm'
+        description: 'Tap water end tank sensor alarm'
+        expression:  'boolean(di:00081)'
+
+      - id:          'Maximum time for antilegionella exceeded alarm'
+        description: 'Maximum time for anti-legionella exceeded alarm'
+        expression:  'boolean(di:00082)'
+
+      - id:          'Genesis secondary unit alarm'
+        description: 'Genesis secondary unit alarm - this specific secondary unit can''t communicate with its primary unit'
+        expression:  'boolean(di:00083)'
+
+      - id:          'Primary unit alarm other primary units detected'
+        description: 'Primary unit alarm - the primary has detected other primary units on the same network with a network mask that is allowing conflict. Change network settings in order to avoid problem. For instance change port number on the primary and its secondary unit.'
+        expression:  'boolean(di:00084)'
+
+      - id:          'Primary unit alarm no secondary units detected'
+        description: 'Primary unit alarm - the primary has not detected all secondary units. Make sure that the primary/secondary settings are correct and the network mask and port and number of Genesis secondaries settings are correct.'
+        expression:  'boolean(di:00085)'
+
+      - id:          'Oil boost in progress'
+        description: 'Oil boost in progress'
+        expression:  'boolean(di:00086)'
+
+      - id:          'Tap water top sensor alarm'
+        description: 'Tap water top sensor alarm.'
+        expression:  'boolean(di:00087)'
+
+      - id:          'Compressor control signal'
+        description: 'Compressor control signal'
+        expression:  'boolean(di:00199)'
+
+      - id:          'Smart Grid 1 EVU input'
+        description: 'Smart Grid 1, EVU input'
+        expression:  'boolean(di:00201)'
+
+      - id:          'External alarm input'
+        description: 'External alarm input'
+        expression:  'boolean(di:00202)'
+
+      - id:          'Smart Grid 2'
+        description: 'Smart Grid 2'
+        expression:  'boolean(di:00204)'
+
+      - id:          'External additional heater control signal'
+        description: 'External additional heater control signal'
+        expression:  'boolean(di:00206)'
+
+      - id:          'Mix valve 1 circulation pump control signal'
+        description: 'Mix valve 1 circulation pump control signal'
+        expression:  'boolean(di:00209)'
+
+      - id:          'Condenser pump control'
+        description: 'Condenser pump On/off control'
+        expression:  'boolean(di:00210)'
+
+      - id:          'System circulation pump control signal'
+        description: 'System circulation pump control signal'
+        expression:  'boolean(di:00211)'
+
+      - id:          'Hot gas circulation pump control signal'
+        description: 'Hot gas circulation pump control signal'
+        expression:  'boolean(di:00213)'
+
+      - id:          'Brine pump control'
+        description: 'Brine pump On/off control'
+        expression:  'boolean(di:00218)'
+
+      - id:          'External heater circulation pump control signal'
+        description: 'External heater circulation pump control signal'
+        expression:  'boolean(di:00219)'
+
+      - id:          'Heating season winter active'
+        description: 'Heating season (winter) active'
+        expression:  'boolean(di:00220)'
+
+      - id:          'External additional heater active'
+        description: 'External additional heater active'
+        expression:  'boolean(di:00221)'
+
+      - id:          'Internal additional heater active'
+        description: 'Internal additional heater active'
+        expression:  'boolean(di:00222)'
+
+      - id:          'HGW regulation control signal'
+        description: 'HGW regulation control signal'
+        expression:  'boolean(di:00223)'
+
+      - id:          'Heat pump stopping'
+        description: 'Heat pump stopping'
+        expression:  'boolean(di:00224)'
+
+      - id:          'Heat pump OK to start'
+        description: 'Heat pump OK to start'
+        expression:  'boolean(di:00225)'
+
+      - id:          'TWC supply line circulation pump control signal'
+        description: 'TWC supply line circulation pump control signal (EM)'
+        expression:  'boolean(di:00230)'
+
+      - id:          'WCS regulation control signal'
+        description: 'WCS regulation control signal (EM)'
+        expression:  'boolean(di:00232)'
+
+      - id:          'WCS circulation pump control signal'
+        description: 'WCS circulation pump control signal (EM)'
+        expression:  'boolean(di:00233)'
+
+      - id:          'TWC end tank heater control signal'
+        description: 'TWC end tank heater control signal (EM)'
+        expression:  'boolean(di:00234)'
+
+      - id:          'Pool directional valve position'
+        description: 'Pool directional valve position (EM)'
+        expression:  'boolean(di:00235)'
+
+      - id:          'Cooling circuit circulation pump control signal'
+        description: 'Cooling circuit circulation pump control signal (EM)'
+        expression:  'boolean(di:00236)'
+
+      - id:          'Pool circulation pump control signal'
+        description: 'Pool circulation pump control signal (EM)'
+        expression:  'boolean(di:00237)'
+
+      - id:          'Surplus heat directional valve position'
+        description: 'Surplus heat directional valve position (EM)'
+        expression:  'boolean(di:00238)'
+
+      - id:          'Surplus heat circulation pump control signal'
+        description: 'Surplus heat circulation pump control signal (EM)'
+        expression:  'boolean(di:00239)'
+
+      - id:          'Cooling circuit regulation control signal'
+        description: 'Cooling circuit regulation control signal (EM)'
+        expression:  'boolean(di:00240)'
+
+      - id:          'Surplus heat regulation control signal'
+        description: 'Surplus heat regulation control signal (EM)'
+        expression:  'boolean(di:00241)'
+
+      - id:          'Active cooling directional valve position Borehole disconnected'
+        description: 'Active cooling directional valve position (Borehole disconnected) (EM)'
+        expression:  'boolean(di:00242)'
+
+      - id:          'Passive Active cooling directional valve position Cooling tank connected'
+        description: 'Passive/Active cooling directional valve position (Cooling tank connected) (EM)'
+        expression:  'boolean(di:00243)'
+
+      - id:          'Pool regulation control signal'
+        description: 'Pool regulation control signal'
+        expression:  'boolean(di:00244)'
+
+      - id:          'Indication when mixing valve 1 is producing passive cooling'
+        description: 'Indication when mixing valve 1 is producing passive cooling'
+        expression:  'boolean(di:00245)'
+
+      - id:          'Compressor is unable to speed up'
+        description: 'Compressor is unable to speed up'
+        expression:  'boolean(di:00246)'
+
 tests:
+  - id:          'TestAt_2025_07_10_15_10_17'
+    description: 'Test generated from device data at 2025-07-10T15:10:17.289Z'
+    input:
+      - firstAddress: 'c:00003'
+        rawValues: |-
+          0 1 0 0 1 1 1 0 0 0
+          0 0 x 0 0 0 0 1 0 0
+          0 1 0 0 x 0 0 1 0 0
+          1 1 1 0 0 0 0 0 0 1
+          1 0 1 1 0 1 1 0 1 1
+          0 1 0 0 0 0 0 x x X
+          X
+      - firstAddress: 'di:00000'
+        rawValues: |-
+          0 0 0 0 0 0 0 0 0 0
+          0 0 0 0 0 0 0 0 0 0
+          0 0 0 0 0 0 0 0 0 0
+          0 0 0 0 0 0 0 0 0 0
+          0 0 0 0 0 0 0 0 0 0
+          0 0 0 0 0 0 0 0 0 0
+          0 0 0 0 0 0 0 0 0 0
+          0 0 0 0 0 0 0 0 0 1
+          0 0 0 0 0 0 0 0 - -
+          - - - - - - - - - -
+          - - - - - - - - - -
+          - - - - - - - - - -
+          - - - - - - - - - -
+          - - - - - - - - - -
+          - - - - - - - - - -
+          - - - - - - - - - -
+          - - - - - - - - - -
+          - - - - - - - - - -
+          - - - - - - - - - -
+          - - - - - - - - - 0
+          0 0 0 0 0 0 0 0 0 0
+          1 0 0 0 0 0 1 0 1 0
+          0 0 0 0 0 1 1 1 0 0
+          0 0 0 0 0 0 1 0 0 0
+          1 0 0 1 0 0 0
+      - firstAddress: 'ir:00001'
+        rawValues: |-
+          0008 0080 0000 0384 0000 0000 0838 0772 0705 06AA
+          0753 4E20 0A33 0A33 1397 12E9 1327 0000 0BB8 06A4
+          03E8 01F4 0000 FE0C FA24 F63C 4E20 0000 0000 0000
+          0000 0000 0000 0000 0000 03E8 0000 0000 1D4C 4E20
+          4E20 09C4 0000 044C 4E20 044C 0000 0000 2398 0000
+          062F 0000 0000 0000 0063 0063 000B 0000 00C5 0000
+          0000 0008 0063 0063 0063 0063 0000 0000 0000 0000
+          0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+          0000 0004 0000 0000 0000 0000 0000 0000 0000 0000
+          C3DC 0000 0000 0000 4E20 4E20 4E20 4E20 4E20 4E20
+          4E20 0064 4E20 4E20 4E20 4E20 4E20 0708 4E20 4E20
+          4E20 4E20 4E20 4E20 4E20 4E20 4E20 4E20 4E20 4E20
+          00E0 084E 085A 069E 0180 003F 04C8 0575 0804 081E
+          0096 0000 0000 0000 0000 0000 000B 0000 0000 0000
+          0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+          0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+          0000 0000 0000 0000 0000 0000 0000 0000 0000 0000
+          0000 0000 0000 ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          000B 0000 000C 0001 0000 0000 0000 0000 0015
+      - firstAddress: 'hr:00000'
+        rawValues: |-
+          0003 xxxx xxxx 1194 07D0 07D0 07D0 0960 0A8C 0BB8
+          0C1C 0DAC 0F3C xxxx xxxx xxxx 06A4 xxxx xxxx xxxx
+          xxxx xxxx 1130 1770 xxxx xxxx 0001 0009 0007 0005
+          0708 1770 1194 0000 2710 1770 0000 1964 05DC 2710
+          0000 2710 0000 2710 0000 2710 0000 2710 1194 0000
+          2710 1388 1F40 07D0 0FA0 0000 2710 xxxx 0A28 0000
+          2710 012C 012C 003C xxxx xxxx xxxx 07D0 FE0C 00C8
+          04B0 1964 1770 30D4 xxxx FFFA 0FA0 07D0 0190 2710
+          2710 1388 1388 xxxx xxxx 0001 0009 0001 0009 xxxx
+          xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+          xxxx xxxx xxxx xxxx xxxx 0708 0514 03E8 1770 0834
+          0B54 0D48 0FA0 10CC 13EC 170C 09C4 0000 4E20 XXXX
+          XXXX ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
+          ---- ---- ---- ---- ---- ---- ---- ---- ---- 03E8
+          1770 0834 0B54 0D48 0FA0 10CC 13EC 170C 03E8 1770
+          0834 0B54 0D48 0FA0 10CC 13EC 170C xxxx xxxx xxxx
+          xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+          xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx 03E8
+          1770 0834 0B54 0D48 0FA0 10CC 13EC 170C 03E8 1770
+          0834 0B54 0D48 0FA0 10CC 13EC 170C xxxx xxxx xxxx
+          xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+          xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+          xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx
+          xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx 0000 00C8
+          000A xxxx 06A4 076C 03E8 0000 06A4 0017 0011 0000
+          06A4 0017 0011 0000 06A4 0017 0011 0000 06A4 0017
+          0011 XXXX
+
+    blocks:
+      - id:          'Sensors'
+        expected:
+          'Currently Running 1st Demand':                                                   [ 'Passive Cooling' ]
+          'Currently Running Demands':                                                      [ 'Passive Cooling' ]
+          'Compressor Available Gears':                                                     [ '9.000' ]
+          'Compressor Speed':                                                               [ '0' ]
+          'External Heater Demand':                                                         [ '0.000' ]
+          'Discharge Pipe Temperature':                                                     [ '21.040' ]
+          'Condenser In Temperature':                                                       [ '19.060' ]
+          'Condenser Out Temperature':                                                      [ '17.970' ]
+          'Brine In Temperature':                                                           [ '17.060' ]
+          'Brine Out Temperature':                                                          [ '18.750' ]
+          'System Supply Line Temperature':                                                 []
+          'Outdoor Temperature':                                                            [ '26.110' ]
+          'Tap Water Top Temperature':                                                      [ '50.150' ]
+          'Tap Water Lower Temperature':                                                    [ '48.410' ]
+          'Tap Water Weighted Temperature':                                                 [ '49.030' ]
+          'System Supply Line Calculated Set Point':                                        [ '0.000' ]
+          'System Supply Line Selected Heat Curve':                                         [ '30.000' ]
+          'Heat Curve X1':                                                                  [ '17.000' ]
+          'Heat Curve X2':                                                                  [ '10.000' ]
+          'Heat Curve X3':                                                                  [ '5.000' ]
+          'Heat Curve X4':                                                                  [ '0.000' ]
+          'Heat Curve X5':                                                                  [ '-5.000' ]
+          'Heat Curve X6':                                                                  [ '-15.000' ]
+          'Heat Curve X7':                                                                  [ '-25.000' ]
+          'System Return Line Temperature':                                                 []
+          'Calculated Demand':                                                              [ '0.000' ]
+          'Cooling Season Integral Value':                                                  [ '1000' ]
+          'Condenser Circulation Pump Speed':                                               [ '75.000' ]
+          'Mix Valve 1 Supply Line Temperature':                                            []
+          'Buffer Tank Temperature':                                                        []
+          'Mix Valve 1 Position':                                                           [ '0.000' ]
+          'Brine Circulation Pump Speed':                                                   [ '11.000' ]
+          'HGW Supply Line Temperature':                                                    []
+          'Tap Water Valve Position':                                                       [ '0' ]
+          'Compressor Operating Hours':                                                     [ '9112' ]
+          'Tap Water Operating Hours':                                                      [ '1583' ]
+          'External Additional Heater Operating Hours':                                     [ '0' ]
+          'Compressor Speed Percent':                                                       [ '0.000' ]
+          'Currently Running 2nd Demand':                                                   [ 'No demand' ]
+          'Currently Running 3rd Demand':                                                   [ 'No demand' ]
+          'Software Version Major':                                                         [ '11' ]
+          'Software Version Minor':                                                         [ '0' ]
+          'Software Version Micro':                                                         [ '197' ]
+          'Software Version':                                                               [ '11.0.197' ]
+          'Compressor Temporarily Blocked Start Restriction Timer':                         [ '0' ]
+          'Compressor Current Gear':                                                        [ '0.000' ]
+          'Queued Demand 1st':                                                              [ 'Passive Cooling' ]
+          'Queued Demand 2nd':                                                              [ 'No demand' ]
+          'Queued Demand 3rd':                                                              [ 'No demand' ]
+          'Queued Demand 4th':                                                              [ 'No demand' ]
+          'Queued Demand 5th':                                                              [ 'No demand' ]
+          'Active Step Internal Immersion Heater':                                          [ '0' ]
+          'Buffer Tank Charge Set Point':                                                   [ '0.000' ]
+          'Electric Meter L1 Current':                                                      [ '0.000' ]
+          'Electric Meter L2 Current':                                                      [ '0.000' ]
+          'Electric Meter L3 Current':                                                      [ '0.000' ]
+          'Electric Meter L1 0 Voltage':                                                    [ '0.000' ]
+          'Electric Meter L2 0 Voltage':                                                    [ '0.000' ]
+          'Electric Meter L3 0 Voltage':                                                    [ '0.000' ]
+          'Electric Meter L1 L2 Voltage':                                                   [ '0.000' ]
+          'Electric Meter L2 L3 Voltage':                                                   [ '0.000' ]
+          'Electric Meter L3 L1 Voltage':                                                   [ '0.000' ]
+          'Electric Meter L1 Power':                                                        [ '0' ]
+          'Electric Meter L2 Power':                                                        [ '0' ]
+          'Electric Meter L3 Power':                                                        [ '0' ]
+          'Electric Meter Meter Value':                                                     [ '0' ]
+          'Current Smart Grid Mode':                                                        [ 'Normal' ]
+          'Electric Meter KWh Total':                                                       [ '0.000' ]
+          'WCS Valve Position':                                                             [ '0.000' ]
+          'TWC Valve Position':                                                             [ '0.000' ]
+          'Mix Valve 2 Position':                                                           [ '0.000' ]
+          'Mix Valve 3 Position':                                                           [ '0.000' ]
+          'Mix Valve 4 Position':                                                           [ '0.000' ]
+          'Mix Valve 5 Position':                                                           [ '0.000' ]
+          'Dew Point Room':                                                                 [ '-153.960' ]
+          'Cooling Supply Line Mix Valve Position':                                         [ '0.000' ]
+          'Surplus Heat Fan Speed':                                                         [ '0.000' ]
+          'Pool Supply Line Mix Valve Position':                                            [ '0.000' ]
+          'TWC Supply Line Temperature':                                                    []
+          'TWC Return Temperature':                                                         []
+          'WCS Return Line Temperature':                                                    []
+          'TWC End Tank Temperature':                                                       []
+          'Mix Valve 2 Supply Line Temperature':                                            []
+          'Mix Valve 3 Supply Line Temperature':                                            []
+          'Mix Valve 4 Supply Line Temperature':                                            []
+          'Cooling Circuit Return Line Temperature':                                        []
+          'Cooling Tank Temperature':                                                       []
+          'Cooling Tank Return Line Temperature':                                           []
+          'Cooling Circuit Supply Line Temperature':                                        []
+          'Mix Valve 5 Supply Line Temperature':                                            []
+          'Mix Valve 2 Return Line Temperature':                                            []
+          'Mix Valve 3 Return Line Temperature':                                            []
+          'Mix Valve 4 Return Line Temperature':                                            []
+          'Mix Valve 5 Return Line Temperature':                                            []
+          'Surplus Heat Return Line Temperature':                                           []
+          'Surplus Heat Supply Line Temperature':                                           []
+          'Pool Supply Line Temperature':                                                   []
+          'Pool Return Line Temperature':                                                   []
+          'Room Temperature':                                                               [ '22.400' ]
+          'Bubble Point High Pressure Temperature':                                         [ '21.260' ]
+          'Dew Point High Pressure Temperature':                                            [ '21.380' ]
+          'Dew Point Low Pressure Temperature':                                             [ '16.940' ]
+          'Superheat Temperature':                                                          [ '3.840' ]
+          'Sub Cooling Temperature':                                                        [ '0.630' ]
+          'Low Pressure Side Pressure':                                                     [ '12.240' ]
+          'High Pressure Side Pressure':                                                    [ '13.970' ]
+          'Liquid Line Temperature':                                                        [ '20.520' ]
+          'Suction Gas Temperature':                                                        [ '20.780' ]
+          'Heating Season Integral Value':                                                  [ '150' ]
+          'P Value For Gear Shifting And Demand Calculation':                               [ '0.000' ]
+          'I Value For Gear Shifting And Demand Calculation':                               [ '0.000' ]
+          'D Value For Gear Shifting And Demand Calculation':                               [ '0.000' ]
+          'I Value For Compressor Buffer Tank':                                             [ '0.000' ]
+          'P Value For Compressor Buffer Tank':                                             [ '0.000' ]
+          'Mix Valve Cooling Opening Degree':                                               [ '11' ]
+          'Desired Gear For Tap Water':                                                     [ '0' ]
+          'Desired Gear For Heating':                                                       [ '0' ]
+          'Desired Gear For Cooling':                                                       [ '0' ]
+          'Desired Gear For Pool':                                                          [ '0' ]
+          'Number Of Available Secondaries Genesis':                                        [ '0' ]
+          'Number Of Available Secondaries Legacy':                                         [ '0' ]
+          'Total Distributed Gears To All Units':                                           [ '0' ]
+          'Maximum Gear Out Of All The Currently Requested Gears':                          [ '0' ]
+          'Mix Valve 1 Desired Temperature Distribution Circuit':                           [ '0.000' ]
+          'Mix Valve 2 Desired Temperature Distribution Circuit':                           [ '0.000' ]
+          'Mix Valve 3 Desired Temperature Distribution Circuit':                           [ '0.000' ]
+          'Mix Valve 4 Desired Temperature Distribution Circuit':                           [ '0.000' ]
+          'Mix Valve 5 Desired Temperature Distribution Circuit':                           [ '0.000' ]
+          'Disconnect Hot Gas End Tank':                                                    [ 'Connected' ]
+          'Legacy Heat Pump Compressor Running':                                            []
+          'Legacy Heat Pump Reporting Alarm':                                               []
+          'Legacy Heat Pump Start Signal':                                                  []
+          'Legacy Heat Pump Tap Water Signal':                                              []
+          'Primary Unit Alarm Class D':                                                     []
+          'Primary Unit Alarm Lost Communication':                                          []
+          'Primary Unit Alarm Class A':                                                     []
+          'Primary Unit Alarm Class B':                                                     []
+          'Primary Unit Alarm Class E':                                                     []
+          'Primary Unit Alarm General':                                                     []
+          'Primary Unit Alarm Lost Communication Legacy Heat Pump':                         []
+          'Control Software Version Major':                                                 [ '11' ]
+          'Control Software Version Minor':                                                 [ '0' ]
+          'Control Software Version Micro':                                                 [ '12' ]
+          'Control Software Version':                                                       [ '11.0.12' ]
+          'Expansion Valve Opening Degree':                                                 [ '0.000' ]
+          'Inverter Temperature':                                                           [ '21' ]
+
+      - id:          'Settings'
+        expected:
+          'Operational Mode':                                                               [ 'ON/Auto' ]
+          'Max Limitation Set Point Curve Radiator':                                        [ '45.000' ]
+          'Min Limitation Set Point Curve Radiator':                                        [ '20.000' ]
+          'Comfort Wheel Setting':                                                          [ '20.000' ]
+          'Set Point Heat Curve Y1':                                                        [ '20.000' ]
+          'Set Point Heat Curve Y2':                                                        [ '24.000' ]
+          'Set Point Heat Curve Y3':                                                        [ '27.000' ]
+          'Set Point Heat Curve Y4':                                                        [ '30.000' ]
+          'Set Point Heat Curve Y5':                                                        [ '31.000' ]
+          'Set Point Heat Curve Y6':                                                        [ '35.000' ]
+          'Set Point Heat Curve Y7':                                                        [ '39.000' ]
+          'Heating Season Stop Temperature':                                                [ '17.000' ]
+          'Tap Water Start Temperature':                                                    [ '44.000' ]
+          'Tap Water Stop Temperature':                                                     [ '60.000' ]
+          'Minimum Allowed Gear In Heating':                                                [ '1' ]
+          'Maximum Allowed Gear In Heating':                                                [ '9' ]
+          'Maximum Allowed Gear In Tap Water':                                              [ '7' ]
+          'Minimum Allowed Gear In Tap Water':                                              [ '5' ]
+          'Cooling Mix Valve Set Point':                                                    [ '18.000' ]
+          'TWC Mix Valve Set Point':                                                        [ '60.000' ]
+          'WCS Return Line Set Point':                                                      [ '45.000' ]
+          'TWC Mix Valve Lowest Allowed Opening Degree':                                    [ '0.000' ]
+          'TWC Mix Valve Highest Allowed Opening Degree':                                   [ '100.000' ]
+          'TWC Start Temperature Immersion Heater':                                         [ '60.000' ]
+          'TWC Start Delay Immersion Heater Seconds':                                       [ '0.000' ]
+          'TWC Stop Temperature Immersion Heater':                                          [ '65.000' ]
+          'WCS Mix Valve Lowest Allowed Opening Degree':                                    [ '15.000' ]
+          'WCS Mix Valve Highest Allowed Opening Degree':                                   [ '100.000' ]
+          'Mix Valve 2 Lowest Allowed Opening Degree':                                      [ '0.000' ]
+          'Mix Valve 2 Highest Allowed Opening Degree':                                     [ '100.000' ]
+          'Mix Valve 3 Lowest Allowed Opening Degree':                                      [ '0.000' ]
+          'Mix Valve 3 Highest Allowed Opening Degree':                                     [ '100.000' ]
+          'Mix Valve 4 Lowest Allowed Opening Degree':                                      [ '0.000' ]
+          'Mix Valve 4 Highest Allowed Opening Degree':                                     [ '100.000' ]
+          'Mix Valve 5 Lowest Allowed Opening Degree':                                      [ '0.000' ]
+          'Mix Valve 5 Highest Allowed Opening Degree':                                     [ '100.000' ]
+          'Surplus Heat Chiller Set Point':                                                 [ '45.000' ]
+          'Cooling Supply Line Mix Valve Lowest Allowed Opening Degree':                    [ '0.000' ]
+          'Cooling Supply Line Mix Valve Highest Allowed Opening Degree':                   [ '100.000' ]
+          'Surplus Heat Opening Degree For Starting Fan1':                                  [ '50.000' ]
+          'Surplus Heat Opening Degree For Starting Fan2':                                  [ '80.000' ]
+          'Surplus Heat Opening Degree For Stopping Fan1':                                  [ '20.000' ]
+          'Surplus Heat Opening Degree For Stopping Fan2':                                  [ '40.000' ]
+          'Surplus Heat Lowest Allowed Opening Degree':                                     [ '0.000' ]
+          'Surplus Heat Highest Allowed Opening Degree':                                    [ '100.000' ]
+          'Pool Charge Set Point':                                                          [ '26.000' ]
+          'Pool Mix Valve Lowest Allowed Opening Degree':                                   [ '0.000' ]
+          'Pool Mix Valve Highest Allowed Opening Degree':                                  [ '100.000' ]
+          'Gear Shift Delay Heating':                                                       [ '300' ]
+          'Gear Shift Delay Pool':                                                          [ '300' ]
+          'Gear Shift Delay Cooling':                                                       [ '60' ]
+          'Brine In High Alarm Limit':                                                      [ '20.000' ]
+          'Brine In Low Alarm Limit':                                                       [ '-5.000' ]
+          'Brine Out Low Alarm Limit':                                                      [ '2.000' ]
+          'Brine Max Delta Limit':                                                          [ '12.000' ]
+          'Hot Gas Pump Start Temperature Discharge Pipe':                                  [ '65.000' ]
+          'Hot Gas Pump Lower Stop Limit Temperature Discharge Pipe':                       [ '60.000' ]
+          'Hot Gas Pump Upper Stop Limit Temperature Discharge Pipe':                       [ '125.000' ]
+          'External Additional Heater Start':                                               [ '-6' ]
+          'Condenser Pump Lowest Allowed Speed':                                            [ '40.000' ]
+          'Brine Pump Lowest Allowed Speed':                                                [ '20.000' ]
+          'External Additional Heater Stop':                                                [ '4.000' ]
+          'Condenser Pump Highest Allowed Speed':                                           [ '100.000' ]
+          'Brine Pump Highest Allowed Speed':                                               [ '100.000' ]
+          'Condenser Pump Standby Speed':                                                   [ '50.000' ]
+          'Brine Pump Standby Speed':                                                       [ '50.000' ]
+          'Minimum Allowed Gear In Pool':                                                   [ '1' ]
+          'Maximum Allowed Gear In Pool':                                                   [ '9' ]
+          'Minimum Allowed Gear In Cooling':                                                [ '1' ]
+          'Maximum Allowed Gear In Cooling':                                                [ '9' ]
+          'Start Temp For Cooling':                                                         [ '18.000' ]
+          'Stop Temp For Cooling':                                                          [ '13.000' ]
+          'Mix Valve 1 Min Limitation Set Point Curve Radiator':                            [ '10.000' ]
+          'Mix Valve 1 Max Limitation Set Point Curve Radiator':                            [ '60.000' ]
+          'Mix Valve 1 Set Point Curve Y1':                                                 [ '21.000' ]
+          'Mix Valve 1 Set Point Curve Y2':                                                 [ '29.000' ]
+          'Mix Valve 1 Set Point Curve Y3':                                                 [ '34.000' ]
+          'Mix Valve 1 Set Point Curve Y4':                                                 [ '40.000' ]
+          'Mix Valve 1 Set Point Curve Y5':                                                 [ '43.000' ]
+          'Mix Valve 1 Set Point Curve Y6':                                                 [ '51.000' ]
+          'Mix Valve 1 Set Point Curve Y7':                                                 [ '59.000' ]
+          'Fixed System Supply Set Point':                                                  [ '25.000' ]
+          'Outdoor Temperature Source':                                                     [ 'PT1000' ]
+          'Outdoor Temperature Sensor':                                                     []
+          'Maximum Phase Current':                                                          []
+          'Compressor Current Hysteresis':                                                  []
+          'Mix Valve 2 Min Limitation Set Point Curve Radiator':                            [ '10.000' ]
+          'Mix Valve 2 Max Limitation Set Point Curve Radiator':                            [ '60.000' ]
+          'Mix Valve 2 Set Point Curve Y1':                                                 [ '21.000' ]
+          'Mix Valve 2 Set Point Curve Y2':                                                 [ '29.000' ]
+          'Mix Valve 2 Set Point Curve Y3':                                                 [ '34.000' ]
+          'Mix Valve 2 Set Point Curve Y4':                                                 [ '40.000' ]
+          'Mix Valve 2 Set Point Curve Y5':                                                 [ '43.000' ]
+          'Mix Valve 2 Set Point Curve Y6':                                                 [ '51.000' ]
+          'Mix Valve 2 Set Point Curve Y7':                                                 [ '59.000' ]
+          'Mix Valve 3 Min Limitation Set Point Curve Radiator':                            [ '10.000' ]
+          'Mix Valve 3 Max Limitation Set Point Curve Radiator':                            [ '60.000' ]
+          'Mix Valve 3 Set Point Curve Y1':                                                 [ '21.000' ]
+          'Mix Valve 3 Set Point Curve Y2':                                                 [ '29.000' ]
+          'Mix Valve 3 Set Point Curve Y3':                                                 [ '34.000' ]
+          'Mix Valve 3 Set Point Curve Y4':                                                 [ '40.000' ]
+          'Mix Valve 3 Set Point Curve Y5':                                                 [ '43.000' ]
+          'Mix Valve 3 Set Point Curve Y6':                                                 [ '51.000' ]
+          'Mix Valve 3 Set Point Curve Y7':                                                 [ '59.000' ]
+          'Mix Valve 4 Min Limitation Set Point Curve Radiator':                            [ '10.000' ]
+          'Mix Valve 4 Max Limitation Set Point Curve Radiator':                            [ '60.000' ]
+          'Mix Valve 4 Set Point Curve Y1':                                                 [ '21.000' ]
+          'Mix Valve 4 Set Point Curve Y2':                                                 [ '29.000' ]
+          'Mix Valve 4 Set Point Curve Y3':                                                 [ '34.000' ]
+          'Mix Valve 4 Set Point Curve Y4':                                                 [ '40.000' ]
+          'Mix Valve 4 Set Point Curve Y5':                                                 [ '43.000' ]
+          'Mix Valve 4 Set Point Curve Y6':                                                 [ '51.000' ]
+          'Mix Valve 4 Set Point Curve Y7':                                                 [ '59.000' ]
+          'Mix Valve 5 Min Limitation Set Point Curve Radiator':                            [ '10.000' ]
+          'Mix Valve 5 Max Limitation Set Point Curve Radiator':                            [ '60.000' ]
+          'Mix Valve 5 Set Point Curve Y1':                                                 [ '21.000' ]
+          'Mix Valve 5 Set Point Curve Y2':                                                 [ '29.000' ]
+          'Mix Valve 5 Set Point Curve Y3':                                                 [ '34.000' ]
+          'Mix Valve 5 Set Point Curve Y4':                                                 [ '40.000' ]
+          'Mix Valve 5 Set Point Curve Y5':                                                 [ '43.000' ]
+          'Mix Valve 5 Set Point Curve Y6':                                                 [ '51.000' ]
+          'Mix Valve 5 Set Point Curve Y7':                                                 [ '59.000' ]
+          'Mix Valve 1 Selected Mode':                                                      [ 'Heat' ]
+          'Set Point Return Temp From Pool To Heat Exchanger':                              [ '20.000' ]
+          'Set Point Pool Hysteresis':                                                      [ '1.000' ]
+          'Mix Valve 1 Set Point For Supply Line Temp Passive Cooling':                     [ '17.000' ]
+          'Set Point Minimum Outdoor Temp When Cooling Is Permitted':                       [ '19.000' ]
+          'External Heater Outdoor Temp Limit':                                             [ '10.000' ]
+          'Mix Valve 2 Selected Mode':                                                      [ 'Heat' ]
+          'Mix Valve 2 Desired Cooling Temperature Set Point':                              [ '17.000' ]
+          'Mix Valve 2 Seasonal Cooling Outdoor Temperature':                               [ '0.230' ]
+          'Mix Valve 2 Seasonal Heating Outdoor Temperature':                               [ '0.170' ]
+          'Mix Valve 3 Selected Mode':                                                      [ 'Heat' ]
+          'Mix Valve 3 Desired Cooling Temperature Set Point':                              [ '17.000' ]
+          'Mix Valve 3 Seasonal Cooling Outdoor Temperature':                               [ '0.230' ]
+          'Mix Valve 3 Seasonal Heating Outdoor Temperature':                               [ '0.170' ]
+          'Mix Valve 4 Selected Mode':                                                      [ 'Heat' ]
+          'Mix Valve 4 Desired Cooling Temperature Set Point':                              [ '17.000' ]
+          'Mix Valve 4 Seasonal Cooling Outdoor Temperature':                               [ '0.230' ]
+          'Mix Valve 4 Seasonal Heating Outdoor Temperature':                               [ '0.170' ]
+          'Mix Valve 5 Selected Mode':                                                      [ 'Heat' ]
+          'Mix Valve 5 Desired Cooling Temperature Set Point':                              [ '17.000' ]
+          'Mix Valve 5 Seasonal Cooling Outdoor Temperature':                               [ '0.230' ]
+          'Mix Valve 5 Seasonal Heating Outdoor Temperature':                               [ '0.170' ]
+          'Immersion Heater Status':                                                        []
+
+      - id:          'Switches'
+        expected:
+          'Reset all alarms':                                                               [ 'false' ]
+          'Enable internal additional heater':                                              [ 'true' ]
+          'Enable external additional heater':                                              [ 'false' ]
+          'Enable HGW':                                                                     [ 'false' ]
+          'Enable flow switch pressure switch':                                             [ 'true' ]
+          'Enable tap water':                                                               [ 'true' ]
+          'Enable heat':                                                                    [ 'true' ]
+          'Enable active cooling':                                                          [ 'false' ]
+          'Enable mix valve 1':                                                             [ 'false' ]
+          'Enable TWC':                                                                     [ 'false' ]
+          'Enable WCS':                                                                     [ 'false' ]
+          'Enable hot gas pump':                                                            [ 'false' ]
+          'Enable mix valve 2':                                                             [ 'false' ]
+          'Enable mix valve 3':                                                             [ 'false' ]
+          'Enable mix valve 4':                                                             [ 'false' ]
+          'Enable mix valve 5':                                                             [ 'false' ]
+          'Enable brine out monitoring':                                                    [ 'true' ]
+          'Enable brine pump continuous operation':                                         [ 'false' ]
+          'Enable system circulation pump':                                                 [ 'false' ]
+          'Enable dew point calculation':                                                   [ 'false' ]
+          'Enable anti legionella':                                                         [ 'true' ]
+          'Enable additional heater only':                                                  [ 'false' ]
+          'Enable current limitation':                                                      [ 'false' ]
+          'Enable pool':                                                                    [ 'false' ]
+          'Enable surplus heat chiller':                                                    [ 'false' ]
+          'Enable surplus heat borehole':                                                   [ 'true' ]
+          'Enable external additional heater for pool':                                     [ 'false' ]
+          'Enable internal additional heater for pool':                                     [ 'false' ]
+          'Enable passive cooling':                                                         [ 'true' ]
+          'Enable condenser pump variable speed mode':                                      [ 'true' ]
+          'Enable brine pump variable speed mode':                                          [ 'true' ]
+          'Enable cooling mode for mixing valve 1':                                         [ 'false' ]
+          'Enable outdoor temp dependent for cooling with mixing valve 1':                  [ 'false' ]
+          'Enable internal brine pump to start when cooling is active for mixing valve 1':  [ 'false' ]
+          'Enable outdoor temp dependent for external heater':                              [ 'false' ]
+          'Enable brine in monitoring':                                                     [ 'false' ]
+          'Enable fixed system supply set point':                                           [ 'false' ]
+          'Enable evaporator freeze protection':                                            [ 'true' ]
+          'Enable outdoor temp dependent for cooling with mixing valve 2':                  [ 'true' ]
+          'Enable dew point calculation on mixing valve 2':                                 [ 'false' ]
+          'Enable outdoor temp dependent for heating with mixing valve 2':                  [ 'true' ]
+          'Enable outdoor temp dependent for cooling with mixing valve 3':                  [ 'true' ]
+          'Enable dew point calculation on mixing valve 3':                                 [ 'false' ]
+          'Enable outdoor temp dependent for heating with mixing valve 3':                  [ 'true' ]
+          'Enable outdoor temp dependent for cooling with mixing valve 4':                  [ 'true' ]
+          'Enable dew point calculation on mixing valve 4':                                 [ 'false' ]
+          'Enable outdoor temp dependent for heating with mixing valve 4':                  [ 'true' ]
+          'Enable outdoor temp dependent for cooling with mixing valve 5':                  [ 'true' ]
+          'Enable dew point calculation on mixing valve 5':                                 [ 'false' ]
+          'Enable outdoor temp dependent for heating with mixing valve 5':                  [ 'true' ]
+          'Enable internal brine pump to start when cooling is active for mixing valve 2':  [ 'false' ]
+          'Enable internal brine pump to start when cooling is active for mixing valve 3':  [ 'false' ]
+          'Enable internal brine pump to start when cooling is active for mixing valve 4':  [ 'false' ]
+          'Enable internal brine pump to start when cooling is active for mixing valve 5':  [ 'false' ]
+          'Enable continuous operation mode for condenser pump':                            [ 'false' ]
+          'Allow current limiter to restrict external additional heater':                   []
+          'Allow current limiter to restrict secondary heat pump units':                    []
+
+      - id:          'Alarms'
+        expected:
+          'Alarm active Class A':                                                           [ 'false' ]
+          'Alarm active Class B':                                                           [ 'false' ]
+          'Alarm active Class C':                                                           [ 'false' ]
+          'Alarm active Class D':                                                           [ 'false' ]
+          'Alarm active Class E':                                                           [ 'false' ]
+          'High pressure switch alarm':                                                     [ 'false' ]
+          'Low pressure level alarm':                                                       [ 'false' ]
+          'High discharge pipe temperature alarm':                                          [ 'false' ]
+          'Operating pressure limit indication':                                            [ 'false' ]
+          'Discharge pipe sensor alarm':                                                    [ 'false' ]
+          'Liquid line sensor alarm':                                                       [ 'false' ]
+          'Suction gas sensor alarm':                                                       [ 'false' ]
+          'Flow pressure switch alarm':                                                     [ 'false' ]
+          'Power input phase detection alarm':                                              [ 'false' ]
+          'Inverter unit alarm':                                                            [ 'false' ]
+          'System supply low temperature alarm':                                            [ 'false' ]
+          'Compressor low speed alarm':                                                     [ 'false' ]
+          'Low super heat alarm':                                                           [ 'false' ]
+          'Pressure ratio out of range alarm':                                              [ 'false' ]
+          'Compressor pressure outside envelope alarm':                                     [ 'false' ]
+          'Brine temperature out of range alarm':                                           [ 'false' ]
+          'Brine in sensor alarm':                                                          [ 'false' ]
+          'Brine out sensor alarm':                                                         [ 'false' ]
+          'Condenser in sensor alarm':                                                      [ 'false' ]
+          'Condenser out sensor alarm':                                                     [ 'false' ]
+          'Outdoor sensor alarm':                                                           [ 'false' ]
+          'System supply line sensor alarm':                                                [ 'false' ]
+          'Mix valve 1 supply line sensor alarm':                                           [ 'false' ]
+          'Mix valve 2 supply line sensor alarm':                                           [ 'false' ]
+          'Mix valve 3 supply line sensor alarm':                                           [ 'false' ]
+          'Mix valve 4 supply line sensor alarm':                                           [ 'false' ]
+          'Mix valve 5 supply line sensor alarm':                                           [ 'false' ]
+          'WCS return line sensor alarm':                                                   [ 'false' ]
+          'TWC supply line sensor alarm':                                                   [ 'false' ]
+          'Cooling tank sensor alarm':                                                      [ 'false' ]
+          'Cooling supply line sensor alarm':                                               [ 'false' ]
+          'Cooling circuit return line sensor alarm':                                       [ 'false' ]
+          'Brine delta out of range alarm':                                                 [ 'false' ]
+          'Tap water mid sensor alarm':                                                     [ 'false' ]
+          'TWC circulation return sensor alarm':                                            [ 'false' ]
+          'HGW sensor alarm':                                                               [ 'false' ]
+          'Internal additional heater alarm':                                               [ 'false' ]
+          'Brine in high temperature alarm':                                                [ 'false' ]
+          'Brine in low temperature alarm':                                                 [ 'false' ]
+          'Brine out low temperature alarm':                                                [ 'false' ]
+          'TWC circulation return low temperature alarm':                                   [ 'false' ]
+          'TWC supply low temperature alarm':                                               [ 'false' ]
+          'Mix valve 1 supply temperature deviation alarm':                                 [ 'false' ]
+          'Mix valve 2 supply temperature deviation alarm':                                 [ 'false' ]
+          'Mix valve 3 supply temperature deviation alarm':                                 [ 'false' ]
+          'Mix valve 4 supply temperature deviation alarm':                                 [ 'false' ]
+          'Mix valve 5 supply temperature deviation alarm':                                 [ 'false' ]
+          'WCS return line temperature deviation alarm':                                    [ 'false' ]
+          'Sum alarm':                                                                      [ 'false' ]
+          'Cooling circuit supply line temperature deviation alarm':                        [ 'false' ]
+          'Cooling tank temperature deviation alarm':                                       [ 'false' ]
+          'Surplus heat temperature deviation alarm':                                       [ 'false' ]
+          'Humidity room sensor alarm':                                                     [ 'false' ]
+          'Surplus heat supply line sensor alarm':                                          [ 'false' ]
+          'Surplus heat return line sensor alarm':                                          [ 'false' ]
+          'Cooling tank return line sensor alarm':                                          [ 'false' ]
+          'Temperature room sensor alarm':                                                  [ 'false' ]
+          'Inverter unit communication alarm':                                              [ 'false' ]
+          'Pool return line sensor alarm':                                                  [ 'false' ]
+          'External stop for pool':                                                         [ 'false' ]
+          'External start brine pump':                                                      [ 'false' ]
+          'External relay for brine ground water pump':                                     [ 'true' ]
+          'Tap water end tank sensor alarm':                                                [ 'false' ]
+          'Maximum time for antilegionella exceeded alarm':                                 [ 'false' ]
+          'Genesis secondary unit alarm':                                                   [ 'false' ]
+          'Primary unit alarm other primary units detected':                                [ 'false' ]
+          'Primary unit alarm no secondary units detected':                                 [ 'false' ]
+          'Oil boost in progress':                                                          [ 'false' ]
+          'Tap water top sensor alarm':                                                     [ 'false' ]
+          'Compressor control signal':                                                      [ 'false' ]
+          'Smart Grid 1 EVU input':                                                         [ 'false' ]
+          'External alarm input':                                                           [ 'false' ]
+          'Smart Grid 2':                                                                   [ 'false' ]
+          'External additional heater control signal':                                      [ 'false' ]
+          'Mix valve 1 circulation pump control signal':                                    [ 'false' ]
+          'Condenser pump control':                                                         [ 'true' ]
+          'System circulation pump control signal':                                         [ 'false' ]
+          'Hot gas circulation pump control signal':                                        [ 'false' ]
+          'Brine pump control':                                                             [ 'true' ]
+          'External heater circulation pump control signal':                                [ 'false' ]
+          'Heating season winter active':                                                   [ 'false' ]
+          'External additional heater active':                                              [ 'false' ]
+          'Internal additional heater active':                                              [ 'false' ]
+          'HGW regulation control signal':                                                  [ 'false' ]
+          'Heat pump stopping':                                                             [ 'false' ]
+          'Heat pump OK to start':                                                          [ 'true' ]
+          'TWC supply line circulation pump control signal':                                [ 'false' ]
+          'WCS regulation control signal':                                                  [ 'false' ]
+          'WCS circulation pump control signal':                                            [ 'false' ]
+          'TWC end tank heater control signal':                                             [ 'false' ]
+          'Pool directional valve position':                                                [ 'false' ]
+          'Cooling circuit circulation pump control signal':                                [ 'true' ]
+          'Pool circulation pump control signal':                                           [ 'false' ]
+          'Surplus heat directional valve position':                                        [ 'false' ]
+          'Surplus heat circulation pump control signal':                                   [ 'false' ]
+          'Cooling circuit regulation control signal':                                      [ 'true' ]
+          'Surplus heat regulation control signal':                                         [ 'false' ]
+          'Active cooling directional valve position Borehole disconnected':                [ 'false' ]
+          'Passive Active cooling directional valve position Cooling tank connected':       [ 'true' ]
+          'Pool regulation control signal':                                                 [ 'false' ]
+          'Indication when mixing valve 1 is producing passive cooling':                    [ 'false' ]
+          'Compressor is unable to speed up':                                               [ 'false' ]
+
   - id: 'Test At 2025 04 13 18 08 00'
     description: 'Test generated from device data at 2025-04-13T18:08:00.6Z on a Thermia Calibra Cool 7 running Genesis 11'
     input:
