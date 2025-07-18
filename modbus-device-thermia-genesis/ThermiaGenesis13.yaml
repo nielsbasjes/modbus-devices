@@ -1,0 +1,1445 @@
+# $schema: https://modbus.basjes.nl/v2/ModbusSchema.json
+#
+# Modbus Schema Toolkit
+# Copyright (C) 2019-2025 Niels Basjes
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an AS IS BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+# TCW = Tap Water Control
+# WCS = Water Charging System
+# HGW = Hot Gas Water
+
+description: 'Thermia Genesis 13'
+schemaFeatureLevel: 2
+
+blocks:
+# ==========================================
+
+  - id:          'System'
+    description: 'Generic system fields'
+    fields:
+      - id:          'Reset all alarms'
+        description: 'Reset all alarms'
+        expression:  'boolean(c:00003)'
+        # referenceTo: '0'
+
+      - id:          'Enable flow switch pressure switch'
+        description: 'Enable flow switch/pressure switch'
+        expression:  'boolean(c:00007)'
+        # referenceTo: '0'
+
+      - id:          'Enable brine out monitoring'
+        description: 'Enable brine out monitoring'
+        expression:  'boolean(c:00020)'
+        # referenceTo: '0'
+
+      - id:          'Enable brine pump continuous operation'
+        description: 'Enable brine pump continuous operation'
+        expression:  'boolean(c:00021)'
+        # referenceTo: '0'
+
+      - id:          'Enable current limitation'
+        description: 'Enable current limitation'
+        expression:  'boolean(c:00026)'
+        # referenceTo: '0'
+
+      - id:          'Enable outdoor temp dependent for cooling with mixing valve 1'
+        description: 'Enable outdoor temp dependent for cooling with mixing valve 1'
+        expression:  'boolean(c:00037)'
+        # referenceTo: '0'
+
+      - id:          'Enable internal brine pump to start when cooling is active for mixing valve 1'
+        description: 'Enable internal brine pump to start when cooling is active for mixing valve 1'
+        expression:  'boolean(c:00038)'
+        # referenceTo: '0'
+
+      - id:          'Enable brine in monitoring'
+        description: 'Enable brine in monitoring'
+        expression:  'boolean(c:00040)'
+        # referenceTo: '0'
+
+      - id:          'Enable fixed system supply set point'
+        description: 'Enable fixed system supply set point, allows hr:00116 (Fixed System Supply Set Point)'
+        expression:  'boolean(c:00041)'
+        # referenceTo: '0'
+
+      - id:          'Enable evaporator freeze protection'
+        description: 'Enable evaporator freeze protection'
+        expression:  'boolean(c:00042)'
+        # referenceTo: '0'
+
+      - id:          'Enable continuous operation mode for condenser pump'
+        description: 'Enable continuous operation mode for condenser pump.'
+        expression:  'boolean(c:00059)'
+        # referenceTo: '0'
+
+      - id:          'Allow current limiter to restrict external additional heater'
+        description: 'Allow current limiter to restrict external additional heater'
+        expression:  'boolean(c:00062)'
+        # referenceTo: '0'
+
+      - id:          'Allow current limiter to restrict secondary heat pump units'
+        description: 'Allow current limiter to restrict secondary heat pump units'
+        expression:  'boolean(c:00063)'
+        # referenceTo: '0'
+      - id:          'Alarm active Class A'
+        description: 'Alarm active, Class: A'
+        expression:  'boolean(di:00000)'
+        # referenceTo: '0'
+
+      - id:          'Alarm active Class B'
+        description: 'Alarm active, Class: B'
+        expression:  'boolean(di:00001)'
+        # referenceTo: '0'
+
+      - id:          'Alarm active Class C'
+        description: 'Alarm active, Class: C'
+        expression:  'boolean(di:00002)'
+        # referenceTo: '0'
+
+      - id:          'Alarm active Class D'
+        description: 'Alarm active, Class: D - Genesis secondary'
+        expression:  'boolean(di:00003)'
+        # referenceTo: '0'
+
+      - id:          'Flow pressure switch alarm'
+        description: 'Flow/pressure switch alarm'
+        expression:  'boolean(di:00016)'
+        # referenceTo: '0'
+
+      - id:          'Power input phase detection alarm'
+        description: 'Power input phase detection alarm'
+        expression:  'boolean(di:00022)'
+        # referenceTo: '0'
+
+      - id:          'Brine temperature out of range alarm'
+        description: 'Brine temperature out of range alarm'
+        expression:  'boolean(di:00029)'
+        # referenceTo: '0'
+
+      - id:          'Brine delta out of range alarm'
+        description: 'Brine delta out of range alarm'
+        expression:  'boolean(di:00049)'
+        # referenceTo: '0'
+
+      - id:          'Brine in high temperature alarm'
+        description: 'Brine in high temperature alarm'
+        expression:  'boolean(di:00055)'
+        # referenceTo: '0'
+
+      - id:          'Brine in low temperature alarm'
+        description: 'Brine in low temperature alarm'
+        expression:  'boolean(di:00056)'
+        # referenceTo: '0'
+
+      - id:          'Brine out low temperature alarm'
+        description: 'Brine out low temperature alarm'
+        expression:  'boolean(di:00057)'
+        # referenceTo: '0'
+
+      - id:          'Sum alarm'
+        description: 'Sum alarm'
+        expression:  'boolean(di:00066)'
+        # referenceTo: '0'
+
+      - id:          'Temperature room sensor alarm'
+        description: 'Temperature room sensor alarm'
+        expression:  'boolean(di:00074)'
+        # referenceTo: '0'
+
+      - id:          'External start brine pump'
+        description: 'External start brine pump, read only'
+        expression:  'boolean(di:00078)'
+        # referenceTo: '0'
+
+      - id:          'External relay for brine ground water pump'
+        description: 'External relay for brine/ground water pump.'
+        expression:  'boolean(di:00079)'
+        # referenceTo: '0'
+
+      - id:          'Genesis secondary unit alarm'
+        description: 'Genesis secondary unit alarm - this specific secondary unit can''t communicate with its primary unit'
+        expression:  'boolean(di:00083)'
+        # referenceTo: '0'
+
+      - id:          'Primary unit alarm other primary units detected'
+        description: 'Primary unit alarm - the primary has detected other primary units on the same network with a network mask that is allowing conflict. Change network settings in order to avoid problem. For instance change port number on the primary and its secondary unit.'
+        expression:  'boolean(di:00084)'
+        # referenceTo: '0'
+
+      - id:          'Primary unit alarm no secondary units detected'
+        description: 'Primary unit alarm - the primary has not detected all secondary units. Make sure that the primary/secondary settings are correct and the network mask and port and number of Genesis secondaries settings are correct.'
+        expression:  'boolean(di:00085)'
+        # referenceTo: '0'
+
+      - id:          'Tap water top sensor alarm'
+        description: 'Tap water top sensor alarm.'
+        expression:  'boolean(di:00087)'
+        # referenceTo: '0'
+
+      - id:          'Smart Grid 1 EVU input'
+        description: 'Smart Grid 1, EVU input'
+        expression:  'boolean(di:00201)'
+        # referenceTo: '0'
+
+      - id:          'External alarm input'
+        description: 'External alarm input'
+        expression:  'boolean(di:00202)'
+        # referenceTo: '0'
+
+      - id:          'Smart Grid 2'
+        description: 'Smart Grid 2'
+        expression:  'boolean(di:00204)'
+        # referenceTo: '0'
+
+      - id:          'Indication when mixing valve 1 is producing passive cooling'
+        description: 'Indication when mixing valve 1 is producing passive cooling'
+        expression:  'boolean(di:00245)'
+        # referenceTo: '0'
+
+      - id:          'Currently Running 1st Demand'
+        description: 'Currently running: First prioritised demand'
+        expression:  'enum(ir:00001 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        # referenceTo: '0'
+
+      - id:          'Currently Running Demands'
+        description: 'Currently running: Bit registers that shows the all the current running demands'
+        expression:  'bitset(ir:00002 ; 0->''Manual operation'' ; 1->''Defrost'' ; 2->''Hot water'' ; 3->''Heat'' ; 4->''Active Cooling'' ; 5->''Pool'' ; 6->''Anti legionella'' ; 7->''Passive Cooling'' ; 8->''Reserved'' ; 9->''Standby'' ; 10->''No demand'' ; 11->''OFF'')'
+        # referenceTo: '0'
+
+      - id:          'Currently Running Demand is Manual operation'
+        description: 'Is "Manual operation" a currently running demand'
+        expression:  'bitsetbit(ir:00002 ; 0)'
+        # referenceTo: '0'
+
+      - id:          'Currently Running Demand is Defrost'
+        description: 'Is "Defrost" a currently running demand'
+        expression:  'bitsetbit(ir:00002 ; 1)'
+        # referenceTo: '0'
+
+      - id:          'Currently Running Demand is Hot water'
+        description: 'Is "Hot water" a currently running demand'
+        expression:  'bitsetbit(ir:00002 ; 2)'
+        # referenceTo: '0'
+
+      - id:          'Currently Running Demand is Heat'
+        description: 'Is "Heat" a currently running demand'
+        expression:  'bitsetbit(ir:00002 ; 3)'
+        # referenceTo: '0'
+
+      - id:          'Currently Running Demand is Active Cooling'
+        description: 'Is "Active Cooling" a currently running demand'
+        expression:  'bitsetbit(ir:00002 ; 4)'
+        # referenceTo: '0'
+
+      - id:          'Currently Running Demand is Pool'
+        description: 'Is "Pool" a currently running demand'
+        expression:  'bitsetbit(ir:00002 ; 5)'
+        # referenceTo: '0'
+
+      - id:          'Currently Running Demand is Anti legionella'
+        description: 'Is "Anti legionella" a currently running demand'
+        expression:  'bitsetbit(ir:00002 ; 6)'
+        # referenceTo: '0'
+
+      - id:          'Currently Running Demand is Passive Cooling'
+        description: 'Is "Passive Cooling" a currently running demand'
+        expression:  'bitsetbit(ir:00002 ; 7)'
+        # referenceTo: '0'
+
+      - id:          'Currently Running Demand is Reserved'
+        description: 'Is "Reserved" a currently running demand'
+        expression:  'bitsetbit(ir:00002 ; 8)'
+        # referenceTo: '0'
+
+      - id:          'Currently Running Demand is Standby'
+        description: 'Is "Standby" a currently running demand'
+        expression:  'bitsetbit(ir:00002 ; 9)'
+        # referenceTo: '0'
+
+      - id:          'Currently Running Demand is No demand'
+        description: 'Is "No demand" a currently running demand'
+        expression:  'bitsetbit(ir:00002 ; 10)'
+        # referenceTo: '0'
+
+      - id:          'Currently Running Demand is OFF'
+        description: 'Is "OFF" a currently running demand'
+        expression:  'bitsetbit(ir:00002 ; 11)'
+        # referenceTo: '0'
+
+      - id:          'Outdoor Temperature'
+        description: 'Outdoor temperature'
+        expression:  'int16(ir:00013 ; 0x4E20)/100'
+        # referenceTo: '0'
+
+      - id:          'System Return Line Temperature'
+        description: 'System return line temperature.'
+        expression:  'int16(ir:00027 ; 0x4E20)/100'
+        # referenceTo: '0'
+
+      - id:          'Currently Running 2nd Demand'
+        description: 'Currently running: Second prioritised demand'
+        expression:  'enum(ir:00055 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        # referenceTo: '0'
+
+      - id:          'Currently Running 3rd Demand'
+        description: 'Currently running: Third prioritised demand'
+        expression:  'enum(ir:00056 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        # referenceTo: '0'
+
+      - id:          'Queued Demand 1st'
+        description: 'Queued demand, first priority'
+        expression:  'enum(ir:00062 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        # referenceTo: '0'
+
+      - id:          'Queued Demand 2nd'
+        description: 'Queued demand, second priority'
+        expression:  'enum(ir:00063 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        # referenceTo: '0'
+
+      - id:          'Queued Demand 3rd'
+        description: 'Queued demand, third priority'
+        expression:  'enum(ir:00064 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        # referenceTo: '0'
+
+      - id:          'Queued Demand 4th'
+        description: 'Queued demand, fourth priority'
+        expression:  'enum(ir:00065 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        # referenceTo: '0'
+
+      - id:          'Queued Demand 5th'
+        description: 'Queued demand, fifth priority'
+        expression:  'enum(ir:00066 ; 1->''Manual operation'' ; 2->''Defrost'' ; 3->''Hot water'' ; 4->''Heat'' ; 5->''Active Cooling'' ; 6->''Pool'' ; 7->''Anti legionella'' ; 8->''Passive Cooling'' ; 98->''Standby'' ; 99->''No demand'' ; 100->''OFF'')'
+        # referenceTo: '0'
+
+      - id:          'Active Step Internal Immersion Heater'
+        description: 'Active step internal immersion heater, Mega S-E only'
+        expression:  'int16(ir:00067)'
+        # referenceTo: '0'
+
+      - id:          'Current Smart Grid Mode'
+        description: 'Current Smart Grid mode'
+        expression:  'enum(ir:00082 ; 1->''EVU'' ; 4->''Normal'' ; 5->''Comfort'' ; 6->''Boost'')'
+        # referenceTo: '0'
+
+      - id:          'Room Temperature'
+        description: 'Room temperature sensor'
+        expression:  'int16(ir:00121 ; 0x4E20)/10'
+        # referenceTo: '0'
+
+      - id:          'Number Of Available Secondaries Genesis'
+        description: 'Number of available secondaries Genesis'
+        expression:  'int16(ir:00143)'
+        # referenceTo: '0'
+
+      - id:          'Total Distributed Gears To All Units'
+        description: 'Total distributed gears to all units'
+        expression:  'int16(ir:00145)'
+        # referenceTo: '0'
+
+      - id:          'Maximum Gear Out Of All The Currently Requested Gears'
+        description: 'Maximum gear out of all the currently requested gears'
+        expression:  'int16(ir:00146)'
+        # referenceTo: '0'
+
+      - id:          'Primary Unit Alarm Class D'
+        description: 'Primary unit alarm - the combined output of all Class D alarms. This signal is a bit field, one bit for each secondary heat pump unit.'
+        expression:  'bitset(ir:00160 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
+        # referenceTo: '0'
+
+      - id:          'Primary Unit Alarm Lost Communication'
+        description: 'Primary unit alarm - the primary unit has lost communication with one or more Genesis secondaries. This signal is a bit field, one bit for each heat pump.'
+        expression:  'bitset(ir:00161 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
+        # referenceTo: '0'
+
+      - id:          'Primary Unit Alarm Class A'
+        description: 'Primary unit alarm - Class A alarm detected on the Genesis secondary heat pump unit. This signal is a bit field, one bit for each secondary heat pump unit.'
+        expression:  'bitset(ir:00162 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
+        # referenceTo: '0'
+
+      - id:          'Primary Unit Alarm Class B'
+        description: 'Primary unit alarm - Class B alarm detected on the Genesis secondary heat pump unit. This signal is a bit field, one bit for each secondary heat pump unit.'
+        expression:  'bitset(ir:00163 ; 0->''Heat pump 0'' ; 1->''Heat pump 1'' ; 2->''Heat pump 2'' ; 3->''Heat pump 3'' ; 4->''Heat pump 4'' ; 5->''Heat pump 5'' ; 6->''Heat pump 6'' ; 7->''Heat pump 7'' ; 8->''Heat pump 8'' ; 9->''Heat pump 9'' ; 10->''Heat pump 10'' ; 11->''Heat pump 11'' ; 12->''Heat pump 12'' ; 13->''Heat pump 13'' ; 14->''Heat pump 14'' ; 15->''Heat pump 15'')'
+        # referenceTo: '0'
+
+      - id:          'Control Software Version Major'
+        description: 'Control software version: Major'
+        expression:  'int16(ir:00311)'
+        # referenceTo: '0'
+
+      - id:          'Control Software Version Minor'
+        description: 'Control software version: Minor'
+        expression:  'int16(ir:00312)'
+        # referenceTo: '0'
+
+      - id:          'Control Software Version Micro'
+        description: 'Control software version: Micro'
+        expression:  'int16(ir:00313)'
+        # referenceTo: '0'
+
+      - id:          'Control Software Version'
+        description: 'Control software version: Major'
+        expression:  'concat(Control Software Version Major, ''.'', Control Software Version Minor, ''.'', Control Software Version Micro)'
+        # referenceTo: '0'
+
+      - id:          'Expansion Valve Opening Degree'
+        description: 'Expansion valve opening degree'
+        expression:  'int16(ir:00315)/100'
+        # referenceTo: '0'
+
+      - id:          'Inverter Temperature'
+        description: 'Inverter temperature'
+        expression:  'int16(ir:00319 ; 0x4E20)'
+        # referenceTo: '0'
+
+      - id:          'Operational Mode'
+        description: 'Operational mode *2'
+        expression:  'enum(hr:00000 ; 1->''OFF'' ; 2->''Standby'' ; 3->''ON/Auto'')'
+        # referenceTo: '0'
+
+      - id:          'Minimum Allowed Gear In Heating'
+        description: 'Minimum allowed gear in heating'
+        expression:  'int16(hr:00026)'
+        # referenceTo: '0'
+
+      - id:          'Maximum Allowed Gear In Heating'
+        description: 'Maximum allowed gear in heating'
+        expression:  'int16(hr:00027)'
+        # referenceTo: '0'
+
+      - id:          'Brine Max Delta Limit'
+        description: 'Brine max delta limit'
+        expression:  'int16(hr:00070)/100'
+        # referenceTo: '0'
+
+      - id:          'Fixed System Supply Set Point'
+        description: 'Fixed system supply set point, requires c:00041 (Enable fixed system supply set point) to be enabled'
+        expression:  'int16(hr:00116 ; 0x4E20)/100'
+        # referenceTo: '0'
+
+      - id:          'Outdoor Temperature Source'
+        description: 'Outdoor temperature source, is an enumeration where 0 = designated PT1000 sensor located on BM-card. 1 = BMS register hr:118 (De Facto). When the source is BMS the outdoor temperature alarm is automatically removed when the sensor data is valid. If no valid sensor data is present the heat pump will use its designated PT1000 sensor and if that sensor is missing the heat pump will use 0 degrees C as a fallback value.'
+        expression:  'enum(hr:00117 ; 0->''PT1000'' ; 1->''OutdoorTemperatureSensor'')'
+        # referenceTo: '0'
+
+      - id:          'Outdoor Temperature Sensor'
+        description: 'Outdoor temperature sensor, this register will be the source of the outdoor temperature given that BMS-address hr:117 is set to 1. The valid range of the temperature is between -50 to 200 degrees C. If this register is not updated with a new temperature within 12 hours or the value is outside the valid range, the fallback logic will be triggered stated in description of BMS register hr:117. This signal is automatically filtered in the heat pump.'
+        expression:  'int16(hr:00118 ; 0x4E20)/100'
+        # referenceTo: '0'
+
+      - id:          'Maximum Phase Current'
+        description: 'Maximum phase current'
+        expression:  'int16(hr:00119)'
+        # referenceTo: '0'
+
+      - id:          'Compressor Current Hysteresis'
+        description: 'Compressor current hysteresis'
+        expression:  'int16(hr:00120)'
+        # referenceTo: '0'
+
+      - id:          'Mix Valve 1 Selected Mode'
+        description: 'Selected mode for mixing valve 1, 0:Heat, 1:Cool, 2:Auto'
+        expression:  'enum(hr:00298 ; 0->''Heat'' ; 1->''Cool'' ; 2->''Auto'')'
+        # referenceTo: '0'
+
+      - id:          'Immersion Heater Status'
+        description: 'Enabled immersion heater, Mega S-E only'
+        expression:  'enum(hr:00321 ; 0->''Disabled'' ; 2->''Enabled'')'
+        # referenceTo: '0'
+
+  # ==========================================
+
+  - id:          'Heating system'
+    description: 'Heating system'
+    fields:
+
+      - id:          'Enable internal additional heater'
+        description: 'Enable internal additional heater'
+        expression:  'boolean(c:00004)'
+        # referenceTo: ''
+
+      - id:          'Enable external additional heater'
+        description: 'Enable external additional heater'
+        expression:  'boolean(c:00005)'
+        # referenceTo: '1'
+
+      - id:          'Enable heat'
+        description: 'Enable heat'
+        expression:  'boolean(c:00009)'
+        # referenceTo: '1'
+
+
+      - id:          'Enable system circulation pump'
+        description: 'Enable system circulation pump'
+        expression:  'boolean(c:00022)'
+        # referenceTo: '1'
+
+
+      - id:          'Enable additional heater only'
+        description: 'Enable additional heater only (No compressor). Requires Operation mode: Standby'
+        expression:  'boolean(c:00025)'
+        # referenceTo: '1'
+
+
+      - id:          'Enable outdoor temp dependent for external heater'
+        description: 'Enable outdoor temp dependent for external heater'
+        expression:  'boolean(c:00039)'
+        # referenceTo: '1'
+
+
+      - id:          'System supply low temperature alarm'
+        description: 'System supply low temperature alarm'
+        expression:  'boolean(di:00024)'
+        # referenceTo: '1'
+
+
+      - id:          'System supply line sensor alarm'
+        description: 'System supply line sensor alarm'
+        expression:  'boolean(di:00035)'
+        # referenceTo: '1'
+
+
+      - id:          'External additional heater control signal'
+        description: 'External additional heater control signal'
+        expression:  'boolean(di:00206)'
+        # referenceTo: '1'
+
+
+      - id:          'System circulation pump control signal'
+        description: 'System circulation pump control signal'
+        expression:  'boolean(di:00211)'
+        # referenceTo: '1'
+
+
+      - id:          'External heater circulation pump control signal'
+        description: 'External heater circulation pump control signal'
+        expression:  'boolean(di:00219)'
+        # referenceTo: '1'
+
+      - id:          'Heating season winter active'
+        description: 'Heating season (winter) active'
+        expression:  'boolean(di:00220)'
+        # referenceTo: '1'
+
+      - id:          'External additional heater active'
+        description: 'External additional heater active'
+        expression:  'boolean(di:00221)'
+        # referenceTo: '1'
+
+
+      - id:          'External Heater Demand'
+        description: 'External additional heater: Current demand (%)'
+        expression:  'int16(ir:00006)/100'
+        # referenceTo: '1'
+
+
+      - id:          'System Supply Line Temperature'
+        description: 'System supply line temperature'
+        expression:  'int16(ir:00012 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'System Supply Line Calculated Set Point'
+        description: 'System supply line calculated set point'
+        expression:  'int16(ir:00018 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'System Supply Line Selected Heat Curve'
+        description: 'Selected heat curve, (system) supply line'
+        expression:  'int16(ir:00019 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Heat Curve X1'
+        description: 'Heat curve, X-coordinate 1 (highest outdoor temperature)'
+        expression:  'int16(ir:00020 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Heat Curve X2'
+        description: 'Heat curve, X-coordinate 2'
+        expression:  'int16(ir:00021 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Heat Curve X3'
+        description: 'Heat curve, X-coordinate 3'
+        expression:  'int16(ir:00022 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Heat Curve X4'
+        description: 'Heat curve, X-coordinate 4'
+        expression:  'int16(ir:00023 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Heat Curve X5'
+        description: 'Heat curve, X-coordinate 5'
+        expression:  'int16(ir:00024 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Heat Curve X6'
+        description: 'Heat curve, X-coordinate 6'
+        expression:  'int16(ir:00025 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Heat Curve X7'
+        description: 'Heat curve, X-coordinate 7 (lowest outdoor temperature)'
+        expression:  'int16(ir:00026 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'External Additional Heater Operating Hours'
+        description: 'External additional heater operating hours'
+        expression:  'uint32(ir:00052 # 2)'
+        # referenceTo: '1'
+
+
+      - id:          'Heating Season Integral Value'
+        description: 'Heating season integral value'
+        expression:  'int16(ir:00131)'
+        # referenceTo: '1'
+
+
+      - id:          'Desired Gear For Heating'
+        description: 'Desired gear for heating'
+        expression:  'int16(ir:00140)'
+        # referenceTo: '1'
+
+
+      - id:          'Max Limitation Set Point Curve Radiator'
+        description: 'Max limitation, set point curve radiator'
+        expression:  'int16(hr:00003 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Min Limitation Set Point Curve Radiator'
+        description: 'Min limitation, set point curve radiator'
+        expression:  'int16(hr:00004 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Comfort Wheel Setting'
+        description: 'Comfort wheel setting'
+        expression:  'int16(hr:00005 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Set Point Heat Curve Y1'
+        description: 'Set point heat curve, Y-coordinate 1 (highest outdoor temperature)'
+        expression:  'int16(hr:00006 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Set Point Heat Curve Y2'
+        description: 'Set point heat curve, Y-coordinate 2'
+        expression:  'int16(hr:00007 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Set Point Heat Curve Y3'
+        description: 'Set point heat curve, Y-coordinate 3'
+        expression:  'int16(hr:00008 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Set Point Heat Curve Y4'
+        description: 'Set point heat curve, Y-coordinate 4'
+        expression:  'int16(hr:00009 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Set Point Heat Curve Y5'
+        description: 'Set point heat curve, Y-coordinate 5'
+        expression:  'int16(hr:00010 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Set Point Heat Curve Y6'
+        description: 'Set point heat curve, Y-coordinate 6'
+        expression:  'int16(hr:00011 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Set Point Heat Curve Y7'
+        description: 'Set point heat curve, Y-coordinate 7 (lowest outdoor temperature)'
+        expression:  'int16(hr:00012 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Heating Season Stop Temperature'
+        description: 'Heating season stop temperature'
+        expression:  'int16(hr:00016 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+
+      - id:          'Gear Shift Delay Heating'
+        description: 'Gear shift delay heating'
+        expression:  'int16(hr:00061)'
+        # referenceTo: '1'
+
+
+      - id:          'External Additional Heater Start'
+        description: 'External additional heater start (PID sum)'
+        expression:  'int16(hr:00075)'
+        # referenceTo: '1'
+
+
+      - id:          'External Additional Heater Stop'
+        description: 'External additional heater stop (PID sum)'
+        expression:  'int16(hr:00078)/100'
+        # referenceTo: '1'
+
+
+      - id:          'External Heater Outdoor Temp Limit'
+        description: 'External heater outdoor temp limit'
+        expression:  'int16(hr:00304 ; 0x4E20)/100'
+        # referenceTo: '1'
+
+  # ==========================================
+
+  - id:          'Hot water'
+    description: 'Hot water'
+    fields:
+
+      - id:          'Enable tap water'
+        description: 'Enable tap water'
+        expression:  'boolean(c:00008)'
+        # referenceTo: '2'
+
+      - id:          'Enable anti legionella'
+        description: 'Enable anti legionella'
+        expression:  'boolean(c:00024)'
+        # referenceTo: '2'
+
+      - id:          'Tap water mid sensor alarm'
+        description: 'Tap water mid sensor alarm'
+        expression:  'boolean(di:00050)'
+        # referenceTo: '2'
+
+      - id:          'Tap Water Top Temperature'
+        description: 'Tap water top temperature'
+        expression:  'int16(ir:00015 ; 0x4E20)/100'
+        # referenceTo: '2'
+
+      - id:          'Tap Water Lower Temperature'
+        description: 'Tap water lower temperature'
+        expression:  'int16(ir:00016 ; 0x4E20)/100'
+        # referenceTo: '2'
+
+      - id:          'Tap Water Weighted Temperature'
+        description: 'Tap water weighted temperature'
+        expression:  'int16(ir:00017 ; 0x4E20)/100'
+        # referenceTo: '2'
+
+      - id:          'Tap Water Valve Position'
+        description: 'Tap water valve position (%)'
+        expression:  'int16(ir:00047)'
+        # referenceTo: '2'
+
+      - id:          'Tap Water Operating Hours'
+        description: 'Tap water operating hours'
+        expression:  'uint32(ir:00050 # 2)'
+        # referenceTo: '2'
+
+      - id:          'Desired Gear For Tap Water'
+        description: 'Desired gear for tap water'
+        expression:  'int16(ir:00139)'
+        # referenceTo: '2'
+
+      - id:          'Tap Water Start Temperature'
+        description: 'Start temperature tap water (only valid when tap water mode is Normal)'
+        expression:  'int16(hr:00022 ; 0x4E20)/100'
+        # referenceTo: '2'
+
+      - id:          'Tap Water Stop Temperature'
+        description: 'Stop temperature tap water (only valid when tap water mode is Normal)'
+        expression:  'int16(hr:00023 ; 0x4E20)/100'
+        # referenceTo: '2'
+
+      - id:          'Maximum Allowed Gear In Tap Water'
+        description: 'Maximum allowed gear in tap water (only valid when tap water mode is Normal)'
+        expression:  'int16(hr:00028)'
+        # referenceTo: '2'
+
+      - id:          'Minimum Allowed Gear In Tap Water'
+        description: 'Minimum allowed gear in tap water (only valid when tap water mode is Normal)'
+        expression:  'int16(hr:00029)'
+        # referenceTo: '2'
+
+  # ==========================================
+
+  - id:          'Cooling'
+    description: 'Cooling'
+    fields:
+
+      - id:          'Enable active cooling'
+        description: 'Enable active cooling'
+        expression:  'boolean(c:00010)'
+        # referenceTo: '5'
+
+      - id:          'Enable passive cooling'
+        description: 'Enable passive cooling (EM)'
+        expression:  'boolean(c:00033)'
+        # referenceTo: '5'
+
+      - id:          'Cooling supply line sensor alarm'
+        description: 'Cooling supply line sensor alarm (EM)'
+        expression:  'boolean(di:00047)'
+        # referenceTo: '5'
+
+      - id:          'Cooling circuit supply line temperature deviation alarm'
+        description: 'Cooling circuit supply line temperature deviation alarm (EM)'
+        expression:  'boolean(di:00067)'
+        # referenceTo: '5'
+
+      - id:          'Cooling circuit circulation pump control signal'
+        description: 'Cooling circuit circulation pump control signal (EM)'
+        expression:  'boolean(di:00236)'
+        # referenceTo: '5'
+
+      - id:          'Surplus heat directional valve position'
+        description: 'Surplus heat directional valve position (EM)'
+        expression:  'boolean(di:00238)'
+        # referenceTo: '5'
+
+      - id:          'Cooling circuit regulation control signal'
+        description: 'Cooling circuit regulation control signal (EM)'
+        expression:  'boolean(di:00240)'
+        # referenceTo: '5'
+
+      - id:          'Active cooling directional valve position Borehole disconnected'
+        description: 'Active cooling directional valve position (Borehole disconnected) (EM)'
+        expression:  'boolean(di:00242)'
+        # referenceTo: '5'
+
+      - id:          'Cooling Circuit Supply Line Temperature'
+        description: 'Cooling circuit supply line temperature (EM)'
+        expression:  'int16(ir:00106 ; 0x4E20)/100'
+        # referenceTo: '5'
+
+      - id:          'Mix Valve Cooling Opening Degree'
+        description: 'Mix valve cooling opening degree (EM2/3)'
+        expression:  'int16(ir:00137)'
+        # referenceTo: '5'
+
+      - id:          'Desired Gear For Cooling'
+        description: 'Desired gear for cooling'
+        expression:  'int16(ir:00141)'
+        # referenceTo: '5'
+
+      - id:          'Cooling Mix Valve Set Point'
+        description: 'Cooling mix valve set point (EM)'
+        expression:  'int16(hr:00030)/100'
+        # referenceTo: '5'
+
+      - id:          'Cooling Supply Line Mix Valve Lowest Allowed Opening Degree'
+        description: 'Cooling supply line mix valve: Lowest allowed opening degree (EM)'
+        expression:  'int16(hr:00049)/100'
+        # referenceTo: '5'
+
+      - id:          'Cooling Supply Line Mix Valve Highest Allowed Opening Degree'
+        description: 'Cooling supply line mix valve: Highest allowed opening degree (EM)'
+        expression:  'int16(hr:00050)/100'
+        # referenceTo: '5'
+
+      - id:          'Gear Shift Delay Cooling'
+        description: 'Gear shift delay cooling'
+        expression:  'int16(hr:00063)'
+        # referenceTo: '5'
+
+      - id:          'Minimum Allowed Gear In Cooling'
+        description: 'Minimum allowed gear in cooling'
+        expression:  'int16(hr:00087)'
+        # referenceTo: '5'
+
+      - id:          'Maximum Allowed Gear In Cooling'
+        description: 'Maximum allowed gear in cooling'
+        expression:  'int16(hr:00088)'
+        # referenceTo: '5'
+
+      - id:          'Start Temp For Cooling'
+        description: 'Start temp for cooling (EM)'
+        expression:  'int16(hr:00105 ; 0x4E20)/100'
+        # referenceTo: '5'
+
+      - id:          'Stop Temp For Cooling'
+        description: 'Stop temp for cooling (EM)'
+        expression:  'int16(hr:00106 ; 0x4E20)/100'
+        # referenceTo: '5'
+
+      - id:          'Mix Valve 1 Set Point For Supply Line Temp Passive Cooling'
+        description: 'Set point for supply line temp passive cooling with mixing valve 1'
+        expression:  'int16(hr:00302)/100'
+        # referenceTo: '5'
+
+      - id:          'Set Point Minimum Outdoor Temp When Cooling Is Permitted'
+        description: 'Set point minimum outdoor temp when cooling is permitted'
+        expression:  'int16(hr:00303 ; 0x4E20)/100'
+
+  # ==========================================
+
+  - id:          'Pool'
+    description: 'Pool'
+    fields:
+
+      - id:          'Enable pool'
+        description: 'Enable pool (EM)'
+        expression:  'boolean(c:00028)'
+        # referenceTo: '6'
+
+      - id:          'Enable external additional heater for pool'
+        description: 'Enable external additional heater for pool (EM)'
+        expression:  'boolean(c:00031)'
+        # referenceTo: '6'
+
+      - id:          'Pool return line sensor alarm'
+        description: 'Pool return line sensor alarm'
+        expression:  'boolean(di:00076)'
+        # referenceTo: '6'
+
+      - id:          'External stop for pool'
+        description: 'External stop for pool, read only'
+        expression:  'boolean(di:00077)'
+        # referenceTo: '6'
+
+      - id:          'Pool directional valve position'
+        description: 'Pool directional valve position (EM)'
+        expression:  'boolean(di:00235)'
+        # referenceTo: '6'
+
+      - id:          'Desired Gear For Pool'
+        description: 'Desired gear for pool'
+        expression:  'int16(ir:00142)'
+        # referenceTo: '6'
+
+      - id:          'Pool Charge Set Point'
+        description: 'Pool charge set point (EM)'
+        expression:  'int16(hr:00058)/100'
+        # referenceTo: '6'
+
+      - id:          'Gear Shift Delay Pool'
+        description: 'Gear shift delay pool'
+        expression:  'int16(hr:00062)'
+        # referenceTo: '6'
+
+      - id:          'Minimum Allowed Gear In Pool'
+        description: 'Minimum allowed gear in pool'
+        expression:  'int16(hr:00085)'
+        # referenceTo: '6'
+
+      - id:          'Maximum Allowed Gear In Pool'
+        description: 'Maximum allowed gear in pool'
+        expression:  'int16(hr:00086)'
+        # referenceTo: '6'
+
+      - id:          'Set Point Return Temp From Pool To Heat Exchanger'
+        description: 'Set point return temp from pool to heat exchanger (EM)'
+        expression:  'int16(hr:00299 ; 0x4E20)/10'
+        # referenceTo: '6'
+
+      - id:          'Set Point Pool Hysteresis'
+        description: 'Set point pool hysteresis (EM)'
+        expression:  'int16(hr:00300)/10'
+        # referenceTo: '6'
+
+  # ==========================================
+
+  - id:          'Distribution circuit'
+    description: 'Distribution circuit'
+    fields:
+
+      - id:          'Enable mix valve 1'
+        description: 'Enable mix valve 1'
+        expression:  'boolean(c:00011)'
+        # referenceTo: '7'
+
+      - id:          'Mix valve 1 supply line sensor alarm'
+        description: 'Mix valve 1 supply line sensor alarm'
+        expression:  'boolean(di:00036)'
+        # referenceTo: '7'
+
+      - id:          'Mix valve 1 supply temperature deviation alarm'
+        description: 'Mix valve 1 supply temperature deviation alarm'
+        expression:  'boolean(di:00060)'
+        # referenceTo: '7'
+
+      - id:          'Mix valve 1 circulation pump control signal'
+        description: 'Mix valve 1 circulation pump control signal'
+        expression:  'boolean(di:00209)'
+        # referenceTo: '7'
+
+      - id:          'Cooling Season Integral Value'
+        description: 'Cooling season integral value'
+        expression:  'int16(ir:00036)'
+        # referenceTo: '7'
+
+      - id:          'Mix Valve 1 Supply Line Temperature'
+        description: 'Mix valve 1 supply line temperature'
+        expression:  'int16(ir:00040 ; 0x4E20)/100'
+        # referenceTo: '7'
+
+      - id:          'Mix Valve 1 Position'
+        description: 'Mix valve 1 position'
+        expression:  'int16(ir:00043)/100'
+        # referenceTo: '7'
+
+      - id:          'Mix Valve 1 Desired Temperature Distribution Circuit'
+        description: 'Desired temperature distribution circuit Mix valve 1'
+        expression:  'int16(ir:00147 ; 0x4E20)/100'
+        # referenceTo: '7'
+
+      - id:          'Mix Valve 1 Min Limitation Set Point Curve Radiator'
+        description: 'Min limitation Set point curve radiator Mix valve 1'
+        expression:  'int16(hr:00107 ; 0x4E20)/100'
+        # referenceTo: '7'
+
+      - id:          'Mix Valve 1 Max Limitation Set Point Curve Radiator'
+        description: 'Max limitation Set point curve radiator Mix valve 1'
+        expression:  'int16(hr:00108 ; 0x4E20)/100'
+        # referenceTo: '7'
+
+      - id:          'Mix Valve 1 Set Point Curve Y1'
+        description: 'Set point curve, Y-coordinate 1 Mix valve 1 (highest outdoor temperature)'
+        expression:  'int16(hr:00109 ; 0x4E20)/100'
+        # referenceTo: '7'
+
+      - id:          'Mix Valve 1 Set Point Curve Y2'
+        description: 'Set point curve, Y-coordinate 2 Mix valve 1'
+        expression:  'int16(hr:00110 ; 0x4E20)/100'
+        # referenceTo: '7'
+
+      - id:          'Mix Valve 1 Set Point Curve Y3'
+        description: 'Set point curve, Y-coordinate 3 Mix valve 1'
+        expression:  'int16(hr:00111 ; 0x4E20)/100'
+        # referenceTo: '7'
+
+      - id:          'Mix Valve 1 Set Point Curve Y4'
+        description: 'Set point curve, Y-coordinate 4 Mix valve 1'
+        expression:  'int16(hr:00112 ; 0x4E20)/100'
+        # referenceTo: '7'
+
+      - id:          'Mix Valve 1 Set Point Curve Y5'
+        description: 'Set point curve, Y-coordinate 5 Mix valve 1'
+        expression:  'int16(hr:00113 ; 0x4E20)/100'
+        # referenceTo: '7'
+
+      - id:          'Mix Valve 1 Set Point Curve Y6'
+        description: 'Set point curve, Y-coordinate 6 Mix valve 1'
+        expression:  'int16(hr:00114 ; 0x4E20)/100'
+        # referenceTo: '7'
+
+      - id:          'Mix Valve 1 Set Point Curve Y7'
+        description: 'Set point curve, Y-coordinate 7 Mix valve 1 (lowest outdoor temperature)'
+        expression:  'int16(hr:00115 ; 0x4E20)/100'
+        # referenceTo: '7'
+
+  # ==========================================
+
+  - id:          'Buffer tank'
+    description: 'Buffer tank'
+    fields:
+
+      - id:          'Buffer Tank Temperature'
+        description: 'Buffer tank temperature'
+        expression:  'int16(ir:00041 ; 0x4E20)/100'
+        # referenceTo: '8'
+
+      - id:          'Buffer Tank Charge Set Point'
+        description: 'Buffer tank charge set point'
+        expression:  'int16(ir:00068 ; 0x4E20)/100'
+        # referenceTo: '8'
+
+  # ==========================================
+
+  - id:          'Electric meter'
+    description: 'Electric meter'
+    fields:
+
+      - id:          'Electric Meter L1 Current'
+        description: 'Electric meter L1 current (A)'
+        expression:  'int16(ir:00069)/100'
+        # referenceTo: '9'
+
+      - id:          'Electric Meter L2 Current'
+        description: 'Electric meter L2 current (A)'
+        expression:  'int16(ir:00070)/100'
+        # referenceTo: '9'
+
+      - id:          'Electric Meter L3 Current'
+        description: 'Electric meter L3 current (A)'
+        expression:  'int16(ir:00071)/100'
+        # referenceTo: '9'
+
+      - id:          'Electric Meter L1 0 Voltage'
+        description: 'Electric meter L1-0 voltage (V)'
+        expression:  'int16(ir:00072)/100'
+        # referenceTo: '9'
+
+      - id:          'Electric Meter L2 0 Voltage'
+        description: 'Electric meter L2-0 voltage (V)'
+        expression:  'int16(ir:00073)/100'
+        # referenceTo: '9'
+
+      - id:          'Electric Meter L3 0 Voltage'
+        description: 'Electric meter L3-0 voltage (V)'
+        expression:  'int16(ir:00074)/100'
+        # referenceTo: '9'
+
+      - id:          'Electric Meter L1 L2 Voltage'
+        description: 'Electric meter L1-L2 voltage (V)'
+        expression:  'int16(ir:00075)/10'
+        # referenceTo: '9'
+
+      - id:          'Electric Meter L2 L3 Voltage'
+        description: 'Electric meter L2-L3 voltage (V)'
+        expression:  'int16(ir:00076)/10'
+        # referenceTo: '9'
+
+      - id:          'Electric Meter L3 L1 Voltage'
+        description: 'Electric meter L3-L1 voltage (V)'
+        expression:  'int16(ir:00077)/10'
+        # referenceTo: '9'
+
+      - id:          'Electric Meter L1 Power'
+        description: 'Electric meter L1 power (W)'
+        expression:  'int16(ir:00078)'
+        # referenceTo: '9'
+
+      - id:          'Electric Meter L2 Power'
+        description: 'Electric meter L2 power (W)'
+        expression:  'int16(ir:00079)'
+        # referenceTo: '9'
+
+      - id:          'Electric Meter L3 Power'
+        description: 'Electric meter L3 power (W)'
+        expression:  'int16(ir:00080)'
+        # referenceTo: '9'
+
+      - id:          'Electric Meter Meter Value'
+        description: 'Electric meter - meter value (kWh)'
+        expression:  'int16(ir:00081)'
+        # referenceTo: '9'
+
+      - id:          'Electric Meter KWh Total'
+        description: 'Electric meter kWh total'
+        expression:  'uint32(ir:00083 # 2)/10'
+        # referenceTo: '9'
+
+  # ==========================================
+
+  - id:          'Internal heat pump'
+    description: 'Internal heat pump'
+    fields:
+
+      - id:          'Enable condenser pump variable speed mode'
+        description: 'Enable variable speed mode for condenser pump'
+        expression:  'boolean(c:00034)'
+        # referenceTo: '10'
+
+      - id:          'Enable brine pump variable speed mode'
+        description: 'Enable variable speed mode for brine pump'
+        expression:  'boolean(c:00035)'
+        # referenceTo: '10'
+
+      - id:          'High pressure switch alarm'
+        description: 'High pressure switch alarm'
+        expression:  'boolean(di:00009)'
+        # referenceTo: '10'
+
+      - id:          'Low pressure level alarm'
+        description: 'Low pressure level alarm'
+        expression:  'boolean(di:00010)'
+        # referenceTo: '10'
+
+      - id:          'High discharge pipe temperature alarm'
+        description: 'High discharge pipe temperature alarm'
+        expression:  'boolean(di:00011)'
+        # referenceTo: '10'
+
+      - id:          'Operating pressure limit indication'
+        description: 'Operating pressure limit indication'
+        expression:  'boolean(di:00012)'
+        # referenceTo: '10'
+
+      - id:          'Discharge pipe sensor alarm'
+        description: 'Discharge pipe sensor alarm'
+        expression:  'boolean(di:00013)'
+        # referenceTo: '10'
+
+      - id:          'Liquid line sensor alarm'
+        description: 'Liquid line sensor alarm'
+        expression:  'boolean(di:00014)'
+        # referenceTo: '10'
+
+      - id:          'Suction gas sensor alarm'
+        description: 'Suction gas sensor alarm'
+        expression:  'boolean(di:00015)'
+        # referenceTo: '10'
+
+      - id:          'Inverter unit alarm'
+        description: 'Inverter unit alarm'
+        expression:  'boolean(di:00023)'
+        # referenceTo: '10'
+
+      - id:          'Compressor low speed alarm'
+        description: 'Compressor low speed alarm'
+        expression:  'boolean(di:00025)'
+        # referenceTo: '10'
+
+      - id:          'Low super heat alarm'
+        description: 'Low super heat alarm'
+        expression:  'boolean(di:00026)'
+        # referenceTo: '10'
+
+      - id:          'Pressure ratio out of range alarm'
+        description: 'Pressure ratio out of range alarm'
+        expression:  'boolean(di:00027)'
+        # referenceTo: '10'
+
+      - id:          'Compressor pressure outside envelope alarm'
+        description: 'Compressor pressure outside envelope alarm'
+        expression:  'boolean(di:00028)'
+        # referenceTo: '10'
+
+      - id:          'Brine in sensor alarm'
+        description: 'Brine in sensor alarm'
+        expression:  'boolean(di:00030)'
+        # referenceTo: '10'
+
+      - id:          'Brine out sensor alarm'
+        description: 'Brine out sensor alarm'
+        expression:  'boolean(di:00031)'
+        # referenceTo: '10'
+
+      - id:          'Condenser in sensor alarm'
+        description: 'Condenser in sensor alarm'
+        expression:  'boolean(di:00032)'
+        # referenceTo: '10'
+
+      - id:          'Condenser out sensor alarm'
+        description: 'Condenser out sensor alarm'
+        expression:  'boolean(di:00033)'
+        # referenceTo: '10'
+
+      - id:          'Outdoor sensor alarm'
+        description: 'Outdoor sensor alarm'
+        expression:  'boolean(di:00034)'
+        # referenceTo: '10'
+
+      - id:          'Inverter unit communication alarm'
+        description: 'Inverter unit communication alarm'
+        expression:  'boolean(di:00075)'
+        # referenceTo: '10'
+
+      - id:          'Oil boost in progress'
+        description: 'Oil boost in progress'
+        expression:  'boolean(di:00086)'
+        # referenceTo: '10'
+
+      - id:          'Compressor control signal'
+        description: 'Compressor control signal'
+        expression:  'boolean(di:00199)'
+        # referenceTo: '10'
+
+      - id:          'Condenser pump control'
+        description: 'Condenser pump On/off control'
+        expression:  'boolean(di:00210)'
+        # referenceTo: '10'
+
+      - id:          'Brine pump control'
+        description: 'Brine pump On/off control'
+        expression:  'boolean(di:00218)'
+        # referenceTo: '10'
+
+      - id:          'Heat pump stopping'
+        description: 'Heat pump stopping'
+        expression:  'boolean(di:00224)'
+        # referenceTo: '10'
+
+      - id:          'Heat pump OK to start'
+        description: 'Heat pump OK to start'
+        expression:  'boolean(di:00225)'
+        # referenceTo: '10'
+
+      - id:          'Compressor is unable to speed up'
+        description: 'Compressor is unable to speed up'
+        expression:  'boolean(di:00246)'
+        # referenceTo: '10'
+
+      - id:          'Compressor Available Gears'
+        description: 'Compressor available gears'
+        expression:  'int16(ir:00004)/100'
+        # referenceTo: '10'
+
+      - id:          'Compressor Speed'
+        description: 'Compressor speed'
+        expression:  'int16(ir:00005)'
+        # referenceTo: '10'
+
+      - id:          'Discharge Pipe Temperature'
+        description: 'Discharge pipe temperature'
+        expression:  'int16(ir:00007 ; 0x4E20)/100'
+        # referenceTo: '10'
+
+      - id:          'Condenser In Temperature'
+        description: 'Condenser in temperature'
+        expression:  'int16(ir:00008 ; 0x4E20)/100'
+        # referenceTo: '10'
+
+      - id:          'Condenser Out Temperature'
+        description: 'Condenser out temperature'
+        expression:  'int16(ir:00009 ; 0x4E20)/100'
+        # referenceTo: '10'
+
+      - id:          'Brine In Temperature'
+        description: 'Brine in temperature'
+        expression:  'int16(ir:00010 ; 0x4E20)/100'
+        # referenceTo: '10'
+
+      - id:          'Brine Out Temperature'
+        description: 'Brine out temperature'
+        expression:  'int16(ir:00011 ; 0x4E20)/100'
+        # referenceTo: '10'
+
+      - id:          'Calculated Demand'
+        description: 'Calculated demand (heat)'
+        expression:  'int16(ir:00030)/100'
+        # referenceTo: '10'
+
+      - id:          'Condenser Circulation Pump Speed'
+        description: 'Condenser circulation pump speed (%)'
+        expression:  'int16(ir:00039)/100'
+        # referenceTo: '10'
+
+      - id:          'Brine Circulation Pump Speed'
+        description: 'Brine circulation pump speed (%)'
+        expression:  'int16(ir:00044)/100'
+        # referenceTo: '10'
+
+      - id:          'Compressor Operating Hours'
+        description: 'Compressor operating hours'
+        expression:  'uint32(ir:00048 # 2)'
+        # referenceTo: '10'
+
+      - id:          'Compressor Speed Percent'
+        description: 'Compressor speed percent'
+        expression:  'int16(ir:00054)/100'
+        # referenceTo: '10'
+
+      - id:          'Compressor Temporarily Blocked Start Restriction Timer'
+        description: 'Compressor temporarily blocked, (start restriction timer)'
+        expression:  'int16(ir:00060)'
+        # referenceTo: '10'
+
+      - id:          'Compressor Current Gear'
+        description: 'Compressor current gear'
+        expression:  'int16(ir:00061)/100'
+        # referenceTo: '10'
+
+      - id:          'Bubble Point High Pressure Temperature'
+        description: 'Bubble point, high pressure temperature'
+        expression:  'int16(ir:00122 ; 0x4E20)/100'
+        # referenceTo: '10'
+
+      - id:          'Dew Point High Pressure Temperature'
+        description: 'Dew point, high pressure temperature'
+        expression:  'int16(ir:00123 ; 0x4E20)/100'
+        # referenceTo: '10'
+
+      - id:          'Dew Point Low Pressure Temperature'
+        description: 'Dew point, low pressure temperature'
+        expression:  'int16(ir:00124 ; 0x4E20)/100'
+        # referenceTo: '10'
+
+      - id:          'Superheat Temperature'
+        description: 'Superheat temperature'
+        expression:  'int16(ir:00125 ; 0x4E20)/100'
+        # referenceTo: '10'
+
+      - id:          'Sub Cooling Temperature'
+        description: 'Sub cooling temperature'
+        expression:  'int16(ir:00126 ; 0x4E20)/100'
+        # referenceTo: '10'
+
+      - id:          'Low Pressure Side Pressure'
+        description: 'Low pressure side, pressure (bar(g))'
+        expression:  'int16(ir:00127)/100'
+        # referenceTo: '10'
+
+      - id:          'High Pressure Side Pressure'
+        description: 'High pressure side, pressure (bar(g))'
+        expression:  'int16(ir:00128)/100'
+        # referenceTo: '10'
+
+      - id:          'Liquid Line Temperature'
+        description: 'Liquid line temperature'
+        expression:  'int16(ir:00129 ; 0x4E20)/100'
+        # referenceTo: '10'
+
+      - id:          'Suction Gas Temperature'
+        description: 'Suction gas temperature'
+        expression:  'int16(ir:00130 ; 0x4E20)/100'
+        # referenceTo: '10'
+
+      - id:          'Brine In High Alarm Limit'
+        description: 'Brine in high alarm limit'
+        expression:  'int16(hr:00067 ; 0x4E20)/100'
+        # referenceTo: '10'
+
+      - id:          'Brine In Low Alarm Limit'
+        description: 'Brine in low alarm limit'
+        expression:  'int16(hr:00068 ; 0x4E20)/100'
+        # referenceTo: '10'
+
+      - id:          'Brine Out Low Alarm Limit'
+        description: 'Brine out low alarm limit'
+        expression:  'int16(hr:00069 ; 0x4E20)/100'
+        # referenceTo: '10'
+
+      - id:          'Condenser Pump Lowest Allowed Speed'
+        description: 'Condenser pump lowest allowed speed (%)'
+        expression:  'int16(hr:00076)/100'
+        # referenceTo: '10'
+
+      - id:          'Brine Pump Lowest Allowed Speed'
+        description: 'Brine pump lowest allowed speed (%)'
+        expression:  'int16(hr:00077)/100'
+        # referenceTo: '10'
+
+      - id:          'Condenser Pump Highest Allowed Speed'
+        description: 'Condenser pump highest allowed speed (%)'
+        expression:  'int16(hr:00079)/100'
+        # referenceTo: '10'
+
+      - id:          'Brine Pump Highest Allowed Speed'
+        description: 'Brine pump highest allowed speed (%)'
+        expression:  'int16(hr:00080)/100'
+        # referenceTo: '10'
+
+      - id:          'Condenser Pump Standby Speed'
+        description: 'Condenser pump standby speed (%)'
+        expression:  'int16(hr:00081)/100'
+        # referenceTo: '10'
+
+      - id:          'Brine Pump Standby Speed'
+        description: 'Brine pump standby speed (%)'
+        expression:  'int16(hr:00082)/100'
+        # referenceTo: '10'
+
+# ==========================================
