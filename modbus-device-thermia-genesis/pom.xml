@@ -23,6 +23,7 @@
     <artifactId>modbus-devices-parent</artifactId>
     <version>0.5.1-SNAPSHOT</version>
   </parent>
+
   <artifactId>modbus-device-thermia-genesis</artifactId>
 
   <name>Modbus Devices : Thermia Genesis</name>
@@ -35,6 +36,11 @@
     <dependency>
       <groupId>nl.basjes.modbus</groupId>
       <artifactId>modbus-schema-device</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib</artifactId>
     </dependency>
 
     <dependency>
@@ -97,32 +103,41 @@
       <plugin>
         <groupId>nl.basjes.modbus</groupId>
         <artifactId>modbus-schema-maven-plugin</artifactId>
-        <configuration>
-          <modbusSchemaFile>ThermiaGenesis101213.yaml</modbusSchemaFile>
-          <packageName>nl.basjes.modbus.thermia</packageName>
-          <className>ThermiaGenesis</className>
-          <language>kotlin</language>
-        </configuration>
 
         <executions>
           <execution>
-            <id>Generate Main Class</id>
+            <id>Generate Kotlin for Thermia Genesis 10,12,13</id>
             <goals>
               <goal>generate-main</goal>
+              <goal>generate-test</goal>
             </goals>
+            <configuration>
+              <modbusSchemaFile>ThermiaGenesis101213.yaml</modbusSchemaFile>
+              <packageName>nl.basjes.modbus.thermia</packageName>
+              <className>ThermiaGenesis</className>
+              <language>kotlin</language>
+            </configuration>
           </execution>
 
           <execution>
-            <id>Generate Test Class</id>
+            <id>Generate Kotlin for Thermia Genesis 13</id>
             <goals>
+              <goal>generate-main</goal>
               <goal>generate-test</goal>
             </goals>
+            <configuration>
+              <modbusSchemaFile>ThermiaGenesis13.yaml</modbusSchemaFile>
+              <packageName>nl.basjes.modbus.thermia</packageName>
+              <className>ThermiaGenesis13</className>
+              <language>kotlin</language>
+            </configuration>
           </execution>
 
         </executions>
       </plugin>
 
     </plugins>
+
   </build>
 
   <licenses>

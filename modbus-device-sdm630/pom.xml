@@ -25,6 +25,7 @@
   </parent>
 
   <artifactId>modbus-device-sdm630</artifactId>
+
   <name>Modbus Devices : SDM630</name>
 
   <description>The Modbus Schema Toolkit makes retrieving data from Modbus based devices a lot easier.</description>
@@ -69,27 +70,19 @@
         <groupId>nl.basjes.modbus</groupId>
         <artifactId>modbus-schema-maven-plugin</artifactId>
 
-        <configuration>
-          <modbusSchemaFile>SDM630.yaml</modbusSchemaFile>
-          <packageName>nl.basjes.modbus.eastron</packageName>
-          <className>SDM630</className>
-          <language>kotlin</language>
-        </configuration>
-
         <executions>
-
           <execution>
-            <id>Generate Main Class</id>
+            <id>Generate Modbus code</id>
             <goals>
               <goal>generate-main</goal>
-            </goals>
-          </execution>
-
-          <execution>
-            <id>Generate Test Class</id>
-            <goals>
               <goal>generate-test</goal>
             </goals>
+            <configuration>
+              <modbusSchemaFile>SDM630.yaml</modbusSchemaFile>
+              <packageName>nl.basjes.modbus.eastron</packageName>
+              <className>SDM630</className>
+              <language>kotlin</language>
+            </configuration>
           </execution>
 
         </executions>
@@ -98,7 +91,6 @@
     </plugins>
 
   </build>
-
 
   <licenses>
     <license>
