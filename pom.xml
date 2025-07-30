@@ -60,7 +60,7 @@
     <junit5.version>5.13.4</junit5.version>
     <log4j.version>2.25.1</log4j.version>
 
-    <modbus-schema.version>0.13.0</modbus-schema.version>
+    <modbus-schema.version>0.14.0</modbus-schema.version>
   </properties>
 
   <dependencyManagement>
