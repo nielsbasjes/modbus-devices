@@ -280,6 +280,8 @@
           <consoleOutput>true</consoleOutput>
           <excludeSubProjects>false</excludeSubProjects>
           <inputExcludes>
+            <!-- FIXME: Apache-rat seems to lockup on this file -->
+            <inputExclude>./modbus-device-sdm230/SDM230.yaml</inputExclude>
             <!-- Build config files -->
             <inputExclude>.mvn/jvm.config</inputExclude>
             <!-- Version control files -->
