@@ -24,9 +24,9 @@
     <version>0.6.3-SNAPSHOT</version>
   </parent>
 
-  <artifactId>modbus-device-sdm630</artifactId>
+  <artifactId>modbus-device-sdm230</artifactId>
 
-  <name>Modbus Devices : Eastron SDM630</name>
+  <name>Modbus Devices : Eastron SDM230</name>
 
   <description>The Modbus Schema Toolkit makes retrieving data from Modbus based devices a lot easier.</description>
   <url>https://modbus.basjes.nl</url>
@@ -78,9 +78,9 @@
               <goal>generate-test</goal>
             </goals>
             <configuration>
-              <modbusSchemaFile>SDM630.yaml</modbusSchemaFile>
+              <modbusSchemaFile>SDM230.yaml</modbusSchemaFile>
               <packageName>nl.basjes.modbus.eastron</packageName>
-              <className>SDM630</className>
+              <className>SDM230</className>
               <language>kotlin</language>
             </configuration>
           </execution>
