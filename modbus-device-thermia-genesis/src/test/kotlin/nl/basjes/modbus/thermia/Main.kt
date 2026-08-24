@@ -22,7 +22,6 @@ import nl.basjes.modbus.schema.utils.toTable
 import java.util.Timer
 import kotlin.concurrent.timerTask
 import kotlin.time.Clock.System.now
-import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
 fun getThermiaTestCase(modbusDevice: ModbusDevice) {
@@ -35,7 +34,6 @@ fun getThermiaTestCase(modbusDevice: ModbusDevice) {
     println(thermia.schemaDevice.toYaml())
 }
 
-@OptIn(ExperimentalTime::class)
 fun getThermiaValues(modbusDevice: ModbusDevice) {
     val thermia = ThermiaGenesis()
     thermia.connect(modbusDevice)
@@ -82,7 +80,6 @@ fun getThermiaValues(modbusDevice: ModbusDevice) {
     timer.cancel()
 }
 
-@OptIn(ExperimentalTime::class)
 fun printField(field: ThermiaGenesis.DeviceField) {
     val fieldValueTime = field.field.valueEpochMs ?.let { Instant.fromEpochMilliseconds(it).toString() } ?: "<Immutable>"
     println(String.format("%-40s = %-15s %-5s  @  %s", field.field.id, field.value, field.field.unit, fieldValueTime))
