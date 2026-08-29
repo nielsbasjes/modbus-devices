@@ -24,7 +24,7 @@ fun main() {
     val unitId = 1
 
     val connectionString =
-        "modbus-tcp:tcp://$hostname:$port?unit-identifier=$unitId"
+        "modbus-tcp:tcp://$hostname:$port?default-unit-identifier=$unitId"
 
     print("Connecting...")
     ModbusDevicePlc4j(connectionString).use { modbusDevice ->
