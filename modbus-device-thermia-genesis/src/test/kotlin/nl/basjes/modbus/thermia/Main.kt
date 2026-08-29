@@ -20,9 +20,12 @@ import nl.basjes.modbus.device.api.ModbusDevice
 import nl.basjes.modbus.schema.toYaml
 import nl.basjes.modbus.schema.utils.toTable
 import java.util.Timer
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
 import kotlin.concurrent.timerTask
 import kotlin.time.Clock.System.now
 import kotlin.time.Instant
+
 
 fun getThermiaTestCase(modbusDevice: ModbusDevice) {
     val thermia = ThermiaGenesis()
@@ -59,25 +62,41 @@ fun getThermiaValues(modbusDevice: ModbusDevice) {
 
     var previousRun = now()
 
+    // Create an executor with a thread pool
+    val scheduler = Executors.newScheduledThreadPool(1)
+
+    // Schedule a long-running task
+    scheduler.scheduleAtFixedRate({
+        val thisRun = now()
+        println("Fetching thermia input registers $thisRun (is ${thisRun - previousRun} after previous)    ${count++}")
+        previousRun = thisRun
+        val start = now()
+        thermia.update()
+        val stop = now()
+        println("Fetching took ${stop - start}")
+        fields.forEach { printField(it) }
+        println("---------")
+    }, 0, 5, TimeUnit.SECONDS)
+
+
     val timer = Timer("Fetcher")
     timer.scheduleAtFixedRate(
         timerTask {
-            val thisRun = now()
-            println("Fetching thermia input registers $thisRun (is ${thisRun - previousRun} after previous)    ${count++}")
-            previousRun = thisRun
-            val start = now()
-            thermia.update()
-            val stop = now()
-            println("Fetching took ${stop - start}")
-            fields.forEach { printField(it) }
-            println("---------")
         },
         0,
         5000,
     )
 
     Thread.sleep(20000) // Run for at most 20 seconds
-    timer.cancel()
+
+    // 1. Stop accepting new tasks and cancel queued tasks
+    scheduler.shutdown()
+
+    // 2. WAIT for the currently running task to complete
+    println("Waiting for running tasks to finish...")
+    val finishedCleanly = scheduler.awaitTermination(10, TimeUnit.SECONDS)
+
+    println("Terminated ${if (finishedCleanly) "cleanly" else "after a timeout"}.")
 }
 
 fun printField(field: ThermiaGenesis.DeviceField) {

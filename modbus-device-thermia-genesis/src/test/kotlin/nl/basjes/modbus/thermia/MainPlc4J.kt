@@ -16,20 +16,11 @@
  */
 package nl.basjes.modbus.thermia
 
-import nl.basjes.modbus.device.plc4j.ModbusDevicePlc4j
+import nl.basjes.modbus.device.api.ModbusDeviceTcpConfig
+import nl.basjes.modbus.device.plc4j.toModbusDevicePlc4j
 
 fun main() {
-    val hostname = "localhost"
-    val port = 1502
-    val unitId = 1
-
-    val connectionString =
-        "modbus-tcp:tcp://$hostname:$port?default-unit-identifier=$unitId"
-
-    print("Connecting...")
-    ModbusDevicePlc4j(connectionString).use { modbusDevice ->
-        println(" done")
-
+    ModbusDeviceTcpConfig("localhost", 1502, 1).toModbusDevicePlc4j().use { modbusDevice->
         getThermiaTestCase(modbusDevice)
         getThermiaValues(modbusDevice)
     }

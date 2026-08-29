@@ -16,26 +16,13 @@
  */
 package nl.basjes.modbus.thermia
 
-import com.ghgande.j2mod.modbus.facade.AbstractModbusMaster
-import com.ghgande.j2mod.modbus.facade.ModbusTCPMaster
-import nl.basjes.modbus.device.api.ModbusDevice
-import nl.basjes.modbus.device.exception.ModbusException
-import nl.basjes.modbus.device.j2mod.ModbusDeviceJ2Mod
+import nl.basjes.modbus.device.api.ModbusDeviceTcpConfig
+import nl.basjes.modbus.device.j2mod.toModbusDeviceJ2Mod
 
 fun main() {
-    val master: AbstractModbusMaster = ModbusTCPMaster("localhost", 1502)
-    try {
-        print("Connecting...")
-        master.connect()
-        println(" done")
-        val modbusDevice: ModbusDevice = ModbusDeviceJ2Mod(master, 1)
-
+    ModbusDeviceTcpConfig("localhost", 1502, 1).toModbusDeviceJ2Mod().use { modbusDevice->
         getThermiaTestCase(modbusDevice)
-
         getThermiaValues(modbusDevice)
-    } catch (e: Exception) {
-        throw ModbusException("Unable to connect to the master", e)
-    } finally {
-        master.disconnect()
     }
+
 }

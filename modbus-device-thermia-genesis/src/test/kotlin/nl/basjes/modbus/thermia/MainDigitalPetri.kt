@@ -16,37 +16,12 @@
  */
 package nl.basjes.modbus.thermia
 
-import com.digitalpetri.modbus.client.ModbusTcpClient
-import com.digitalpetri.modbus.tcp.client.NettyClientTransportConfig
-import com.digitalpetri.modbus.tcp.client.NettyTcpClientTransport
-import nl.basjes.modbus.device.api.ModbusDevice
-import nl.basjes.modbus.device.digitalpetri.ModbusDeviceDigitalPetri
-import nl.basjes.modbus.device.exception.ModbusException
+import nl.basjes.modbus.device.api.ModbusDeviceTcpConfig
+import nl.basjes.modbus.device.digitalpetri.toModbusDeviceDigitalPetri
 
 fun main() {
-    val configBuilder = NettyClientTransportConfig.Builder()
-    configBuilder.hostname  = "localhost"
-    configBuilder.port = 1502
-
-    val transport = NettyTcpClientTransport(configBuilder.build())
-    val client = ModbusTcpClient.create(transport)
-
-    try {
-        print("Connecting...")
-        client.connect()
-        println(" done")
-
-        val modbusDevice: ModbusDevice = ModbusDeviceDigitalPetri(client, 1)
-
-
+    ModbusDeviceTcpConfig("localhost", 1502, 1).toModbusDeviceDigitalPetri().use { modbusDevice->
         getThermiaTestCase(modbusDevice)
-
         getThermiaValues(modbusDevice)
-    } catch (e: Exception) {
-        println(" FAILED")
-        throw ModbusException("Unable to connect to the master", e)
-    } finally {
-        println("Disconnecting...")
-        client.disconnect()
     }
 }
