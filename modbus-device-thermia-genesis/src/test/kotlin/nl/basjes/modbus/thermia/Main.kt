@@ -79,14 +79,6 @@ fun getThermiaValues(modbusDevice: ModbusDevice) {
     }, 0, 5, TimeUnit.SECONDS)
 
 
-    val timer = Timer("Fetcher")
-    timer.scheduleAtFixedRate(
-        timerTask {
-        },
-        0,
-        5000,
-    )
-
     Thread.sleep(20000) // Run for at most 20 seconds
 
     // 1. Stop accepting new tasks and cancel queued tasks
